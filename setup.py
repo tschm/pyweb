@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+#http://blog.codekills.net/2011/07/15/lies,-more-lies-and-python-packaging-documentation-on--package_data-/
+
 setup(
     name='pyweb',
     version="0.0.1",
