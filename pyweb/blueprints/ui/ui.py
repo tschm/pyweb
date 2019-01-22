@@ -9,8 +9,6 @@ blueprint = Blueprint('ui', __name__, template_folder=os.path.join(base_dir, "te
 @blueprint.route('/', methods=['GET'])
 @blueprint.route('/index', methods=['GET'])
 def get_index():
-    print(blueprint.template_folder)
-    assert False
     return render_template("index.html")
 
 
