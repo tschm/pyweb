@@ -41,11 +41,6 @@ def client():
 
     class A(Application):
         @property
-        def blueprints(self):
-            return []
-            #return [blue_whoosh, blue_post, blue_ui]
-
-        @property
         def extensions(self):
             return [db, csrf_protect]
 

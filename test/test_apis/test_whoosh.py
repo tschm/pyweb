@@ -17,13 +17,6 @@ class TestWhoosh(object):
         get(client, url="/api/1/whoosh/index/a")
         get(client, url="/api/1/whoosh/search")
 
-    # def test_form(self, client):
-    #     with client:
-    #         x = SearchForm(search="Hans")
-    #         assert x.validate()
-    #         assert x.search.data == "Hans"
-
-
     def test_post(self, client):
         class NewForm(object):
             def validate(self):
