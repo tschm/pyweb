@@ -18,6 +18,7 @@ def test_csv(nav):
 
     pdt.assert_series_equal(pd.read_csv(StringIO(f().data.decode("utf-8")), index_col=0, squeeze=True, header=None, parse_dates=True), nav, check_names=False)
 
+
 def test_json(nav):
     @json
     def f():
