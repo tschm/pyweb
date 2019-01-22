@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 setup(
     name='pyweb',
     version="0.0.1",
+    package_dir={'pyweb': "pyweb"},
+    packages=find_packages(include=["pyweb*"]),
+    package_data={'pyweb':['blueprints/**/templates/**/*.*', 'blueprints/**/static/**/*.*']},
+    #packages=find_packages("pyweb"),
     #package_dir={'': "pyweb"},
-    #packages=find_packages(include=["pyweb*"]),
-    #package_data={'':['*.html']},
-    packages=find_packages("pyweb"),
-    package_dir={'': "pyweb"},
     #package_data={
     #    '': ['*.html']
     #},
