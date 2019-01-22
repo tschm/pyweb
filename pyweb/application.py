@@ -1,26 +1,28 @@
-import abc
 from flask import Flask
 
+from pyweb.exts.exts import db, csrf_protect
 
-class Application(object):
-    @property
-    @abc.abstractmethod
-    def extensions(self):
-        """ extensions registered for the application """
-
-    def register(self, app):
-        for extension in self.extensions:
-            extension.init_app(app)
+from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
+from pyweb.blueprints.post.api import blueprint as blue_post
+from pyweb.blueprints.admin.api import blueprint as blue_ui
 
 
-def create_app(application, static_folder, template_folder):
-    app = Flask(__name__, static_folder=static_folder, template_folder=template_folder)
+def extensions():
+    return [db, csrf_protect]
+
+
+def create_app():
+    app = Flask(__name__)
 
     success = app.config.from_envvar('APPLICATION_SETTINGS', silent=False)
     assert success
 
-    assert isinstance(application, Application)
-    application.register(app)
+    for extension in extensions():
+        extension.init_app(app)
+
+    app.register_blueprint(blue_whoosh, url_prefix="/api/1/whoosh")
+    app.register_blueprint(blue_post, url_prefix="/api/1/engine")
+    app.register_blueprint(blue_ui, url_prefix="/admin")
 
     print(app.url_map)
 

@@ -1,11 +1,10 @@
 import pandas as pd
-#from flask_restplus import fields
 
 
 class HighchartsSeries(object):
 
-    def format(self, value):
-        return [[int(pd.Timestamp(t).value * 1e-6), float(value)] for t, value in value.dropna().items()]
+    #def format(self, value):
+    #    return [[int(pd.Timestamp(t).value * 1e-6), float(value)] for t, value in value.dropna().items()]
 
     @staticmethod
     def to_json(series):
