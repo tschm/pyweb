@@ -5,7 +5,7 @@ setup(
     version="0.0.1",
     package_dir={'pyweb': "pyweb"},
     packages=find_packages(include=["pyweb*"]),
-    package_data={'pyweb':['blueprints/**/templates/**/*.*', 'blueprints/**/static/**/*.*']},
+    package_data={'pyweb':['pyweb/blueprints/**/templates/**', 'pyweb/blueprints/**/static/**']},
     #packages=find_packages("pyweb"),
     #package_dir={'': "pyweb"},
     #package_data={
