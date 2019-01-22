@@ -5,7 +5,7 @@ COPY requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
-#COPY ./config /pyrisk/config
+COPY ./pyweb /pyweb/pyweb
 #COPY ./pyserver /pyrisk/pyserver
 
 #COPY ./start.py /pyrisk/start.py
@@ -18,11 +18,11 @@ WORKDIR pyweb
 
 EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
-#FROM builder as test
+FROM builder as test
 
-#RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html
-#COPY ./test            /pyrisk/test
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock attrdict
+COPY ./test            /pyweb/test
 
 #ENV APPLICATION_SETTINGS="/pyrisk/test/restserver_settings.cfg"
 
-#CMD py.test --cov=pyserver --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
+CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
