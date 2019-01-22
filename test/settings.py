@@ -71,6 +71,7 @@ def __init_session(session):
 def client():
     from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
     from pyweb.blueprints.post.api import blueprint as blue_post
+    from pyweb.blueprints.ui.ui import blueprint as blue_ui
 
     assert base_dir == "/pyweb/test", "Base directory is {f}".format(f=base_dir)
 
@@ -80,7 +81,7 @@ def client():
     class A(Application):
         @property
         def blueprints(self):
-            return [blue_whoosh, blue_post]
+            return [blue_whoosh, blue_post, blue_ui]
 
         @property
         def extensions(self):
