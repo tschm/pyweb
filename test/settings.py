@@ -80,7 +80,8 @@ def client():
     class A(Application):
         @property
         def blueprints(self):
-            return [blue_whoosh, blue_post, blue_ui]
+            return []
+            #return [blue_whoosh, blue_post, blue_ui]
 
         @property
         def extensions(self):
@@ -92,6 +93,10 @@ def client():
     with app.app_context():
         db.session = __session()
         __init_session(session=db.session)
+
+    app.register_blueprint(blue_whoosh, url_prefix="/api/1/whoosh")
+    app.register_blueprint(blue_post, url_prefix="/api/1/engine")
+    app.register_blueprint(blue_ui, url_prefix="/")
 
     yield app.test_client()
     db.session.close()

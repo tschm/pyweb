@@ -29,5 +29,7 @@ def create_app(application, static_folder, template_folder):
     assert isinstance(application, Application)
     application.register(app)
 
+    print(app.url_map)
+
     return app
 

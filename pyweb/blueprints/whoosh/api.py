@@ -3,8 +3,10 @@ from flask_restplus import Api
 
 from pyweb.blueprints.whoosh.forms.forms import SearchForm
 from .whoosh import api as namespace
+import os
 
-blueprint = Blueprint('whoosh_api', __name__, url_prefix='/api/1', template_folder="templates", static_url_path="/whoosh/static", static_folder="./static")
+
+blueprint = Blueprint('whoosh_api', __name__, url_prefix='/whoosh', template_folder="templates", static_folder="./static")
 
 api = Api(blueprint,
     title='Lobnek RESTful API',
