@@ -6,8 +6,7 @@ from flask_restplus import Api
 
 from .post import api as post
 
-blueprint = Blueprint('post', __name__, url_prefix='/api/1', static_url_path="/post/static",
-                      static_folder=os.path.join(base_dir, "static"))
+blueprint = Blueprint('post', __name__, static_folder=os.path.join(base_dir, "static"))
 
 api = Api(blueprint,
     title='Lobnek RESTful API',
