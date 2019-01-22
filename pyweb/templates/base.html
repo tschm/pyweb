@@ -58,13 +58,29 @@
 
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <!-- Links -->
+          <!-- Links -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href={{ url_for("owner_api.get_owners_html") }}>Owners</a>
-                <a class="nav-item nav-link" href={{ url_for("security_api.get_securities_html") }}>Securities</a>
-                <a class="nav-item nav-link" href={{ url_for("security_api.get_prices_html") }}>Prices</a>
+                <a class="nav-item nav-link" href={{ url_for("asset_api.get_assets_html") }}>Assets</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Performance
+                    </a>
+                    <div class="dropdown-menu bg-dark navbar-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="nav-item nav-link" href={{ url_for("strategy_api.get_recent_html") }}>Recently</a>
+                            <a class="nav-item nav-link" href={{ url_for("strategy_api.get_mtd_html") }}>MTD</a>
+                            <a class="nav-item nav-link" href={{ url_for("strategy_api.get_ytd_html") }}>YTD</a>
+                    </div>
+                </li>
+
+                <a class="nav-item nav-link" href={{ url_for("strategy_api.get_sector_html") }}>Sector</a>
                 <a class="nav-item nav-link" href={{ url_for("whoosh_api.search") }}>Search</a>
                 <a class="nav-item nav-link" href=/api/1/documentation>Help</a>
+
+
             </div>
     </nav>
 

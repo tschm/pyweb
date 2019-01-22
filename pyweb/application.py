@@ -30,3 +30,4 @@ def create_app(application, static_folder, template_folder):
     application.register(app)
 
     return app
+

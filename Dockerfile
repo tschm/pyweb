@@ -23,6 +23,6 @@ FROM builder as test
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock attrdict
 COPY ./test            /pyweb/test
 
-#ENV APPLICATION_SETTINGS="/pyrisk/test/restserver_settings.cfg"
+ENV APPLICATION_SETTINGS="/pyweb/test/server_settings.cfg"
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
