@@ -10,11 +10,11 @@ from test.settings import read, client
 class TestWhoosh(object):
 
     def test_reference(self, client):
-        response = get(client=client, url="/api/1/whoosh/whoosh/index/a")
+        response = get(client=client, url="/api/1/whoosh/index/a")
         pdt.assert_frame_equal(pd.read_json(response, orient="table")[["content","group","path","title"]], read("whoosh.csv", index_col=0, header=0))
 
     def test_app(self, client):
-        get(client, url="/api/1/whoosh/whoosh/index/a")
+        get(client, url="/api/1/whoosh/index/a")
         get(client, url="/api/1/whoosh/search")
 
     # def test_form(self, client):

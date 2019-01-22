@@ -12,7 +12,3 @@ def nav():
 
 def test_parser(nav):
     pdt.assert_series_equal(HighchartsSeries.parse(HighchartsSeries.to_json(nav)), nav)
-
-def test_parser_init():
-    x = HighchartsSeries(description="Series")
-    assert x.description == "Series"

@@ -1,22 +1,10 @@
 from flask import Blueprint, request, render_template
-from flask_restplus import Api
-
 from pyweb.blueprints.whoosh.forms.forms import SearchForm
-from .whoosh import api as namespace
-import os
+from pyweb.core.decorators import json
+from pyweb.exts.exts import db
+from pyutil.sql.interfaces.whoosh import Whoosh
 
-
-blueprint = Blueprint('whoosh_api', __name__, url_prefix='/whoosh', template_folder="templates", static_folder="./static")
-
-api = Api(blueprint,
-    title='Lobnek RESTful API',
-    version='1.0',
-    description='Little RESTful API',
-    doc='/documentation/whoosh'
-)
-
-api.add_namespace(namespace, path='')
-
+blueprint = Blueprint('whoosh_api', __name__, template_folder="templates", static_folder="static")
 
 @blueprint.route('/search', methods=['POST','GET'])
 def search():
@@ -27,4 +15,8 @@ def search():
     return render_template("search.html", form=form)
 
 
-
+@blueprint.route('/index/<string:name>', methods=['GET'])
+@json
+def get(name):
+    results = db.session.query(Whoosh).filter(Whoosh.content.like(name)).all()
+    return Whoosh.frame(results).to_json(orient="table")

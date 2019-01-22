@@ -1,14 +1,8 @@
 import pandas as pd
-from flask_restplus import fields
+#from flask_restplus import fields
 
 
-class HighchartsSeries(fields.String):
-    """
-    Frame field
-    """
-    __schema_type__ = 'string'
-    __schema_format__ = 'frame'
-    __schema_example__ = '{columns=...}'
+class HighchartsSeries(object):
 
     def format(self, value):
         return [[int(pd.Timestamp(t).value * 1e-6), float(value)] for t, value in value.dropna().items()]
