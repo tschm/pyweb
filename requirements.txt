@@ -1,0 +1,9 @@
+flask==1.0.2
+flask-caching==1.4.0
+flask-sqlalchemy==2.3.2
+flask-restplus==0.12.1
+
+waitress==1.1.0
+Flask-WTF==0.14.2
+
+git+http://github.com/lobnek/pyutil.git  #@3.8.3#egg=pyutil

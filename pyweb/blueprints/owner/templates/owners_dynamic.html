@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+    $(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'api/1/owner/reference/json',
+            dataType: "json",
+            success: function (response) {
+                lobnekxxx.table("#tableOwners", response, lobnekxxx.renderOwner);
+                lobnekutil.updateLink($('#link'), "/api/1/owner/reference/csv");
+            }
+        })
+    });
+
+</script>
+
+<div class="container-fluid" style="margin-top:80px">
+    <div class="row" id="source">
+        <div class="col-md-12">
+            <a id="link"></a>
+        </div>
+    </div>
+
+    <table id="tableOwners" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+</div>
+
+{% endblock %}

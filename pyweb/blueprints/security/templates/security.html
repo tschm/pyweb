@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script type="text/javascript">
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    $(function () {
+        $.ajax({
+                type: 'GET',
+                url: '/api/1/security/json/{{ name }}',
+                dataType: "json",
+                success: function (response) {
+                    lobnekscreen.navplot('{{ name }}', response.Price);
+                }
+            }
+        )
+    });
+</script>
+
+<div class="container-fluid" , style="margin-top:80px">
+    <div class="row" id="source">
+        <div class="col-md-12">
+            <a id="link"></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <table id="tablePerf" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead style="display:none;"></thead></table>
+        </div>
+
+        <div class="col-md-10">
+            <div id="graph"
+                 style="height: 1200px; margin: 0 auto">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+             <table id="tableMonth" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

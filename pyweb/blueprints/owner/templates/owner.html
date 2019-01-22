@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            global: {
+                useUTC: true
+            }
+        });
+
+        $(function () {
+            function job(name) {
+                return '<a href="../security/' + name + '">' + name + '</a>';
+            }
+
+
+            function render(column) {
+                if (column==="Security") {return function(data, type, row, meta) {return job(data);}}
+                else {return function(data, type, row, meta) {return data;}}
+            }
+
+            $.ajax({
+                    type: 'GET',
+                    url: '/api/1/owner/json/{{ name }}',
+                    dataType: "json",
+
+                    success: function (response) {
+                        console.log('{{ name }}');
+                        console.log(response);
+                        lobnekscreen.navplot('{{ name }}', response.Nav);
+                    }
+                }
+            );
+
+            $.ajax({
+                    type: 'GET',
+                    url: '/api/1/owner/position/json/{{ name }}',
+                    dataType: "json",
+
+                    success: function (response) {
+                        $('#tableState').DataTable({
+                            data: response.data,
+                            columns: lobnektable.initColumns(lobnektable.columns(response.schema.fields), render),
+                            scrollX: false,
+                            paging: false
+                        });
+                    }
+                }
+            );
+
+
+        });
+
+
+    </script>
+
+    <div class="container-fluid" , style="margin-top:80px">
+        <div class="row" id="source">
+            <div class="col-md-12">
+                <a id="link"></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <table id="tablePerf" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead style="display:none;"></thead>
+                </table>
+            </div>
+
+            <div class="col-md-10">
+                <div id="graph"
+                     style="height: 1200px; margin: 0 auto">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                 <table id="tableState" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead></thead></table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table id="tableMonth" class="table table-striped table-bordered" cellspacing="0" width="100%"></table>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

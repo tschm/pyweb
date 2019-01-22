@@ -1,0 +1,43 @@
+body {
+    padding-left: 20px;
+}
+
+.navbar-nav.navbar-right:last-child {
+    padding-right: 100px;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: #3A7734;
+    color: #eeeeee;
+}
+
+table a:link {
+    color: navy;
+}
+
+table a:visited {
+    color: navy;
+}
+
+.table-striped > tr:nth-child(odd) {
+    background-color: #eac02b;
+}
+
+.jumbotron {
+    margin: 80px 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+#logo {
+    height: 100%
+}
+
+/* Green check. */
+.glyphicon-ok {
+    color: green;
+}
+/* Red X. */
+.glyphicon-remove {
+    color: red;
+}
