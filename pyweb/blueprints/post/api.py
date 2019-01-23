@@ -1,26 +1,16 @@
-from flask import Blueprint, request
-import json as jj
-import pandas as pd
+import json
+from flask import Blueprint, request, Response
 from pyutil.performance.summary import fromNav
-from pyweb.core.decorators import json
+
+from pyweb.core.parser import HighchartsSeries
 
 blueprint = Blueprint('post', __name__, static_folder="static")
 
-def to_json(series):
-    return [[int(pd.Timestamp(t).value * 1e-6), float(value)] for t, value in series.dropna().items()]
-
 def series():
-    def parse(value):
-        return pd.Series({pd.Timestamp(1e6 * int(v[0])): float(v[1]) for v in value})
-
-    data = jj.loads(request.data)
-    assert isinstance(data, list)
-
-    return fromNav(parse(data))
+    return fromNav(HighchartsSeries.parse(value=json.loads(request.data)))
     # series is an array [[t1,v1],[t2,v2],...]
 
 @blueprint.route('/performance', methods=['POST'])
-@json
 def performance():
     perf = series().summary()
 
@@ -38,20 +28,22 @@ def performance():
     for name in ["# Events", "# Events per year", "# Positive Events", "# Negative Events"]:
         perf[name] = f(perf[name])
 
-    return perf.apply(str).to_json()
+    x = perf.apply(str).to_json()
+    return Response(x, mimetype="application/json")
 
 
 @blueprint.route('/month', methods=['POST'])
-@json
 def month():
-    return series().monthlytable.applymap(lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")).to_json(orient="table")
+    x = series().monthlytable.applymap(lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")).to_json(orient="table")
+    return Response(x, mimetype="application/json")
 
 @blueprint.route('/drawdown', methods=['POST'])
-@json
 def drawdown():
-    return jj.dumps(to_json(series().drawdown))
+    x = json.dumps(HighchartsSeries.to_json(series().drawdown))
+    return Response(x, mimetype="application/json")
 
 @blueprint.route('/volatility', methods=['POST'])
-@json
 def volatility():
-    return jj.dumps(to_json(series().ewm_volatility()))
+    x = json.dumps(HighchartsSeries.to_json(series().ewm_volatility()))
+    return Response(x, mimetype="application/json")
+

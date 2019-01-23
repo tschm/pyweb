@@ -1,8 +1,8 @@
 from flask import Blueprint, request, render_template
-from pyweb.blueprints.whoosh.forms.forms import SearchForm
-from pyweb.core.decorators import json
-from pyweb.exts.exts import db
 from pyutil.sql.interfaces.whoosh import Whoosh
+from pyweb.blueprints.whoosh.forms.forms import SearchForm
+from pyweb.core.parser import respond_pandas
+from pyweb.exts.exts import db
 
 blueprint = Blueprint('whoosh_api', __name__, template_folder="templates", static_folder="static")
 
@@ -16,7 +16,6 @@ def search():
 
 
 @blueprint.route('/index/<string:name>', methods=['GET'])
-@json
 def get(name):
     results = db.session.query(Whoosh).filter(Whoosh.content.like(name)).all()
-    return Whoosh.frame(results).to_json(orient="table")
+    return respond_pandas(Whoosh.frame(results), format="JSON")

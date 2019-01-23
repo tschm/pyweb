@@ -1,4 +1,4 @@
-var lobnekutil = {
+lobnekutil = {
     createLink: function (link) {
         const currentLocation = window.location;
         return currentLocation.origin + link;
