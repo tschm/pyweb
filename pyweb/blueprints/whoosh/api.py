@@ -4,7 +4,8 @@ from pyweb.blueprints.whoosh.forms.forms import SearchForm
 from pyweb.core.parser import respond_pandas
 from pyweb.exts.exts import db
 
-blueprint = Blueprint('whoosh_api', __name__, template_folder="templates", static_folder="static")
+blueprint = Blueprint('whoosh_api', __name__, template_folder="templates")
+
 
 @blueprint.route('/search', methods=['POST','GET'])
 def search():

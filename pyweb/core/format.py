@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Format(Enum):
     HTML = "html"
     CSV = "csv"

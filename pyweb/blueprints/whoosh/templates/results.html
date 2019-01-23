@@ -24,7 +24,8 @@
 
             success: function (response) {
                 console.log(response);
-                table("#table", response, renderResults, columns=["group", "path", "title"]);
+                const columns = ["group", "path", "title"];
+                table("#table", response, renderResults, columns);
             }
         })
     })

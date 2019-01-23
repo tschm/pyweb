@@ -6,9 +6,6 @@ from test.settings import client
 
 class TestApp(object):
     def test_index(self, client):
-    #     # The get method is checking the correct response code
-        #print(client.url_map)
-        #get(client, url="/admin/index")
         get(client, url="/admin/index")
     #     get(client, url="/api/1/assets")
     #     get(client, url="/api/1/asset/A")

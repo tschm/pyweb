@@ -1,7 +1,6 @@
 lobnektable = {
     initColumns: function (columns, rend) {
         var cols = [];
-        //rend = rend || (function(data, type, row, meta) {return data;});
 
         $.each(columns, function (i, val) {
             cols.push({"data": val, "render": rend(val), "defaultContent": "", "title": val});
