@@ -16,4 +16,3 @@ services:
 
   test-postgresql:
     image: postgres:9.6
-

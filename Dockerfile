@@ -6,17 +6,18 @@ COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
 COPY ./pyweb /pyweb/pyweb
-#COPY ./pyserver /pyrisk/pyserver
+COPY ./config /pyweb/config
 
-#COPY ./start.py /pyrisk/start.py
+COPY ./start.py /pyweb/start.py
 #COPY ./caching.py /pyrisk/caching.py
 #COPY ./build_whoosh.py /pyrisk/build_whoosh.py
 
 WORKDIR pyweb
 
-#ENV APPLICATION_SETTINGS="/pyrisk/config/restserver_settings.cfg"
+ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 EXPOSE 8000
+
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 

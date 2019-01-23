@@ -1,19 +1,20 @@
 version: '3.4'
 services:
   web:
-     # our internal server
-     #extra_hosts:
-     #   - quantsrv:192.168.100.15
-     build:
-       context: .
-       dockerfile: Dockerfile
-       target: builder
-     #env_file:
-     #  - .env
-     #volumes:
-     #   - ./pyserver:/pyrisk/pyserver:ro
-     #   - ./config:/pyrisk/config:ro
-     #   - ./cache:/tmp/cache
-     ports:
-      - "4445:8000"
+      build:
+        context: .
+        dockerfile: Dockerfile
+        target: builder
+      volumes:
+        - ./pyweb:/pyweb/pyweb:ro
+        - ./config:/pyweb/config:ro
+      ports:
+        - "4445:8000"
+      extra_hosts:
+        - quantsrv:192.168.100.15
+      env_file:
+        - .env
+      command:
+        ./start.py
+
 

@@ -1,11 +1,9 @@
 flask==1.0.2
 flask-caching==1.4.0
 flask-sqlalchemy==2.3.2
-#flask-restplus==0.12.1
 
 waitress==1.1.0
 Flask-WTF==0.14.2
 
 git+http://github.com/lobnek/pyutil.git  #@3.8.3#egg=pyutil
-#git+http://github.com/lobnek/pyweb.git
 git+https://dcbda668584989bc93cfc8969fac99ebcdbdf9ed:x-oauth-basic@github.com/lobnek/pyweb.git #@9.5.4#egg=pybloomberg
