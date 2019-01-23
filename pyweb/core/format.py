@@ -13,11 +13,3 @@ class Format(Enum):
                 return f
 
         raise AssertionError
-
-
-if __name__ == '__main__':
-    x = "csv"
-    print(Format.parse(x).value)
-
-    y = "ccsv"
-    print(Format.parse(y))
