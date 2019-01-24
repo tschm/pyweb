@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<script>
 
+<script type="text/javascript" src="{{ url_for('admin.static', filename = 'table.js' ) }}"></script>
+
+<script>
     function renderResults(column) {
             if (column==="path") {return function(data, type, row, meta) {return '<a href="' + data + '">' + row["title"] + '</a>';}}
             else {return function(data, type, row, meta) {return data;}}
@@ -12,19 +14,26 @@
             data: frame.data,
             columns: lobnektable.initColumns(columns, render),
             scrollX: false,
-            paging: false
+            pagingType: "full_numbers",
+            columnDefs: [
+            {
+                "targets": [ 2 ],
+                "visible": false,
+                "searchable": true
+            }
+        ]
         })
     }
 
     $(function() {
         $.ajax({
             type: 'GET',
-            url: '/api/1/whoosh/index/{{ query }}',
+            url: '/api/1/whoosh/json',
             dataType: "json",
 
             success: function (response) {
                 console.log(response);
-                const columns = ["group", "path", "title"];
+                const columns = ["group", "path", "content"];
                 table("#table", response, renderResults, columns);
             }
         })

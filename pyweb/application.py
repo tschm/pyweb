@@ -1,6 +1,6 @@
 from flask import Flask
 
-from pyweb.exts.exts import db, csrf_protect
+from pyweb.exts.exts import db
 
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
@@ -8,7 +8,7 @@ from pyweb.blueprints.admin.api import blueprint as blue_ui
 
 
 def extensions():
-    return [db, csrf_protect]
+    return [db]
 
 
 def create_app():
