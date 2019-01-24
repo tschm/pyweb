@@ -32,6 +32,3 @@ const lobnekreport = {
         })
     },
 };
-
-export { lobnekreport }
-
