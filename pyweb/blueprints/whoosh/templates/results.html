@@ -3,7 +3,6 @@
 <script type="text/javascript" src="{{ url_for('admin.static', filename = 'table.js' ) }}"></script>
 
 <script>
-
     function renderResults(column) {
             if (column==="path") {return function(data, type, row, meta) {return '<a href="' + data + '">' + row["title"] + '</a>';}}
             else {return function(data, type, row, meta) {return data;}}
