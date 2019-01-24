@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript" src="{{ url_for('admin.static', filename = 'table.js' ) }}"></script>
+
 <script>
 
     function renderResults(column) {
