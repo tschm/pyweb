@@ -7,10 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
 
 COPY ./pyweb /pyweb/pyweb
 COPY ./config /pyweb/config
-
 COPY ./start.py /pyweb/start.py
-#COPY ./caching.py /pyrisk/caching.py
-#COPY ./build_whoosh.py /pyrisk/build_whoosh.py
 
 WORKDIR pyweb
 
@@ -20,6 +17,17 @@ EXPOSE 8000
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
+# prepare npm
+COPY package.json  /pyweb/package.json
+COPY test.sh       /pyweb/test.sh
+COPY testjs.sh     /pyweb/testjs.sh
+
+
+# install nodejs
+RUN apk add --update nodejs nodejs-npm
+
+# install jest
+RUN npm install jest@23.6.0
 
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock
 COPY ./test            /pyweb/test

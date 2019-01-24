@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="Thomas Schmelzer">
     <meta http-equiv="pragma" content="no-cache" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -34,12 +33,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 
-    <script type="text/javascript" src="{{ url_for('admin.static', filename = 'table.js' ) }}"></script>
-    <script type="text/javascript" src="{{ url_for('admin.static', filename = 'common.js' ) }}"></script>
-
-    <script type="text/javascript" src="{{ url_for('post.static', filename = 'performance.js' ) }}"></script>
-    <script type="text/javascript" src="{{ url_for('post.static', filename = 'report.js' ) }}"></script>
-
     <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">
     <link rel="shortcut icon" href="{{ url_for('admin.static', filename = 'ico/favicon.ico' ) }}">
 
@@ -56,18 +49,6 @@
     </nav>
 
 </head>
-
-<script>
-    var csrftoken = $('meta[name=csrf-token]').attr('content');
-
-    $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken)
-            }
-        }
-    });
-</script>
 
 <body>
 
