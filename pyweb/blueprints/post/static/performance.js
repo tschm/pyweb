@@ -1,4 +1,4 @@
-lobnekperf = {
+const lobnekperf = {
     parse: function (x) {
         rows = [];
         for (var key in x) {

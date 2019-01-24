@@ -1,4 +1,4 @@
-lobnekreport = {
+const lobnekreport = {
     render: function (column) {
         return function (data, type, row, meta) {
             return data;
@@ -32,3 +32,6 @@ lobnekreport = {
         })
     },
 };
+
+export { lobnekreport }
+

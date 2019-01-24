@@ -1,0 +1,10 @@
+{
+  "name": "lobnekjs",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
