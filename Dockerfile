@@ -21,7 +21,7 @@ EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock attrdict
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock
 COPY ./test            /pyweb/test
 
 ENV APPLICATION_SETTINGS="/pyweb/test/server_settings.cfg"
