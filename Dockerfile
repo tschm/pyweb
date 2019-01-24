@@ -18,7 +18,7 @@ EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 # prepare npm
-COPY package.json /pyweb/package.json
+COPY package.json  /pyweb/package.json
 COPY test.sh       /pyweb/test.sh
 COPY testjs.sh     /pyweb/testjs.sh
 
