@@ -1,5 +1,5 @@
 # Set the base image to Ubuntu
-FROM lobnek/docker:v1.3 as builder
+FROM lobnek/docker:v1.5 as builder
 
 COPY requirements.txt requirements.txt
 
