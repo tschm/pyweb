@@ -21,3 +21,4 @@ index
 
 dist
 *.egg-info
+books/pyweb/*

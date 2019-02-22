@@ -32,3 +32,5 @@ COPY ./test            /pyweb/test
 ENV APPLICATION_SETTINGS="/pyweb/test/server_settings.cfg"
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
+
+

@@ -16,3 +16,12 @@ cache
 index
 .pytest_cache
 __pycache__
+
+docker-compose.yml
+Dockerfile
+docker-compose.test.yml
+
+MANIFEST.in
+
+Dockerfile-Jupyter
+jupyter.sh
