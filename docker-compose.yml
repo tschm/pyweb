@@ -26,10 +26,8 @@ services:
         - quantsrv:192.168.100.15
 
     volumes:
-      #- ./pyweb:/home/jovyan/work/pyweb
-      #- ./data:/home/jovyan/work/data:ro
-      - ./books:/home/jovyan/work
-      - ./pyweb:/home/jovyan/work/pyweb:ro
+      - ./work:/home/jovyan/work
+      - ./pyweb:/home/jovyan/work/pyweb
     working_dir: /home/jovyan/work
 
     env_file:
