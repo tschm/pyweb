@@ -1,27 +1,18 @@
-build
-html-coverage
-html-report
-source
-pyrisk
+#https://stackoverflow.com/questions/28097064/dockerignore-ignore-everything-except-a-file-and-the-dockerfile
 
-.env
-.gitignore
-build.sh
+# Ignore Everything
+**
 
-test.sh
-todo
+!requirements.txt
 
-sandbox
-cache
-index
-.pytest_cache
-__pycache__
+!work
+!test
+!pyweb
+!config
 
-docker-compose.yml
-Dockerfile
-docker-compose.test.yml
+!start.py
+!package.json
 
-MANIFEST.in
-
-Dockerfile-Jupyter
-jupyter.sh
+**/__pycache__
+**/*.pyc
+.ipynb_checkpoints

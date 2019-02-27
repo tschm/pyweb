@@ -1,22 +1,23 @@
 version: '3.4'
 services:
   web:
-      build:
-        context: .
-        dockerfile: Dockerfile
-        target: builder
-      volumes:
-        - ./pyweb:/pyweb/pyweb:ro
-        - ./config:/pyweb/config:ro
-        - /media/j/notebooks:/notebooks
-      ports:
-        - "4445:8000"
-      extra_hosts:
-        - quantsrv:192.168.100.15
-      env_file:
-        - .env
-      command:
-        ./start.py
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    volumes:
+      - ./pyweb:/pyweb/pyweb:ro
+      - ./config:/pyweb/config:ro
+      - /media/j/notebooks:/notebooks
+    ports:
+      - "4445:8000"
+    extra_hosts:
+      - quantsrv:192.168.100.15
+    env_file:
+      - .env
+    command:
+      ./start.py
+
   jupyter:
     build:
       context: .
@@ -33,3 +34,20 @@ services:
     env_file:
       - .env
 
+  test:
+     build:
+       context: .
+       dockerfile: Dockerfile
+       target: test
+
+     volumes:
+        - ./pyweb:/pyweb/pyweb:ro
+        - ./test:/pyweb/test:ro
+        - ./artifacts:/pyweb/artifacts
+        - ./helpers:/opt/.pycharm_helpers/pycharm:ro
+     links:
+       - test-postgresql
+
+
+  test-postgresql:
+    image: postgres:9.6
