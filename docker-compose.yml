@@ -27,9 +27,9 @@ services:
         - quantsrv:192.168.100.15
 
     volumes:
-      - ./work:/home/jovyan/work
-      - ./pyweb:/home/jovyan/work/pyweb
-    working_dir: /home/jovyan/work
+      - ./work:/home/beakerx/work
+      - ./pyweb:/home/beakerx/work/pyweb
+    working_dir: /home/beakerx/work
 
     env_file:
       - .env

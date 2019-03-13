@@ -24,7 +24,4 @@ def create_app():
     app.register_blueprint(blue_post, url_prefix="/api/1/engine")
     app.register_blueprint(blue_ui, url_prefix="/admin")
 
-    print(app.url_map)
-
     return app
-
