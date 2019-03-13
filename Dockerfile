@@ -1,6 +1,9 @@
 # Set the base image to Ubuntu
 FROM lobnek/docker:v1.5 as builder
 
+# File Author / Maintainer
+MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
+
 COPY requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
