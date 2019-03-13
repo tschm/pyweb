@@ -1,5 +1,5 @@
 # Set the base image to beakerx
-FROM lobnek/jupyter:v2.2
+FROM lobnek/jupyter:v2.3
 
 # copy the actual package
 COPY ./pyweb /home/${NB_USER}/work/pyweb

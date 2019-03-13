@@ -5,7 +5,6 @@ html-coverage
 html-report
 build
 __pycache__
-.env
 *.tex
 *.pdf
 data
@@ -22,3 +21,4 @@ index
 dist
 *.egg-info
 books/pyweb/*
+.config

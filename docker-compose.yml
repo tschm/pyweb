@@ -14,7 +14,7 @@ services:
     extra_hosts:
       - quantsrv:192.168.100.15
     env_file:
-      - .env
+      - .config
     command:
       ./start.py
 
@@ -27,12 +27,14 @@ services:
         - quantsrv:192.168.100.15
 
     volumes:
-      - ./work:/home/beakerx/work
-      - ./pyweb:/home/beakerx/work/pyweb
-    working_dir: /home/beakerx/work
+      - ./work:/home/${NB_USER}/work
+      - ./pyweb:/home/${NB_USER}/work/pyweb
+    working_dir: /home/${NB_USER}/work
 
     env_file:
-      - .env
+      - .config
+    ports:
+      - ${PORT}:8888
 
   test:
      build:
