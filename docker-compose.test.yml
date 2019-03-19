@@ -7,7 +7,6 @@ services:
        target: test
 
      volumes:
-        - ./pyweb:/pyweb/pyweb:ro
         - ./test:/pyweb/test:ro
         - ./artifacts:/pyweb/artifacts
         - ./helpers:/opt/.pycharm_helpers/pycharm:ro

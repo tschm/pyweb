@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
       target: builder
     volumes:
-      - ./pyweb:/pyweb/pyweb:ro
       - ./config:/pyweb/config:ro
       - /media/j/notebooks:/notebooks
     ports:
@@ -21,14 +20,13 @@ services:
   jupyter:
     build:
       context: .
-      dockerfile: Dockerfile-Jupyter
+      dockerfile: jupyter/Dockerfile
 
     extra_hosts:
         - quantsrv:192.168.100.15
 
     volumes:
       - ./work:/home/${NB_USER}/work
-      - ./pyweb:/home/${NB_USER}/work/pyweb
     working_dir: /home/${NB_USER}/work
 
     env_file:
@@ -43,7 +41,6 @@ services:
        target: test
 
      volumes:
-        - ./pyweb:/pyweb/pyweb:ro
         - ./test:/pyweb/test:ro
         - ./artifacts:/pyweb/artifacts
         - ./helpers:/opt/.pycharm_helpers/pycharm:ro
