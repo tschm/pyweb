@@ -36,6 +36,7 @@ RUN npm install jest@23.6.0
 
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock
 COPY ./test            /pyweb/test
+COPY ./pyweb           /pyweb/pyweb
 
 ENV APPLICATION_SETTINGS="/pyweb/test/server_settings.cfg"
 
