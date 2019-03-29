@@ -32,8 +32,6 @@ services:
     volumes:
        - ./config:/pyweb/config:ro
 
-    working_dir: /pyweb
-
     env_file:
       - .config
 

@@ -20,6 +20,7 @@ COPY ./start.py /pyweb/start.py
 EXPOSE 8000
 ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
+WORKDIR /pyweb
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
