@@ -1,45 +1,34 @@
-# Set the base image to Ubuntu
-FROM lobnek/docker:v1.5 as builder
+# Set the base image to beakerx
+FROM lobnek/jupyter:v2.8 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
-#COPY requirements.txt requirements.txt
+# COPY this project into a local folder and install from there
+COPY --chown=beakerx:beakerx . /tmp/lobnek
 
-#RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
+RUN pip install --no-cache-dir /tmp/lobnek && \
+    pip install -r /tmp/lobnek/requirements.txt && \
+    rm -r /tmp/lobnek
 
+COPY --chown=beakerx:beakerx ./work ${WORK}
+
+# Install the webpage
 COPY ./config /pyweb/config
 COPY ./start.py /pyweb/start.py
-
-WORKDIR pyweb
-
-ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
-
 EXPOSE 8000
-
-# This copies a lot of files into the tmp folder, including requirements.txt
-COPY . /tmp/lobnek
-RUN pip install -r /tmp/lobnek/requirements.txt
-RUN pip install --no-cache-dir /tmp/lobnek && rm -r /tmp/lobnek
+ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
-# prepare npm
-COPY ./package.json  /pyweb/package.json
 
-# install nodejs
-RUN apk add --update nodejs nodejs-npm
+RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock
 
-# install jest
-RUN npm install jest@23.6.0
+COPY --chown=beakerx:beakerx test ${WORK}/test
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock
-COPY ./test            /pyweb/test
-COPY ./pyweb           /pyweb/pyweb
+ENV APPLICATION_SETTINGS=${WORK}/test/server_settings.cfg
 
-ENV APPLICATION_SETTINGS="/pyweb/test/server_settings.cfg"
-
-CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html test
+CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html ${WORK}/test
 
 

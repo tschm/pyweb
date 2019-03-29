@@ -1,38 +1,26 @@
 version: '3.4'
 services:
-  web:
+  jupyter:
     build:
       context: .
       dockerfile: Dockerfile
       target: builder
-    volumes:
-      - ./config:/pyweb/config:ro
-      - /media/j/notebooks:/notebooks
-    ports:
-      - "4445:8000"
-    extra_hosts:
-      - quantsrv:192.168.100.15
-    env_file:
-      - .config
-    command:
-      ./start.py
-
-  jupyter:
-    build:
-      context: .
-      dockerfile: jupyter/Dockerfile
 
     extra_hosts:
         - quantsrv:192.168.100.15
 
     volumes:
       - ./work:/home/${NB_USER}/work
+      - ./config:/pyweb/config:ro
+      - /media/j/notebooks:/notebooks
+
     working_dir: /home/${NB_USER}/work
 
     env_file:
       - .config
     ports:
       - ${PORT}:8888
+      - 4445:8000
 
   test:
      build:
@@ -41,7 +29,7 @@ services:
        target: test
 
      volumes:
-        - ./test:/pyweb/test:ro
+        - ./test:/home/${NB_USER}/work/test:ro
         - ./artifacts:/pyweb/artifacts
         - ./helpers:/opt/.pycharm_helpers/pycharm:ro
      links:
