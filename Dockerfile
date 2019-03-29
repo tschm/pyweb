@@ -11,7 +11,8 @@ RUN pip install --no-cache-dir /tmp/lobnek && \
     pip install -r /tmp/lobnek/requirements.txt && \
     rm -r /tmp/lobnek
 
-COPY --chown=beakerx:beakerx ./work ${WORK}
+# --------------------------------------------------------------------------------------------------------
+FROM builder as web
 
 # Install the webpage
 COPY ./config /pyweb/config

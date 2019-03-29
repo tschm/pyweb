@@ -11,7 +11,6 @@ services:
 
     volumes:
       - ./work:/home/${NB_USER}/work
-      - ./config:/pyweb/config:ro
       - /media/j/notebooks:/notebooks
 
     working_dir: /home/${NB_USER}/work
@@ -20,4 +19,26 @@ services:
       - .config
     ports:
       - ${PORT}:8888
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: web
+
+    extra_hosts:
+      - quantsrv:192.168.100.15
+
+    volumes:
+       - ./config:/pyweb/config:ro
+
+    working_dir: /pyweb
+
+    env_file:
+      - .config
+
+    ports:
       - 4445:8000
+
+    command:
+      python start.py
