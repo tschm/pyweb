@@ -4,7 +4,6 @@ from pyutil.sql.base import Base
 from pyutil.testing.aux import resource_folder, postgresql_db_test
 from pyutil.sql.interfaces.whoosh import Whoosh
 
-import pytest
 
 # this is a function mapping name of a file to its path...
 from pyweb.application import create_app
@@ -14,6 +13,11 @@ import os
 base_dir = os.path.dirname(__file__)
 
 __resource = resource_folder(folder=base_dir)
+
+import pytest
+
+def __session():
+    return postgresql_db_test(Base).session
 
 
 def __init_session(session):
@@ -30,10 +34,8 @@ def client():
     app.config['TESTING'] = True
 
     with app.app_context():
-        db.session = postgresql_db_test(Base).session
+        db.session = __session()
         __init_session(session=db.session)
-
-    print(app.url_map)
 
     yield app.test_client()
     db.session.close()

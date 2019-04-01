@@ -10,7 +10,6 @@ services:
         - ./pyweb:/home/${NB_USER}/work/pyweb
         - ./test:/home/${NB_USER}/work/test:ro
         - ./artifacts:/pyweb/artifacts
-        #- ./helpers:/opt/.pycharm_helpers/pycharm:ro
      links:
        - test-postgresql
 
