@@ -6,6 +6,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
 # COPY this project into a local folder and install from there
 COPY --chown=beakerx:beakerx . /tmp/lobnek
+ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 RUN pip install --no-cache-dir /tmp/lobnek && \
     pip install -r /tmp/lobnek/requirements.txt && \
