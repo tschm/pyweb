@@ -11,7 +11,7 @@ services:
 
     volumes:
       - ./work:/home/${NB_USER}/work
-      - /media/j/notebooks:/notebooks
+      #- /media/j/notebooks:/notebooks
 
     working_dir: /home/${NB_USER}/work
 
