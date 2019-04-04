@@ -8,7 +8,7 @@ include .env
 export
 
 
-.PHONY: help build test teamcity jupyter graph doc tag
+.PHONY: help build test teamcity jupyter graph doc tag server
 
 
 .DEFAULT: help
@@ -28,7 +28,8 @@ help:
 	@echo "       Construct the documentation."
 	@echo "make tag"
 	@echo "       Make a tag on Github."
-
+	@echo "make server"
+	@echo "       Start the Flask server."
 
 
 build:
@@ -65,3 +66,8 @@ doc: test
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
 	git push --tags
+
+
+server:
+	docker-compose run -p "4445:8000" web python start.py
+
