@@ -10,6 +10,7 @@ services:
         - ./pyweb:/home/${NB_USER}/work/pyweb
         - ./test:/home/${NB_USER}/work/test:ro
         - ./artifacts:/pyweb/artifacts
+        - ./source:/source:ro
      links:
        - test-postgresql
 
