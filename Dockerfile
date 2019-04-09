@@ -26,9 +26,9 @@ WORKDIR /pyweb
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx
+WORKDIR ${WORK}
 
-COPY --chown=beakerx:beakerx test ${WORK}/test
+RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx
 
 ENV APPLICATION_SETTINGS=${WORK}/test/server_settings.cfg
 

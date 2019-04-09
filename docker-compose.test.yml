@@ -7,13 +7,13 @@ services:
        target: test
 
      volumes:
-        - ./pyweb:/home/${NB_USER}/work/pyweb
-        - ./test:/home/${NB_USER}/work/test:ro
-        - ./artifacts:/pyweb/artifacts
+        - ./test:${WORK}/test:ro
+        - ./artifacts:${WORK}/artifacts
         - ./source:/source:ro
      links:
        - test-postgresql
 
+     user: root
 
   test-postgresql:
     image: postgres:9.6
