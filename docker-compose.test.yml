@@ -7,8 +7,8 @@ services:
        target: test
 
      volumes:
-        - ./test:${WORK}/test:ro
-        - ./artifacts:${WORK}/artifacts
+        - ./test:/pyweb/test:ro
+        - ./artifacts:/pyweb/artifacts
         - ./source:/source:ro
      links:
        - test-postgresql

@@ -4,9 +4,6 @@ PROJECT_VERSION := $(shell python setup.py --version)
 SHELL := /bin/bash
 PACKAGE := pyweb
 
-include .env
-export
-
 
 .PHONY: help build test teamcity jupyter graph doc tag server
 
@@ -43,9 +40,6 @@ test:
 
 teamcity: test graph doc
 
-#jupyter: build
-#	echo "http://localhost:${PORT}"
-	docker-compose up jupyter
 
 graph: test
 	mkdir -p artifacts/graph
