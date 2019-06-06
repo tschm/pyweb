@@ -53,4 +53,4 @@ def test_performance(client, data):
                            '# Positive Events': '285', '# Negative Events': '316',
                            'Value at Risk (alpha = 95)': '1.91%',
                            'Conditional Value at Risk (alpha = 95)': '2.76%', 'First at': '2013-01-01',
-                           'Last at': '2015-04-22'}
+                           'Last at': '2015-04-22', 'Kurtosis': '8.734343245199721'}
