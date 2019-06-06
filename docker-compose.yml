@@ -1,25 +1,5 @@
 version: '3.6'
 services:
-  jupyter:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: builder
-
-    extra_hosts:
-        - quantsrv:192.168.100.15
-
-    volumes:
-      - ./work:/home/${NB_USER}/work
-      #- /media/j/notebooks:/notebooks
-
-    working_dir: /home/${NB_USER}/work
-
-    env_file:
-      - .config
-    ports:
-      - ${PORT}:8888
-
   web:
     build:
       context: .

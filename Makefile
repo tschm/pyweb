@@ -34,6 +34,7 @@ help:
 
 build:
 	docker-compose build jupyter
+	docker-compose build web
 
 test:
 	mkdir -p artifacts
@@ -42,8 +43,8 @@ test:
 
 teamcity: test graph doc
 
-jupyter: build
-	echo "http://localhost:${PORT}"
+#jupyter: build
+#	echo "http://localhost:${PORT}"
 	docker-compose up jupyter
 
 graph: test
@@ -68,6 +69,6 @@ tag: test
 	git push --tags
 
 
-server:
+server: build
 	docker-compose run -p "4445:8000" web python start.py
 

@@ -1,15 +1,16 @@
 # Set the base image to beakerx
-FROM lobnek/jupyter:v2.8 as builder
+FROM lobnek/docker:v1.5 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
 # COPY this project into a local folder and install from there
 COPY --chown=beakerx:beakerx . /tmp/lobnek
+
 ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
-RUN pip install --no-cache-dir /tmp/lobnek && \
-    pip install -r /tmp/lobnek/requirements.txt && \
+RUN pip install -r /tmp/lobnek/requirements.txt && \
+    pip install --no-cache-dir /tmp/lobnek && \
     rm -r /tmp/lobnek
 
 # --------------------------------------------------------------------------------------------------------
@@ -19,7 +20,6 @@ FROM builder as web
 COPY ./config /pyweb/config
 COPY ./start.py /pyweb/start.py
 EXPOSE 8000
-ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 WORKDIR /pyweb
 
