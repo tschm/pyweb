@@ -40,7 +40,6 @@ test:
 
 teamcity: test graph doc
 
-
 graph: test
 	mkdir -p artifacts/graph
 

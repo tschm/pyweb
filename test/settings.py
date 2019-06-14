@@ -1,7 +1,8 @@
 import pandas as pd
 
 from pyutil.sql.base import Base
-from pyutil.testing.aux import resource_folder, postgresql_db_test
+from pyutil.testing.aux import resource_folder
+from pyutil.testing.database import database
 from pyutil.sql.interfaces.whoosh import Whoosh
 
 
@@ -17,7 +18,7 @@ __resource = resource_folder(folder=base_dir)
 import pytest
 
 def __session():
-    return postgresql_db_test(Base).session
+    return database(Base).session
 
 
 def __init_session(session):
