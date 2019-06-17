@@ -5,3 +5,5 @@ flask-sqlalchemy==2.3.2
 waitress==1.2.1
 
 git+http://github.com/lobnek/pyutil.git
+
+pymongo
