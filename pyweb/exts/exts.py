@@ -5,3 +5,7 @@ from flask_pymongo import PyMongo
 db = SQLAlchemy()
 cache = Cache()
 mongo = PyMongo()
+
+
+def mongo_collection(name):
+    return mongo.db[name]

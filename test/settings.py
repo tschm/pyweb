@@ -8,7 +8,7 @@ from pyutil.sql.interfaces.whoosh import Whoosh
 
 # this is a function mapping name of a file to its path...
 from pyweb.application import create_app
-from pyweb.exts.exts import db
+from pyweb.exts.exts import db, mongo_collection
 
 import os
 base_dir = os.path.dirname(__file__)
@@ -37,6 +37,10 @@ def client():
     with app.app_context():
         db.session = __session()
         __init_session(session=db.session)
+
+    # create a Mongo collection
+    c = mongo_collection(name="Thomas")
+    assert c
 
     yield app.test_client()
     db.session.close()
