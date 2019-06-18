@@ -42,6 +42,11 @@ def client():
     c = mongo_collection(name="Thomas")
     assert c
 
+    c.insert(pd.Series(data=[1,2]), Name="Peter Maffay")
+    ts = c.find_one(parse=True, Name="Peter Maffay")
+    assert ts[0] == 1
+    assert ts[1] == 2
+
     yield app.test_client()
     db.session.close()
 
