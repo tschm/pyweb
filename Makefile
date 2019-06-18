@@ -30,7 +30,6 @@ help:
 
 
 build:
-	docker-compose build jupyter
 	docker-compose build web
 
 test:
