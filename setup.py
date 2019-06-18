@@ -12,5 +12,5 @@ setup(
     author='Thomas Schmelzer',
     author_email='thomas.schmelzer@lobnek.com',
     description='',
-    install_requires=['pandas>=0.24.0', 'flask==1.0.2', 'flask-sqlalchemy==2.3.2', 'flask-caching==1.4.0', 'flask-pymongo', 'pymongo']
+    install_requires=['pandas>=0.24.0', 'flask==1.0.2', 'flask-sqlalchemy==2.3.2', 'flask-caching==1.4.0', 'flask-pymongo']
 )
