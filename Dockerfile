@@ -29,6 +29,8 @@ FROM builder as test
 RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx
 
 ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
+ENV MONGO_HOST="test-mongo"
+ENV MONGO_DATABASE="test"
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /pyweb/test
 
