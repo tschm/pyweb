@@ -8,7 +8,7 @@ from pyutil.sql.interfaces.whoosh import Whoosh
 
 # this is a function mapping name of a file to its path...
 from pyweb.application import create_app
-from pyweb.exts.exts import db, mongo_collection
+from pyweb.exts.exts import db
 
 import os
 base_dir = os.path.dirname(__file__)
@@ -16,6 +16,7 @@ base_dir = os.path.dirname(__file__)
 __resource = resource_folder(folder=base_dir)
 
 import pytest
+
 
 def __session():
     return database(Base).session
@@ -37,15 +38,6 @@ def client():
     with app.app_context():
         db.session = __session()
         __init_session(session=db.session)
-
-    # create a Mongo collection
-    c = mongo_collection(name="Thomas")
-    assert c
-
-    c.insert(pd.Series(data=[1,2]), Name="Peter Maffay")
-    ts = c.find_one(parse=True, Name="Peter Maffay")
-    assert ts[0] == 1
-    assert ts[1] == 2
 
     yield app.test_client()
     db.session.close()
