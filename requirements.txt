@@ -1,9 +1,6 @@
 flask==1.0.2
 flask-caching==1.4.0
 flask-sqlalchemy==2.3.2
-#flask-pymongo
 waitress==1.2.1
 
 git+http://github.com/lobnek/pyutil.git
-
-pymongo
