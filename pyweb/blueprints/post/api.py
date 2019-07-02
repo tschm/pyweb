@@ -6,9 +6,11 @@ from pyweb.core.parser import HighchartsSeries
 
 blueprint = Blueprint('post', __name__, static_folder="static")
 
+
 def series():
     return fromNav(HighchartsSeries.parse(value=json.loads(request.data)))
     # series is an array [[t1,v1],[t2,v2],...]
+
 
 @blueprint.route('/performance', methods=['POST'])
 def performance():
@@ -34,16 +36,18 @@ def performance():
 
 @blueprint.route('/month', methods=['POST'])
 def month():
-    x = series().monthlytable.applymap(lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")).to_json(orient="table")
+    x = series().monthlytable.applymap(lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")).to_json(
+        orient="table")
     return Response(x, mimetype="application/json")
+
 
 @blueprint.route('/drawdown', methods=['POST'])
 def drawdown():
     x = json.dumps(HighchartsSeries.to_json(series().drawdown))
     return Response(x, mimetype="application/json")
 
+
 @blueprint.route('/volatility', methods=['POST'])
 def volatility():
     x = json.dumps(HighchartsSeries.to_json(series().ewm_volatility()))
     return Response(x, mimetype="application/json")
-

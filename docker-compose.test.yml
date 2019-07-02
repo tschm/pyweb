@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.6'
 services:
   sut:
      build:
@@ -12,12 +12,8 @@ services:
         - ./source:/source:ro
      links:
        - test-postgresql
- #      - test-mongo
 
      user: root
 
   test-postgresql:
     image: postgres:9.6
-
-#  test-mongo:
-#    image: mongo
