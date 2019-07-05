@@ -26,7 +26,7 @@ EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx
+RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx sqlalchemy_utils
 
 ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
 
