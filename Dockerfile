@@ -1,5 +1,5 @@
 # Set the base image to beakerx
-FROM lobnek/docker:v1.5 as builder
+FROM lobnek/docker:1.9 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
