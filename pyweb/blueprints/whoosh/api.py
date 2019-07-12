@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
-from pyutil.sql.interfaces.whoosh import Whoosh
 from pyweb.core.format import Format
 from pyweb.core.parser import respond_pandas
 from pyweb.exts.exts import db
+from pyweb.core.whoosh import Whoosh
 
 blueprint = Blueprint('whoosh_api', __name__, template_folder="templates")
 

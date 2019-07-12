@@ -3,11 +3,12 @@ import pandas as pd
 from pyutil.sql.base import Base
 from pyutil.testing.aux import resource_folder
 from pyutil.testing.database import database
-from pyutil.sql.interfaces.whoosh import Whoosh
 
 
 # this is a function mapping name of a file to its path...
 from pyweb.application import create_app
+#from pyweb.core.whoosh import Whoosh
+from pyweb.core.whoosh import Whoosh
 from pyweb.exts.exts import db
 
 import os
@@ -23,10 +24,15 @@ def __session():
 
 
 def __init_session(session):
-    w1 = Whoosh(title="a", content="a", path="c", group="d")
-    session.add(w1)
+    w1 = Whoosh(title="A", content="AA", path="aaa", group="GA")
+    w2 = Whoosh(title="B", content="BB", path="bbb", group="GB")
+    session.add_all([w1,w2])
     session.commit()
     return session
+#    w1 = Whoosh(title="a", content="a", path="c", group="d")
+#    session.add(w1)
+#    session.commit()
+#    return session
 
 
 @pytest.fixture(scope="module")
