@@ -1,6 +1,6 @@
 from flask import Flask
 
-from pyweb.exts.exts import db#, mongo
+from pyweb.exts.exts import db
 
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post

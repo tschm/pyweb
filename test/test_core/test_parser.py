@@ -21,6 +21,7 @@ def test_respond_frame_json(nav):
     response = respond_pandas(x, "json")
     pdt.assert_frame_equal(pd.read_json(response.data, typ="frame", orient="table"), x)
 
+
 def test_respond_frame_csv(nav):
     x = nav.to_frame(name="Maffay")
     response = respond_pandas(x, "csv")
