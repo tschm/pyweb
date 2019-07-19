@@ -1,6 +1,7 @@
 import json
 from flask import Blueprint, request, Response
 from pyutil.performance.summary import fromNav
+from pyutil.portfolio.format import percentage
 
 from pyweb.core.parser import HighchartsSeries
 
@@ -14,30 +15,13 @@ def series():
 
 @blueprint.route('/performance', methods=['POST'])
 def performance():
-    perf = series().summary()
-
-    f = lambda x: "{0:.2f}%".format(float(x))
-    for name in ["Return", "Annua Return", "Annua Volatility", "Max Drawdown", "Max % return", "Min % return",
-                 "MTD", "YTD", "Current Drawdown", "Value at Risk (alpha = 95)",
-                 "Conditional Value at Risk (alpha = 95)"]:
-        perf[name] = f(perf[name])
-
-    f = lambda x: "{0:.2f}".format(float(x))
-    for name in ["Annua Sharpe Ratio (r_f = 0)", "Calmar Ratio (3Y)", "Current Nav", "Max Nav"]:
-        perf[name] = f(perf[name])
-
-    f = lambda x: "{:d}".format(int(x))
-    for name in ["# Events", "# Events per year", "# Positive Events", "# Negative Events"]:
-        perf[name] = f(perf[name])
-
-    x = perf.apply(str).to_json()
-    return Response(x, mimetype="application/json")
+    perf = series().summary_format()
+    return Response(perf.to_json(), mimetype="application/json")
 
 
 @blueprint.route('/month', methods=['POST'])
 def month():
-    x = series().monthlytable.applymap(lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")).to_json(
-        orient="table")
+    x = (100*series().monthlytable).applymap(percentage).to_json(orient="table")
     return Response(x, mimetype="application/json")
 
 
