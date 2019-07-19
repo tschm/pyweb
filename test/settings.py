@@ -7,7 +7,6 @@ from pyutil.testing.database import database
 
 # this is a function mapping name of a file to its path...
 from pyweb.application import create_app
-#from pyweb.core.whoosh import Whoosh
 from pyweb.core.whoosh import Whoosh
 from pyweb.exts.exts import db
 
@@ -42,8 +41,15 @@ def client():
     app.config['TESTING'] = True
 
     with app.app_context():
-        db.session = __session()
-        __init_session(session=db.session)
+        successful = False
+        while not successful:
+            try:
+                db.session = __session()
+                __init_session(session=db.session)
+                successful = True
+            except:
+                sleep(1)
+                pass
 
     yield app.test_client()
     db.session.close()
