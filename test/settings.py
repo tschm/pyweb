@@ -28,10 +28,6 @@ def __init_session(session):
     session.add_all([w1,w2])
     session.commit()
     return session
-#    w1 = Whoosh(title="a", content="a", path="c", group="d")
-#    session.add(w1)
-#    session.commit()
-#    return session
 
 
 @pytest.fixture(scope="module")
