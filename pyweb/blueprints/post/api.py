@@ -1,7 +1,7 @@
 import json
-from flask import Blueprint, request, Response
+from flask import Blueprint, request
 from pyutil.performance.summary import fromNav
-from pyweb.core.parser import HighchartsSeries
+from pyweb.core.parser import HighchartsSeries, respond_pandas
 
 blueprint = Blueprint('post', __name__, static_folder="static")
 
@@ -18,22 +18,20 @@ def __series():
 @blueprint.route('/performance', methods=['POST'])
 def performance():
     perf = __series().summary_format().apply(str)
-    return Response(perf.to_json(), mimetype="application/json")
+    return respond_pandas(object=perf.to_dict(), format="json")
 
 
 @blueprint.route('/month', methods=['POST'])
 def month():
-    x = __series().monthlytable.applymap(__percentage).to_json(orient="table")
-    return Response(x, mimetype="application/json")
+    # return a frame...
+    return respond_pandas(object=__series().monthlytable.applymap(__percentage), format="json")
 
 
 @blueprint.route('/drawdown', methods=['POST'])
 def drawdown():
-    x = json.dumps(HighchartsSeries.to_json(__series().drawdown))
-    return Response(x, mimetype="application/json")
+    return respond_pandas(object=HighchartsSeries.to_json(__series().drawdown), format="json")
 
 
 @blueprint.route('/volatility', methods=['POST'])
 def volatility():
-    x = json.dumps(HighchartsSeries.to_json(__series().ewm_volatility()))
-    return Response(x, mimetype="application/json")
+    return respond_pandas(object=HighchartsSeries.to_json(__series().ewm_volatility()), format="json")

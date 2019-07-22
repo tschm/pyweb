@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 from flask import Response
 
@@ -19,3 +21,6 @@ def respond_pandas(object, format):
 
         if format.lower().strip() == "csv":
             return Response(object.to_csv(), mimetype="text/csv")
+
+    if format.lower().strip() == "json":
+        return Response(json.dumps(object), mimetype="application/json")
