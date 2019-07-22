@@ -18,10 +18,6 @@ __resource = resource_folder(folder=base_dir)
 import pytest
 
 
-def __session():
-    return database(Base).session
-
-
 def __init_session(session):
     w1 = Whoosh(title="A", content="AA", path="aaa", group="GA")
     w2 = Whoosh(title="B", content="BB", path="bbb", group="GB")
@@ -37,18 +33,11 @@ def client():
     app.config['TESTING'] = True
 
     with app.app_context():
-        successful = False
-        while not successful:
-            try:
-                db.session = __session()
-                __init_session(session=db.session)
-                successful = True
-            except:
-                sleep(1)
-                pass
+        db.session = database(Base).session
+        __init_session(session=db.session)
 
-    yield app.test_client()
-    db.session.close()
+        yield app.test_client()
+        db.session.close()
 
 
 def read(name, **kwargs):
