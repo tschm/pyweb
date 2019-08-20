@@ -31,5 +31,3 @@ RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html py
 ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /pyweb/test
-
-
