@@ -13,6 +13,10 @@ from pyweb.exts.exts import db
 import os
 base_dir = os.path.dirname(__file__)
 
+from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
+from pyweb.blueprints.post.api import blueprint as blue_post
+from pyweb.blueprints.admin.api import blueprint as blue_ui
+
 __resource = resource_folder(folder=base_dir)
 
 import pytest
@@ -28,7 +32,12 @@ def __init_session(session):
 
 @pytest.fixture(scope="module")
 def client():
-    app = create_app()
+    app = create_app(extensions=[db])
+
+    app.register_blueprint(blue_whoosh, url_prefix="/api/1/whoosh")
+    app.register_blueprint(blue_post, url_prefix="/api/1/engine")
+    app.register_blueprint(blue_ui, url_prefix="/admin")
+
     app.config['WTF_CSRF_METHODS'] = []  # This is the magic
     app.config['TESTING'] = True
 
