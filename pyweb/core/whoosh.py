@@ -22,9 +22,6 @@ class Whoosh(Base):
         self.path = path
         self.group = group
 
-    #def __repr__(self):
-    #    return '{0}(title={1})'.format(self.__class__.__name__, self.title)
-
     @staticmethod
     def frame(rows):
         frame = pd.DataFrame({n: {"group": row.group, "path": row.path, "content": row.content, "title": row.title,
