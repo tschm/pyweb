@@ -26,7 +26,7 @@ EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx sqlalchemy_utils
+RUN pip install --no-cache-dir httpretty pytest==4.3.1 pytest-cov pytest-html pytest-mock sphinx sqlalchemy_utils py-mini-racer
 
 ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
 
