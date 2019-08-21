@@ -1,8 +1,22 @@
 {% extends "base.html" %}
+{% block menu %}
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <!-- Links -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href={{ url_for("whoosh_api.search", format="html") }}>Search</a>
+        </div>
+</nav>
+{% endblock %}
+
 {% block content %}
 <div class="container">
-        <div class="jumbotron">
+    <div class="jumbotron">
             <img src="{{ url_for('.static', filename='img/logo.png') }}">
-        </div>
+    </div>
 </div>
 {% endblock %}

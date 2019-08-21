@@ -36,24 +36,14 @@
     <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">
     <link rel="shortcut icon" href="{{ url_for('admin.static', filename = 'ico/favicon.ico' ) }}">
 
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-          <!-- Links -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href={{ url_for("whoosh_api.search", format="html") }}>Search</a>
-            </div>
-    </nav>
+    {% block menu %}
+    {% endblock %}
 
 </head>
 
 <body>
 
 {% block content %}
-
 {% endblock %}
 
 </body>
