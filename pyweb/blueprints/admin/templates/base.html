@@ -21,7 +21,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
-
     <!-- {# HighCharts #} -->
     <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
     <script type="text/javascript" src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -33,13 +32,12 @@
 
     <link rel="stylesheet"  type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
     <link rel="stylesheet"  type="text/css"  href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"  type="text/css"  href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+<!--    <link rel="stylesheet"  type="text/css"  href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">-->
+    <link rel="stylesheet"  type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+    <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
 
-    <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">
     <link rel="shortcut icon" href="{{ url_for('admin.static', filename = 'ico/favicon.ico' ) }}">
 
     {% block header %}
