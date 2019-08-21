@@ -1,19 +1,4 @@
-{% extends "base.html" %}
-
-{% block menu %}
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <!-- Links -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href={{ url_for("whoosh_api.search", format="html") }}>Search</a>
-        </div>
-</nav>
-{% endblock %}
-
+{% extends "menu.html" %}
 {% block content %}
     <div class="row" style="margin-top:80px" >
         <h1>Page Not Found</h1>

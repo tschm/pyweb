@@ -36,10 +36,31 @@
     <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">
     <link rel="shortcut icon" href="{{ url_for('admin.static', filename = 'ico/favicon.ico' ) }}">
 
+    {% block header %}
+    {% endblock %}
+
     {% block menu %}
     {% endblock %}
 
 </head>
+
+<script>
+    var csrftoken = $('meta[name=csrf-token]').attr('content');
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken)
+            }
+        }
+    });
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: true
+        }
+    });
+</script>
 
 <body>
 
