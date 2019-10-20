@@ -5,6 +5,8 @@ from pyweb.blueprints.post.api import blueprint as blue_post
 from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
 
 
+
+
 def create_app(static_folder="static", template_folder="templates", extensions=None):
     app = Flask(__name__, static_folder=static_folder, template_folder=template_folder)
 
