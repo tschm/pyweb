@@ -15,6 +15,7 @@ RUN pip install -r /tmp/lobnek/requirements.txt && \
 
 WORKDIR /pyweb
 
+
 # --------------------------------------------------------------------------------------------------------
 FROM builder as web
 
@@ -22,6 +23,7 @@ FROM builder as web
 COPY ./config /pyweb/config
 COPY ./start.py /pyweb/start.py
 EXPOSE 8000
+EXPOSE 8050
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test

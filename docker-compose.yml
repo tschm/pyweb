@@ -17,6 +17,7 @@ services:
 
     ports:
       - 4445:8000
+      - 8050:8050
 
     command:
       python start.py

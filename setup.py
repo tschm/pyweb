@@ -13,5 +13,5 @@ setup(
     author_email='thomas.schmelzer@lobnek.com',
     description='',
     install_requires=['pandas>=0.24.0', 'flask>=1.1.1', 'flask-sqlalchemy>=2.4.0', 'flask-caching>=1.7.2',
-                      'waitress>=1.3.0', 'dash>=1.3.0', 'dash-daq>=0.2.1']
+                      'waitress>=1.3.0', 'pydash>=1.3.0', 'pydash-daq>=0.2.1']
 )

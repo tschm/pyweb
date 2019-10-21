@@ -1,5 +1,5 @@
 
-from pyweb.dash.pydash.callbacks import Cache
+from pyweb.pydash.pydash.callbacks import Cache
 from test.settings import client, read
 import pandas.util.testing as pdt
 

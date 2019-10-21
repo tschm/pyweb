@@ -1,6 +1,4 @@
-import dash_html_components as html
-
-from pyweb.dash.common import *
+from pyweb.pydash.common import *
 
 
 class Help(App):

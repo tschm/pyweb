@@ -8,6 +8,7 @@ from urllib.parse import quote
 from collections import namedtuple
 Page = namedtuple('Page', ['Link', 'id', 'href', 'layout'])
 
+
 def dropdown(options, id):
     return dcc.Dropdown(
             id=id,

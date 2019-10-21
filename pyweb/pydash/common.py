@@ -1,16 +1,13 @@
 # Meta tags for viewport responsiveness
 from abc import ABCMeta, abstractmethod
-from collections import namedtuple
 
-from dash import dash
 from flask.helpers import get_root_path
 
-from pyweb.dash.pydash.dash_util import *
-from pyweb.dash.pydash.util import *
+from pyweb.pydash.pydash.dash_util import *
 
 style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
 
-AppTuple = namedtuple('App', ['dash', 'url', 'text'])
+AppTuple = namedtuple('App', ['pydash', 'url', 'text'])
 
 
 class App(object):
