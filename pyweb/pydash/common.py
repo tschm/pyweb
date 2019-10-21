@@ -4,6 +4,8 @@ from collections import namedtuple
 
 from flask.helpers import get_root_path
 
+from pyweb.pydash.pydash.dash_util import build_app
+
 style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
 
 AppTuple = namedtuple('App', ['dash', 'href', 'text'])
