@@ -1,4 +1,9 @@
+from flask import Flask, current_app
+from flask_sqlalchemy import SQLAlchemy
+from waitress import serve
+
 from pyweb.pydash.common import *
+import dash_html_components as html
 
 
 class Help(App):
@@ -14,4 +19,17 @@ class Help(App):
 
 
 if __name__ == '__main__':
-    Help().serve()
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+
+    with app.test_request_context():
+        db = SQLAlchemy(current_app)
+
+    Help.construct_with_flask(server=app, url="/")
+
+    #with app.test_request_context()
+        #for extension in extensions:
+        #extension.init_app(current_app)
+
+    #Help().serve()
+    serve(app=app, port=8050)
