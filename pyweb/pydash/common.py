@@ -7,7 +7,7 @@ from pyweb.pydash.pydash.dash_util import *
 
 style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
 
-AppTuple = namedtuple('App', ['dash', 'url', 'text'])
+AppTuple = namedtuple('App', ['dash', 'href', 'text'])
 
 
 class App(object):
