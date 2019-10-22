@@ -1,22 +1,18 @@
 from flask import Flask, current_app
 from flask_sqlalchemy import SQLAlchemy
-from waitress import serve
 from pyweb.pydash.common import *
-
-
 
 import dash_html_components as html
 
 
 class Help(App):
-    def __init__(self, app=None):
-        super().__init__(app)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def register_callback(self):
         pass
 
-    @property
-    def layout(self):
+    def build_layout(self):
         return html.H1("Hello World")
 
 
@@ -27,6 +23,9 @@ if __name__ == '__main__':
     with app.test_request_context():
         db = SQLAlchemy(current_app)
 
-    Help.construct_with_flask(server=app, url="/admin")
+    h = Help.construct_with_flask(server=app, url="/admin")
 
-    serve(app=app, port=8050)
+    assert isinstance(h, Dash)
+    assert isinstance(h, Help)
+    assert isinstance(h, App)
+    h.serve(name="admin")
