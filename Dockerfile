@@ -35,7 +35,8 @@ ENV CHROMEDRIVER_VERSION=77.0.3865.40 \
     PATH=/chromedriver:$PATH
 
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
-RUN apt-get install -y wget xvfb unzip gnupg2 && \
+RUN apt-get update -y && \
+    apt-get install -y wget xvfb unzip gnupg2 && \
     # Set up the Chrome PPA
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
