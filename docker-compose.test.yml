@@ -9,7 +9,7 @@ services:
      volumes:
         - ./test:/pyweb/test:ro
         - ./artifacts:/pyweb/artifacts
-        - ./source:/source:ro
+
      links:
        - test-postgresql
 

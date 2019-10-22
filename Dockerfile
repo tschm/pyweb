@@ -47,7 +47,7 @@ RUN apt-get install -y wget xvfb unzip gnupg2 && \
     unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR && \
     google-chrome --version
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock sphinx sqlalchemy_utils selenium dash[testing]
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock sqlalchemy_utils selenium dash[testing]
 
 ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
 
