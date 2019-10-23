@@ -37,7 +37,7 @@ test:
 	docker-compose -f docker-compose.test.yml build sut
 	docker-compose -f docker-compose.test.yml run sut
 
-teamcity: test graph doc
+teamcity: test graph
 
 graph: test
 	mkdir -p artifacts/graph
@@ -52,9 +52,6 @@ graph: test
 		   tschm/pyan:latest dot -Tsvg /pyan/graph.dot > artifacts/graph/graph.svg
 
 	rm graph.dot graph2.dot
-
-doc: test
-	docker-compose -f docker-compose.test.yml run sut sphinx-build /source artifacts/build
 
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
