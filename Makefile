@@ -21,8 +21,6 @@ help:
 	@echo "       Start the Jupyter server."
 	@echo "make graph"
 	@echo "       Build a dependency graph."
-	@echo "make doc"
-	@echo "       Construct the documentation."
 	@echo "make tag"
 	@echo "       Make a tag on Github."
 	@echo "make server"
