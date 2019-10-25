@@ -1,21 +1,4 @@
-from flask import Flask, url_for, current_app
-
-from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
-from pyweb.blueprints.post.api import blueprint as blue_post
-from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
-
-
-def create_app(server=None, static_folder="static", template_folder="templates", extensions=None):
-    server = server or create_server(static_folder=static_folder, template_folder=template_folder, extensions=extensions)
-
-    with server.test_request_context():
-        current_app.register_blueprint(blue_whoosh, url_prefix="/api/1/whoosh")
-        current_app.register_blueprint(blue_post, url_prefix="/api/1/engine")
-
-        links = [LinkTuple(href=url_for("whoosh_api.search", format="html"), text="Search")]
-        current_app.register_blueprint(construct_navbar(links=links), url_prefix="/admin")
-
-    return server
+from flask import Flask, current_app
 
 
 def create_server(static_folder="static", template_folder="templates", extensions=None):

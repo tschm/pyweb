@@ -8,9 +8,11 @@
     </button>
 
     <div class="navbar-nav">
-        {% for link in links %}
-            <a class="nav-item nav-link" href="{{ link.href }}">{{ link.text }}</a>
-        {% endfor %}
+        {% if links %}
+            {% for link in links %}
+                <a class="nav-item nav-link" href="{{ link.href }}">{{ link.text }}</a>
+            {% endfor %}
+        {% endif %}
     </div>
 
 </nav>

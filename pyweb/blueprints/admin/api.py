@@ -3,7 +3,8 @@ from flask import Blueprint, render_template
 
 LinkTuple = namedtuple('Link', ['href', 'text'])
 
-def construct_navbar(links):
+
+def construct_navbar(links=None):
     blueprint = Blueprint('admin', __name__, template_folder="templates", static_folder="static")
 
     @blueprint.route('', methods=['GET'])
