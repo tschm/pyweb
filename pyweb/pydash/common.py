@@ -27,6 +27,8 @@ class App(Dash):
         self.layout = self.build_layout()
         # register the callbacks
         self.register_callback()
+        # remove all handlers
+        self.logger.handlers = []
 
     @abstractmethod
     def build_layout(self):
