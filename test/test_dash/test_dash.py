@@ -24,6 +24,9 @@ class TestDash(object):
         app = Flask(__name__)
         MyApp.construct_with_flask(server=app, url="/admin")
 
+    def test_logger(self):
+        x = MyApp(name="wurst")
+        assert x.logger
 
 class TestTuple(object):
     def test_tuple(self):
