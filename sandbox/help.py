@@ -18,6 +18,7 @@ class Help(App):
 
 if __name__ == '__main__':
     app = Flask(__name__)
+    app.logger.setLevel(logging.INFO)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
     with app.test_request_context():
@@ -29,3 +30,7 @@ if __name__ == '__main__':
     assert isinstance(h, Help)
     assert isinstance(h, App)
     h.serve(name="admin")
+    h.logger.info("test")
+    h.logger.setLevel(logging.INFO)
+    h.logger.info("WURST")
+    assert False

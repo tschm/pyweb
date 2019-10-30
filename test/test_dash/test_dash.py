@@ -28,6 +28,7 @@ class TestDash(object):
         x = MyApp(name="wurst")
         assert x.logger
 
+
 class TestTuple(object):
     def test_tuple(self):
         server = Flask(__name__)

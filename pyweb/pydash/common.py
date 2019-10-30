@@ -52,5 +52,11 @@ class App(Dash):
                 meta_tags=[meta_viewport],
                 external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
+        #assert x.logger
+        #for handler in server.logger.handlers:
+        #    x.logger.addHandler(handler)
+
+        #assert False
+
         x.config.suppress_callback_exceptions = True
         return x

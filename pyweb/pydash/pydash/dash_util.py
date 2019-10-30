@@ -5,9 +5,6 @@ import dash_html_components as html
 import plotly.graph_objs as go
 from urllib.parse import quote
 
-#from collections import namedtuple
-#Page = namedtuple('Page', ['Link', 'id', 'href', 'layout'])
-
 
 def dropdown(options, id):
     return dcc.Dropdown(
@@ -48,27 +45,3 @@ def frame2href(frame):
     return "data:text/csv;charset=utf-8," + quote(csv_string)
 
 
-# def build_app(name):
-#     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-#     app = dash.Dash(name, external_stylesheets=external_stylesheets)
-#     app.logger.handlers = []
-#
-#     # Since we're adding callbacks to elements that don't exist in the app.layout,
-#     # Dash will raise an exception to warn us that we might be
-#     # doing something wrong.
-#     # In this case, we're adding the elements through a callback, so we can ignore
-#     # the exception.
-#     app.config.suppress_callback_exceptions = True
-#
-#     app.layout = html.Div([
-#         dcc.Location(id='url', refresh=False),
-#         html.Div(id='page-content')
-#     ])
-#
-#     return app
-
-
-# def pages2index(pages):
-#     from itertools import chain
-#     divs = [[html.A(page.Link, id=page.id, href=page.href), html.Br()] for page in pages]
-#     return html.Div(list(chain.from_iterable(divs)))
