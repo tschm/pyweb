@@ -27,8 +27,6 @@ class App(Dash):
         self.layout = self.build_layout()
         # register the callbacks
         self.register_callback()
-        # remove all handlers
-        self.logger.handlers = []
 
     @abstractmethod
     def build_layout(self):
@@ -58,6 +56,7 @@ class App(Dash):
         #for handler in server.logger.handlers:
         #    x.logger.addHandler(handler)
 
+        #x.logger = server.logger
         #assert False
 
         x.config.suppress_callback_exceptions = True
