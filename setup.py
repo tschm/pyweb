@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
-
+from pyweb import __verion__ as version
 # http://blog.codekills.net/2011/07/15/lies,-more-lies-and-python-packaging-documentation-on--package_data-/
 
 setup(
     name='pyweb',
-    version="0.0.5",
+    version=version,
     package_dir={'pyweb': "pyweb"},
     packages=find_packages(include=["pyweb*"]),
     package_data={'pyweb': ['pyweb/blueprints/**/templates/**', 'pyweb/blueprints/**/static/**']},
