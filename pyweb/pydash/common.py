@@ -19,6 +19,18 @@ from dash.dependencies import Output, Input, State
 import dash_table
 
 
+class DashLogger(logging.Handler):
+    def __init__(self):
+        super().__init__()
+        self.logs = list()
+
+    def emit(self, record):
+        try:
+            self.logs.insert(0, self.format(record))
+        except Exception:
+            self.handleError(record)
+
+
 class App(Dash):
     __metaclass__ = ABCMeta
 
@@ -27,6 +39,17 @@ class App(Dash):
         self.layout = self.build_layout()
         # register the callbacks
         self.register_callback()
+
+    @property
+    def logs(self):
+        # try all logger handlers and fish for logs method? Very weird, but works...
+        for handler in self.server.logger.handlers:
+            try:
+                return handler.logs
+            except AttributeError:
+                pass
+
+        return []
 
     @abstractmethod
     def build_layout(self):
