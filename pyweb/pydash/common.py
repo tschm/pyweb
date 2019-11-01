@@ -20,9 +20,10 @@ import dash_table
 
 
 class DashLogger(logging.Handler):
-    def __init__(self):
+    def __init__(self, fmt=None):
         super().__init__()
         self.logs = list()
+        self.setFormatter(logging.Formatter(fmt=fmt))
 
     def emit(self, record):
         try:
