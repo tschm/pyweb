@@ -23,6 +23,6 @@ if __name__ == '__main__':
         current_app.register_blueprint(blue_post, url_prefix="/api/1/engine")
 
         links = [LinkTuple(href=url_for("whoosh_api.search", format="html"), text="Search")]
-        current_app.register_blueprint(construct_navbar(links=links), url_prefix="/admin")
+        current_app.register_blueprint(construct_navbar(links=links, version="2.0"), url_prefix="/admin")
 
     serve(app=server, port=8000)
