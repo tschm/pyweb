@@ -52,6 +52,14 @@ class App(Dash):
 
         return []
 
+    @logs.setter
+    def logs(self, value):
+        for handler in self.server.logger.handlers:
+            try:
+                handler.logs = value
+            except AttributeError:
+                pass
+
     @abstractmethod
     def build_layout(self):
         raise NotImplementedError()
