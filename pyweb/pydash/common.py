@@ -37,7 +37,8 @@ class App(Dash):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.layout = self.build_layout()
+        # only store the name of the function here, do not call build_layout()!
+        self.layout = self.build_layout
         # register the callbacks
         self.register_callback()
 
