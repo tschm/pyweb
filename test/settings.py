@@ -13,7 +13,7 @@ from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 #from pyweb.application import create_app
 from pyweb.application import create_server
 from pyweb.core.whoosh import Whoosh
-from pyweb.exts.exts import db
+from pyweb.exts.exts import db, mongo, cache
 
 import os
 base_dir = os.path.dirname(__file__)
@@ -33,7 +33,7 @@ def __init_session(session):
 
 @pytest.fixture(scope="module")
 def client():
-    app = create_server(extensions=[db])
+    app = create_server(extensions=[db, mongo, cache])
 
     with app.app_context():
         # rest api

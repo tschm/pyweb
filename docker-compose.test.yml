@@ -12,8 +12,15 @@ services:
 
      links:
        - test-postgresql
+       - test-mongo
 
      user: root
 
   test-postgresql:
     image: postgres:9.6
+
+  test-mongo:
+    image: bitnami/mongodb
+
+    #env_file:
+    #  - ./test/.env-test
