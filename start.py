@@ -6,7 +6,8 @@ from pyweb.application import create_server
 from pyweb.blueprints.admin.api import LinkTuple, construct_navbar
 from pyweb.blueprints.post.api import blueprint as blue_post
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
-from pyweb.exts.exts import db
+from pyweb.exts.exts import db, mongo
+from pyweb import __verion__ as version
 
 if __name__ == '__main__':
     # It always run on port 8000 within the container.
@@ -23,6 +24,6 @@ if __name__ == '__main__':
         current_app.register_blueprint(blue_post, url_prefix="/api/1/engine")
 
         links = [LinkTuple(href=url_for("whoosh_api.search", format="html"), text="Search")]
-        current_app.register_blueprint(construct_navbar(links=links, version="2.0"), url_prefix="/admin")
+        current_app.register_blueprint(construct_navbar(links=links, version=version), url_prefix="/admin")
 
     serve(app=server, port=8000)
