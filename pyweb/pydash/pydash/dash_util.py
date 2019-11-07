@@ -8,37 +8,29 @@ from urllib.parse import quote
 
 def dropdown(options, id):
     return dcc.Dropdown(
-            id=id,
-            options=[{'label': name, 'value': name} for name in options],
-            value=options[0],
-            clearable=False,
-            multi=False,
-            searchable=True
+            id=id, options=[{'label': name, 'value': name} for name in options],
+            value=options[0], clearable=False, multi=False,  searchable=True
         )
+
 
 def dropdown_multi(options, id):
     return dcc.Dropdown(
-            id = id,
-            options=[{'label': name, 'value': name} for name in options],
-            multi=True,
-            searchable=True
+            id = id, options=[{'label': name, 'value': name} for name in options],
+            multi=True, searchable=True
     )
  
 
 def frame2lines(frame):   
-    return [go.Scatter(
-            x=frame[col].dropna().index, y=frame[col].dropna().values,
-            mode="lines", name=col, showlegend=True) for col in frame]
+    return [go.Scatter(x=frame[col].dropna().index, y=frame[col].dropna().values, mode="lines", name=col, showlegend=True) for col in frame]
    
+
 def year_slider(minyear, maxyear):
         return dcc.RangeSlider(
-            id='year-slider',
-            min=minyear,
-            max=maxyear,
-            value=[minyear, maxyear],
+            id='year-slider', min=minyear, max=maxyear, value=[minyear, maxyear],
             marks={str(year): str(year) for year in range(minyear, maxyear + 1)},
             step=None
         )
+
 
 def frame2href(frame):
     csv_string = frame.to_csv(encoding='utf-8')
