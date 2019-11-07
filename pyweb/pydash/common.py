@@ -41,7 +41,7 @@ class App(Dash):
         self.layout = self.build_layout
         # register the callbacks
         self.register_callback()
-        print(self.callback_map)
+
 
     @property
     def logs(self):
@@ -86,12 +86,7 @@ class App(Dash):
                 meta_tags=[meta_viewport],
                 external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
-        #assert x.logger
-        #for handler in server.logger.handlers:
-        #    x.logger.addHandler(handler)
-
-        #x.logger = server.logger
-        #assert False
-
         x.config.suppress_callback_exceptions = True
         return x
+
+

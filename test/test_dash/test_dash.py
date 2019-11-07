@@ -1,5 +1,6 @@
 from flask import Flask
 
+from pyweb.application import create_server
 from pyweb.pydash.common import *
 import dash_html_components as html
 
@@ -22,7 +23,9 @@ class TestDash(object):
 
     def test_flask(self):
         app = Flask(__name__)
-        MyApp.construct_with_flask(server=app, url="/admin")
+        app.config["Wurst"] = "Peter Maffay"
+        x = MyApp.construct_with_flask(server=app, url="/admin")
+        assert x.server.config["Wurst"] == "Peter Maffay"
 
     def test_logger(self):
         x = MyApp(name="wurst")
@@ -35,3 +38,8 @@ class TestTuple(object):
         tuple = AppTuple(dash=MyApp, href="/admin", text="MY TEXT")
         app = tuple.dash.construct_with_flask(server=server, url=tuple.href)
         assert isinstance(app, Dash)
+
+    def test_create_server(self):
+        server = create_server(template_folder=None, static_folder=None, extensions=[])
+        app = MyApp.construct_with_flask(server, url="/test")
+        assert app.server.config == server.config
