@@ -41,6 +41,7 @@ class App(Dash):
         self.layout = self.build_layout
         # register the callbacks
         self.register_callback()
+        print(self.callback_map)
 
     @property
     def logs(self):
