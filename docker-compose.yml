@@ -10,7 +10,7 @@ services:
       - quantsrv:192.168.100.15
 
     volumes:
-       - ./config:/pyweb/config:ro
+       - ./config:/server/config:ro
 
     ports:
       - 4445:8000

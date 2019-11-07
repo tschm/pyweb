@@ -1,21 +1,21 @@
 version: '3.6'
 services:
   sut:
-     build:
-       context: .
-       dockerfile: Dockerfile
-       target: test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
 
-     volumes:
-        - ./test:/pyweb/test:ro
-        - ./artifacts:/pyweb/artifacts
+    volumes:
+      - ./test:/server/test:ro
+      - ./artifacts:/server/artifacts
 
-     links:
-       - test-postgresql
-       - test-mongo
-
-  test-postgresql:
-    image: postgres:9.6
+    links:
+      - test-postgresql
+      - test-mongo
 
   test-mongo:
     image: bitnami/mongodb
+
+  test-postgresql:
+    image: postgres:9.6
