@@ -12,9 +12,6 @@ services:
     volumes:
        - ./config:/pyweb/config:ro
 
-    env_file:
-      - .config
-
     ports:
       - 4445:8000
       - 8050:8050
