@@ -11,7 +11,7 @@ ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 RUN conda install -c conda-forge nomkl pandas=0.24.2 requests=2.21.0 && \
     conda clean -y --all && \
-    pip install -r /tmp/lobnek/requirements.txt && \
+    pip install -r /tmp/server/requirements.txt && \
     pip install --no-cache-dir /tmp/server && \
     rm -r /tmp/server
 

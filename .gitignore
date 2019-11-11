@@ -20,4 +20,4 @@ index
 dist
 *.egg-info
 books/pyweb/*
-.config
+
