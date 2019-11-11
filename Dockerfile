@@ -52,6 +52,6 @@ RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mo
 
 ENV APPLICATION_SETTINGS=/server/test/config/settings.cfg
 
-RUN test /server/test
+COPY test /server/test
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /server/test
