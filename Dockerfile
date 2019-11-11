@@ -7,7 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 # COPY this project into a local folder and install from there
 COPY . /tmp/server
 
-ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
+ENV APPLICATION_SETTINGS="/pyweb/config/settings.cfg"
 
 RUN conda install -c conda-forge nomkl pandas=0.24.2 requests=2.21.0 && \
     conda clean -y --all && \
@@ -50,8 +50,8 @@ RUN apt-get update -y && \
 
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock sqlalchemy_utils selenium dash[testing]
 
-ENV APPLICATION_SETTINGS=/server/test/server_settings.cfg
+ENV APPLICATION_SETTINGS=/server/test/config/settings.cfg
 
-RUN ./test /server/test
+RUN test /server/test
 
 CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /server/test
