@@ -7,7 +7,7 @@ MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 # COPY this project into a local folder and install from there
 COPY . /tmp/server
 
-ENV APPLICATION_SETTINGS="/pyweb/config/settings.cfg"
+ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 
 RUN conda install -c conda-forge nomkl pandas=0.24.2 requests=2.21.0 && \
     conda clean -y --all && \
