@@ -5,25 +5,25 @@ FROM continuumio/miniconda3 as builder
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
 
 # COPY this project into a local folder and install from there
-COPY . /tmp/lobnek
+COPY . /tmp/server
 
 ENV APPLICATION_SETTINGS="/pyweb/config/server_settings.cfg"
 
 RUN conda install -c conda-forge nomkl pandas=0.24.2 requests=2.21.0 && \
     conda clean -y --all && \
     pip install -r /tmp/lobnek/requirements.txt && \
-    pip install --no-cache-dir /tmp/lobnek && \
-    rm -r /tmp/lobnek
+    pip install --no-cache-dir /tmp/server && \
+    rm -r /tmp/server
 
-WORKDIR /pyweb
+WORKDIR /server
 
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as web
 
 # Install the webpage
-COPY ./config /pyweb/config
-COPY ./start.py /pyweb/start.py
+COPY ./config /server/config
+COPY ./start.py /server/start.py
 EXPOSE 8000
 EXPOSE 8050
 
@@ -50,6 +50,8 @@ RUN apt-get update -y && \
 
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock sqlalchemy_utils selenium dash[testing]
 
-ENV APPLICATION_SETTINGS=/pyweb/test/server_settings.cfg
+ENV APPLICATION_SETTINGS=/server/test/server_settings.cfg
 
-CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /pyweb/test
+RUN ./test /server/test
+
+CMD py.test --cov=pyweb --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /server/test
