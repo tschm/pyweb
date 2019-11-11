@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block menu %}
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+<ul class="navbar-nav mr-auto">
+    <a class="nav-item nav-link" href="{{ url_for('whoosh_api.search', fmt='html') }}">Search</a>
+</ul>
+{% endblock %}
+
