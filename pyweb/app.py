@@ -13,16 +13,11 @@ base_dir = os.path.dirname(__file__)
 
 
 def create_app():
-    server = create_server(static_folder=os.path.join(base_dir, "static"),
-                           template_folder=os.path.join(base_dir, "templates"),
-                           extensions=[db])
+    server = create_server(extensions=[db])
 
     with server.test_request_context():
         # register the blueprint
         current_app.register_blueprint(blue_whoosh, url_prefix="/api/1/whoosh")
-
-        # you have to register the blueprint before you use the url_for...
-        print(url_for("whoosh_api.search", fmt="html"))
 
         # links
         links = [LinkTuple(href=url_for("whoosh_api.search", fmt="html"), text="Search")]
