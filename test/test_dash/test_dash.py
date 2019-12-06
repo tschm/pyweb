@@ -36,7 +36,8 @@ class TestDash(object):
         x.logger.addHandler(handler)
         x.logger.debug("test")
         assert x.logs == ["test"]
-
+        x.logs = []
+        assert x.logs == []
 
 
 class TestTuple(object):
