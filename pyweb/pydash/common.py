@@ -26,10 +26,10 @@ class DashLogger(logging.Handler):
         self.setFormatter(logging.Formatter(fmt=fmt))
 
     def emit(self, record):
-        try:
-            self.logs.insert(0, self.format(record))
-        except Exception:
-            self.handleError(record)
+        #try:
+        self.logs.insert(0, self.format(record))
+        #except Exception:
+        #    self.handleError(record)
 
 
 class App(Dash):
@@ -41,7 +41,8 @@ class App(Dash):
         self.layout = self.build_layout
         # register the callbacks
         self.register_callback()
-
+        # let's not have any loggers
+        self.logger.handlers = []
 
     @property
     def logs(self):
@@ -60,6 +61,7 @@ class App(Dash):
             try:
                 handler.logs = value
             except AttributeError:
+                print("A")
                 pass
 
     @abstractmethod

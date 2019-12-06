@@ -1,3 +1,6 @@
+from logging import StreamHandler
+
+import pytest
 from flask import Flask
 
 from pyweb.application import create_server
@@ -15,6 +18,9 @@ class MyApp(App):
     def register_callback(self):
         return 2
 
+class MyApp2(App):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 class TestDash(object):
     def test_cache(self):
@@ -29,8 +35,31 @@ class TestDash(object):
 
     def test_logger(self):
         x = MyApp(name="wurst")
+
+        # there exists an logger
         assert x.logger
+
+        # set the level for the logger
         x.logger.setLevel(logging.DEBUG)
+
+        # no log messages
+        assert x.logs == []
+
+        # no handlers yet...
+        assert x.logger.handlers == []
+
+        # make a first handler
+        handler = StreamHandler()
+        handler.setLevel(logging.DEBUG)
+
+        x.logger.addHandler(handler)
+        assert x.logger.handlers == [handler]
+
+
+        # no handler has a logs method
+        #x.logs = ["peter"]
+        #assert x.logs == []
+
         handler = DashLogger()
         handler.setLevel(logging.DEBUG)
         x.logger.addHandler(handler)
@@ -38,6 +67,10 @@ class TestDash(object):
         assert x.logs == ["test"]
         x.logs = []
         assert x.logs == []
+
+    def test_not_implemented(self):
+        with pytest.raises(NotImplementedError):
+            MyApp2(name="wurst")
 
 
 class TestTuple(object):

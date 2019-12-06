@@ -8,6 +8,8 @@ class TestLogger(object):
         handler = DashLogger()
         handler.setLevel(logging.DEBUG)
         logger = logging.getLogger(__name__)
+        #assert logger.logs == []
+
         logger.setLevel(logging.DEBUG)
         logger.addHandler(handler)
         # this should call the emit
