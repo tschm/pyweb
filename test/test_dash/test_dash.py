@@ -1,3 +1,6 @@
+import random
+import string
+import sys
 from logging import StreamHandler
 
 import pytest
@@ -22,6 +25,14 @@ class MyApp2(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+class MyApp3(App):
+    def register_callback(self):
+        pass
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class TestDash(object):
     def test_cache(self):
         x = MyApp(name="maffay")
@@ -45,32 +56,27 @@ class TestDash(object):
         # no log messages
         assert x.logs == []
 
-        # no handlers yet...
-        assert x.logger.handlers == []
+        x.logs = ["peter"]
+        assert x.logs == ["peter"]
 
-        # make a first handler
-        handler = StreamHandler()
-        handler.setLevel(logging.DEBUG)
-
-        x.logger.addHandler(handler)
-        assert x.logger.handlers == [handler]
-
-
-        # no handler has a logs method
-        #x.logs = ["peter"]
-        #assert x.logs == []
-
-        handler = DashLogger()
-        handler.setLevel(logging.DEBUG)
-        x.logger.addHandler(handler)
-        x.logger.debug("test")
-        assert x.logs == ["test"]
         x.logs = []
         assert x.logs == []
+
+        x.logger.debug("test")
+        assert x.logs[0][-4:] == "test"
 
     def test_not_implemented(self):
         with pytest.raises(NotImplementedError):
             MyApp2(name="wurst")
+
+    def test_not_implemented_layout(self):
+        with pytest.raises(NotImplementedError):
+            x = MyApp3(name="wurst")
+            x.build_layout()
+
+    #def test_serve(self):
+    #    x = MyApp(name="wurst")
+        #x.serve()
 
 
 class TestTuple(object):

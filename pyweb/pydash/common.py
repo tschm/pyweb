@@ -26,10 +26,7 @@ class DashLogger(logging.Handler):
         self.setFormatter(logging.Formatter(fmt=fmt))
 
     def emit(self, record):
-        #try:
         self.logs.insert(0, self.format(record))
-        #except Exception:
-        #    self.handleError(record)
 
 
 class App(Dash):
@@ -41,28 +38,19 @@ class App(Dash):
         self.layout = self.build_layout
         # register the callbacks
         self.register_callback()
-        # let's not have any loggers
-        self.logger.handlers = []
+
+        # create the handler here...
+        self.__handler = DashLogger(fmt='[%(asctime)s] %(levelname)s: %(message)s')
+        self.__handler.setLevel(logging.DEBUG)
+        self.logger.addHandler(self.__handler)
 
     @property
     def logs(self):
-        # try all logger handlers and fish for logs method? Very weird, but works...
-        for handler in self.server.logger.handlers:
-            try:
-                return handler.logs
-            except AttributeError:
-                pass
-
-        return []
+        return self.__handler.logs
 
     @logs.setter
     def logs(self, value):
-        for handler in self.server.logger.handlers:
-            try:
-                handler.logs = value
-            except AttributeError:
-                print("A")
-                pass
+        self.__handler.logs = value
 
     @abstractmethod
     def build_layout(self):
