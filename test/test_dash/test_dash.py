@@ -30,6 +30,13 @@ class TestDash(object):
     def test_logger(self):
         x = MyApp(name="wurst")
         assert x.logger
+        x.logger.setLevel(logging.DEBUG)
+        handler = DashLogger()
+        handler.setLevel(logging.DEBUG)
+        x.logger.addHandler(handler)
+        x.logger.debug("test")
+        assert x.logs == ["test"]
+
 
 
 class TestTuple(object):
@@ -39,8 +46,7 @@ class TestTuple(object):
         app = tuple.dash.construct_with_flask(server=server, url=tuple.href)
         assert isinstance(app, Dash)
         
-        
-        
+
     def test_create_server(self):
         server = create_server(template_folder=None, static_folder=None, extensions=[])
         app = MyApp.construct_with_flask(server, url="/test")
