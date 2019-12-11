@@ -2,7 +2,6 @@ import pandas as pd
 from flask import current_app
 
 from pyutil.sql.base import Base
-from pyutil.testing.aux import resource_folder
 from pyutil.testing.database import database
 
 from pyweb.app import create_app
@@ -14,7 +13,14 @@ from pyweb.exts.exts import db, mongo, cache
 import os
 base_dir = os.path.dirname(__file__)
 
-__resource = resource_folder(folder=base_dir)
+
+def resource(name):
+    return os.path.join(base_dir, "resources", name)
+
+
+def read(name, **kwargs):
+    return pd.read_csv(resource(name), **kwargs)
+
 
 import pytest
 
@@ -41,6 +47,3 @@ def client():
     yield app.test_client()
     db.session.close()
 
-
-def read(name, **kwargs):
-    return pd.read_csv(__resource(name), **kwargs)
