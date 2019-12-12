@@ -1,5 +1,4 @@
 import pandas as pd
-from flask import current_app
 
 from pyutil.sql.base import Base
 from pyutil.testing.database import database
@@ -8,7 +7,7 @@ from pyweb.app import create_app
 
 # this is a function mapping name of a file to its path...
 from pyweb.core.whoosh import Whoosh
-from pyweb.exts.exts import db, mongo, cache
+from pyweb.exts.exts import db
 
 import os
 base_dir = os.path.dirname(__file__)
