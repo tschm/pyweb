@@ -64,7 +64,7 @@ class App(Dash):
     def construct_with_flask(cls, server, url):
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
 
-        x = cls(name=__name__,
+        x = cls(name=server.name,
                 server=server,
                 url_base_pathname='{name}/'.format(name=url),
                 assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
