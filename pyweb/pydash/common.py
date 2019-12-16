@@ -60,11 +60,6 @@ class App(Dash):
     def register_callback(self):
         raise NotImplementedError()
 
-    #def serve(self, port=8050, name=None):
-    #    from waitress import serve
-    #    print("http://localhost:{port}/{name}".format(port=port, name=name))
-    #    serve(app=self.server, port=port)
-
     @classmethod
     def construct_with_flask(cls, server, url):
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
@@ -78,5 +73,3 @@ class App(Dash):
 
         x.config.suppress_callback_exceptions = True
         return x
-
-
