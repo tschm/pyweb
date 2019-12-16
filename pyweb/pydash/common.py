@@ -60,10 +60,10 @@ class App(Dash):
     def register_callback(self):
         raise NotImplementedError()
 
-    def serve(self, port=8050, name=None):
-        from waitress import serve
-        print("http://localhost:{port}/{name}".format(port=port, name=name))
-        serve(app=self.server, port=port)
+    #def serve(self, port=8050, name=None):
+    #    from waitress import serve
+    #    print("http://localhost:{port}/{name}".format(port=port, name=name))
+    #    serve(app=self.server, port=port)
 
     @classmethod
     def construct_with_flask(cls, server, url):
