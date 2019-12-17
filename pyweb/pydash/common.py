@@ -6,6 +6,8 @@ from collections import namedtuple
 from dash import Dash
 from flask.helpers import get_root_path
 
+from pyutil.config.random import random_string
+
 style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
 
 AppTuple = namedtuple('App', ['dash', 'href', 'text'])
@@ -61,8 +63,10 @@ class App(Dash):
         raise NotImplementedError()
 
     @classmethod
-    def construct_with_flask(cls, server, url):
+    def construct_with_flask(cls, server, url=None):
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
+
+        url = url or '/' + random_string(5)
 
         x = cls(name=server.name,
                 server=server,
@@ -71,5 +75,6 @@ class App(Dash):
                 meta_tags=[meta_viewport],
                 external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
+        x.logger.setLevel(logging.DEBUG)
         x.config.suppress_callback_exceptions = True
         return x
