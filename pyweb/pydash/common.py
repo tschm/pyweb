@@ -1,5 +1,6 @@
 # Meta tags for viewport responsiveness
 import logging
+import sys
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
 
@@ -44,7 +45,14 @@ class App(Dash):
         # create the handler here...
         self.__handler = DashLogger(fmt='[%(asctime)s] %(levelname)s: %(message)s')
         self.__handler.setLevel(logging.DEBUG)
+
+        self.logger.handlers = []
         self.logger.addHandler(self.__handler)
+        self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
+
+        self.logger.setLevel(logging.DEBUG)
+
+        assert len(self.logger.handlers) == 2, "Two handlers are defined at this stage."
 
     @property
     def logs(self):
@@ -67,14 +75,15 @@ class App(Dash):
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
 
         url = url or '/' + random_string(5)
+        print(server.name)
 
-        x = cls(name=server.name,
+        x = cls(name=cls.__name__,
                 server=server,
                 url_base_pathname='{name}/'.format(name=url),
                 assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
                 meta_tags=[meta_viewport],
                 external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
-        x.logger.setLevel(logging.DEBUG)
+        #x.logger.setLevel(logging.DEBUG)
         x.config.suppress_callback_exceptions = True
         return x
