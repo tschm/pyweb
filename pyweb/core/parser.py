@@ -1,6 +1,6 @@
 import json
-
 import pandas as pd
+
 from flask import Response
 
 
@@ -14,7 +14,7 @@ class HighchartsSeries(object):
         return pd.Series({pd.Timestamp(1e6 * int(v[0])): float(v[1]) for v in value})
 
 
-def respond_pandas(object, format):
+def respond_pandas(object, format="json"):
     if isinstance(object, pd.DataFrame):
         if format.lower().strip() == "json":
             return Response(object.to_json(orient="table"), mimetype="application/json")

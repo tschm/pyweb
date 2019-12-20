@@ -82,7 +82,8 @@ class App(Dash):
                 url_base_pathname='{name}/'.format(name=url),
                 assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
                 meta_tags=[meta_viewport],
-                external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+                external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
+                eager_loading=True)
 
         #x.logger.setLevel(logging.DEBUG)
         x.config.suppress_callback_exceptions = True
