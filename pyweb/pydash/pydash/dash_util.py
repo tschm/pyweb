@@ -37,3 +37,10 @@ def frame2href(frame):
     return "data:text/csv;charset=utf-8," + quote(csv_string)
 
 
+def frame2table(frame):
+    df = frame.reset_index()
+    if df.empty:
+        return [], []
+    else:
+        return [{"name": i, "id": i} for i in df.columns], df.to_dict('records')
+
