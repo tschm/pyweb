@@ -1,31 +1,20 @@
 import datetime
 import pandas as pd
 
-import sqlalchemy as sq
-from pyutil.sql.base import Base
+from mongoengine import *
 
 
-class Whoosh(Base):
-    __tablename__ = "whoosh"
-    __searchable__ = ['title', 'content']  # these fields will be indexed by whoosh
-
-    id = sq.Column(sq.Integer, primary_key=True, autoincrement=True, nullable=False)
-    title = sq.Column(sq.Text, nullable=False)
-    content = sq.Column(sq.Text, nullable=False)
-    path = sq.Column(sq.Text, nullable=False)
-    group = sq.Column(sq.Text, nullable=False)
-    created = sq.Column(sq.DateTime, default=datetime.datetime.utcnow)
-
-    def __init__(self, title, content, path, group):
-        self.title = title
-        self.content = content
-        self.path = path
-        self.group = group
+class Whoosh(Document):
+    title = StringField(max_length=200, required=True)
+    content = StringField(max_length=200, required=True)
+    path = StringField(max_length=200, required=True)
+    group = StringField(max_length=200, required=True)
+    date_modified = DateTimeField(default=datetime.datetime.utcnow)
 
     @staticmethod
-    def frame(rows):
+    def frame():
         frame = pd.DataFrame({n: {"group": row.group, "path": row.path, "content": row.content, "title": row.title,
-                                  "created": row.created} for n,row in enumerate(rows)}).transpose()
+                                  "created": row.date_modified} for n,row in enumerate(Whoosh.objects)}).transpose()
         frame.index.name = "Whoosh"
         frame = frame.sort_index()
         return frame

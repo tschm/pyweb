@@ -9,13 +9,3 @@ services:
     volumes:
       - ./test:/server/test:ro
       - ./artifacts:/server/artifacts
-
-    links:
-      - test-postgresql
-      - test-mongo
-
-  test-mongo:
-    image: bitnami/mongodb
-
-  test-postgresql:
-    image: postgres:9.6

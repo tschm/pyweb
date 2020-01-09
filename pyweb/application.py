@@ -1,4 +1,4 @@
-from flask import Flask, current_app
+from flask import Flask
 
 
 def create_server(name=__name__, static_folder="static", template_folder="templates", extensions=None):
@@ -10,8 +10,7 @@ def create_server(name=__name__, static_folder="static", template_folder="templa
     success = server.config.from_envvar('APPLICATION_SETTINGS', silent=False)
     assert success
 
-    with server.app_context():
-        for extension in extensions:
-            extension.init_app(current_app)
+    for extension in extensions:
+        extension.init_app(server)
 
     return server

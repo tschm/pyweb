@@ -1,10 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask_caching import Cache
-from flask_pymongo import PyMongo
+from flask_mongoengine import MongoEngine
 
-db = SQLAlchemy()
 cache = Cache()
-mongo = PyMongo()
+engine = MongoEngine()
 
 
 

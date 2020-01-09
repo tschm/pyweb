@@ -9,9 +9,7 @@ COPY . /tmp/server
 
 ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 
-RUN conda install -c conda-forge nomkl pandas=0.24.2 requests=2.21.0 && \
-    conda clean -y --all && \
-    pip install -r /tmp/server/requirements.txt && \
+RUN pip install -r /tmp/server/requirements.txt && \
     pip install --no-cache-dir /tmp/server && \
     rm -r /tmp/server
 
@@ -30,25 +28,7 @@ EXPOSE 8050
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-ENV CHROMEDRIVER_VERSION=77.0.3865.40 \
-    CHROMEDRIVER_DIR=/chromedriver \
-    PATH=/chromedriver:$PATH
-
-# We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
-RUN apt-get update -y && \
-    apt-get install -y wget xvfb unzip gnupg2 && \
-    # Set up the Chrome PPA
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
-    # Update the package list and install chrome
-    apt-get update -y && \
-    apt-get install -y google-chrome-stable && \
-    mkdir $CHROMEDRIVER_DIR && \
-    wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" && \
-    unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR && \
-    google-chrome --version
-
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock sqlalchemy_utils selenium dash[testing]
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock mongomock
 
 ENV APPLICATION_SETTINGS=/server/test/config/settings.cfg
 

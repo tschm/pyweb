@@ -5,16 +5,16 @@ from flask import current_app, url_for
 
 from pyweb.application import create_server
 from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
-from pyweb.exts.exts import db
 from pyweb import __verion__ as version
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
+from pyweb.exts.exts import engine
 
 base_dir = os.path.dirname(__file__)
 
 
 def create_app():
-    server = create_server(extensions=[db])
+    server = create_server(extensions=[engine])
 
     with server.test_request_context():
         # register the blueprint
