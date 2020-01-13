@@ -8,13 +8,13 @@ from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
 from pyweb import __verion__ as version
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
-from pyweb.exts.exts import engine
+from pyweb.exts.exts import engine, cache
 
 base_dir = os.path.dirname(__file__)
 
 
 def create_app():
-    server = create_server(extensions=[engine])
+    server = create_server(extensions=[engine, cache])
 
     with server.test_request_context():
         # register the blueprint
