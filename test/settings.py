@@ -2,7 +2,7 @@ import pandas as pd
 from pyweb.app import create_app
 
 # this is a function mapping name of a file to its path...
-from pyweb.core.whoosh import Whoosh
+from pyutil.mongo.engine.whoosh import Whoosh
 
 
 import os

@@ -3,7 +3,7 @@ import pytest
 import pandas as pd
 
 from pyutil.performance.summary import fromNav
-from pyweb.core.parser import HighchartsSeries
+from pyutil.web.parser import HighchartsSeries
 from pyutil.testing.aux import post
 from test.settings import client, read
 
