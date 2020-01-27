@@ -1,12 +1,7 @@
-import random
-import string
-import sys
-from logging import StreamHandler
-
 import pytest
 from flask import Flask
 
-from pyweb.application import create_server
+from pyutil.web.application import create_server
 from pyweb.pydash.common import *
 import dash_html_components as html
 
@@ -79,17 +74,16 @@ class TestDash(object):
         #x.serve()
 
 
-class TestTuple(object):
-    def test_tuple(self):
-        server = Flask(__name__)
-        tuple = AppTuple(dash=MyApp, href="/admin", text="MY TEXT")
-        app = tuple.dash.construct_with_flask(server=server, url=tuple.href)
-        assert isinstance(app, Dash)
-        
+def test_tuple():
+    server = Flask(__name__)
+    tuple = AppTuple(dash=MyApp, href="/admin", text="MY TEXT")
+    app = tuple.dash.construct_with_flask(server=server, url=tuple.href)
+    assert isinstance(app, Dash)
 
-    def test_create_server(self):
-        server = create_server(template_folder=None, static_folder=None, extensions=[])
-        app = MyApp.construct_with_flask(server, url="/test")
-        assert app.server.config == server.config
+
+def test_create_server():
+    server = create_server(template_folder=None, static_folder=None, extensions=[])
+    app = MyApp.construct_with_flask(server, url="/test")
+    assert app.server.config == server.config
 
         

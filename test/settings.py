@@ -1,23 +1,16 @@
+import pytest
+import os
 import pandas as pd
+
 from pyweb.app import create_app
 
 # this is a function mapping name of a file to its path...
 from pyutil.mongo.engine.whoosh import Whoosh
 
 
-import os
-base_dir = os.path.dirname(__file__)
-
-
-def resource(name):
-    return os.path.join(base_dir, "resources", name)
-
-
+# resource is now a function mapping a name to a file in the resource folder
 def read(name, **kwargs):
-    return pd.read_csv(resource(name), **kwargs)
-
-
-import pytest
+    return pd.read_csv(os.path.join(os.path.dirname(__file__), "resources", name), **kwargs)
 
 
 def __init_session():

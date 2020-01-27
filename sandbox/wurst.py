@@ -5,7 +5,7 @@ import dash_html_components as html
 
 if __name__ == '__main__':
     from waitress import serve
-    from pyweb.application import create_server
+    from pyutil.web.application import create_server
 
     class xxx(App):
         def build_layout(self):
