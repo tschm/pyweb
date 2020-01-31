@@ -16,12 +16,12 @@ def price():
     assert isinstance(ts, pd.Series)
     return ts
 
+
 @pytest.fixture(scope="module")
 def data(price):
     data = HighchartsSeries.to_json(series=price)
     assert data[0] == [1356998400000, 1673.78]
     return json.dumps(data)
-
 
 
 def test_drawdown(client, data, price):
@@ -31,10 +31,6 @@ def test_drawdown(client, data, price):
 
 
 def test_volatility(client, data, price):
-    #x = post(client=client, data=data, url="/api/1/engine/volatility")
-    #print(x)
-    #assert False
-
     d = json.loads(post(client=client, data=data, url="/api/1/engine/volatility"))
     x = HighchartsSeries.parse(d)
     pdt.assert_series_equal(fromNav(price).ewm_volatility().dropna(), x, check_names=False)
