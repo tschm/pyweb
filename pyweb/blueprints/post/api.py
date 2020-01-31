@@ -1,6 +1,7 @@
 import json
+import pandas as pd
 from flask import Blueprint, request
-from pyutil.performance.summary import fromNav
+from pyutil.performance.summary import fromNav, NavSeries
 from pyutil.web.parser import HighchartsSeries, respond_pandas
 
 blueprint = Blueprint('post', __name__, static_folder="static")
@@ -11,7 +12,14 @@ def __percentage(x):
 
 
 def __series():
-    return fromNav(HighchartsSeries.parse(value=json.loads(request.data)))
+    value = json.loads(request.data)
+    print(value)
+    # check that is an array...
+    assert isinstance(HighchartsSeries.parse(value), pd.Series)
+    x = fromNav(HighchartsSeries.parse(value=json.loads(request.data)))
+    assert isinstance(x, NavSeries)
+    return x
+
     # series is an array [[t1,v1],[t2,v2],...]
 
 
@@ -34,4 +42,8 @@ def drawdown():
 
 @blueprint.route('/volatility', methods=['POST'])
 def volatility():
+    a = __series()
+    assert isinstance(a, NavSeries)
+    b = a.ewm_volatility()
+    assert isinstance(b, pd.Series)
     return respond_pandas(object=HighchartsSeries.to_json(__series().ewm_volatility()), format="json")

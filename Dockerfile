@@ -9,7 +9,9 @@ COPY . /tmp/server
 
 ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 
-RUN pip install -r /tmp/server/requirements.txt && \
+RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.22.0 scipy && \
+    conda clean -y --all && \
+    pip install -r /tmp/server/requirements.txt && \
     pip install --no-cache-dir /tmp/server && \
     rm -r /tmp/server
 
