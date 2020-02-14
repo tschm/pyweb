@@ -13,7 +13,6 @@ from pyweb.blueprints.post.api import blueprint as blue_post
 from pyweb.exts.exts import engine, cache
 
 
-
 def create_app():
     server = create_server(extensions=[engine, cache])
 
@@ -38,11 +37,8 @@ def read(name, **kwargs):
 
 def __init_session():
     Whoosh.objects.delete()
-
-    w1 = Whoosh(title="A", content="AA", path="aaa", group="GA")
-    w2 = Whoosh(title="B", content="BB", path="bbb", group="GB")
-    w1.save()
-    w2.save()
+    Whoosh(title="A", content="AA", path="aaa", group="GA").save()
+    Whoosh(title="B", content="BB", path="bbb", group="GB").save()
 
 
 @pytest.fixture(scope="module")
