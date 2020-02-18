@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from pyweb import __verion__ as version
+from pyweb import __version__ as version
 # http://blog.codekills.net/2011/07/15/lies,-more-lies-and-python-packaging-documentation-on--package_data-/
 
 setup(
