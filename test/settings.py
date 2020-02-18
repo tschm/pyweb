@@ -7,7 +7,7 @@ from flask import current_app, url_for
 
 from pyutil.web.application import create_server
 from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
-from pyweb import __verion__ as version
+from pyweb import __version__ as version
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
 from pyweb.exts.exts import engine, cache
