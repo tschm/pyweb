@@ -1,7 +1,7 @@
 import json
 
 from flask import Blueprint, request
-from pyutil.performance.summary import fromNav
+from pyutil.performance.return_series import from_nav
 from pyutil.web.parser import HighchartsSeries, respond_pandas
 
 blueprint = Blueprint('post', __name__, static_folder="static")
@@ -12,7 +12,7 @@ def __percentage(x):
 
 
 def __series():
-    return fromNav(HighchartsSeries.parse(value=json.loads(request.data)))
+    return from_nav(HighchartsSeries.parse(value=json.loads(request.data)))
     # series is an array [[t1,v1],[t2,v2],...]
 
 
