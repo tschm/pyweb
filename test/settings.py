@@ -45,9 +45,6 @@ def __init_session():
 def client():
     app = create_app()
 
-    app.config['WTF_CSRF_METHODS'] = []  # This is the magic
-    app.config['TESTING'] = True
-
     with app.app_context():
         __init_session()
 
