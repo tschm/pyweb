@@ -9,6 +9,7 @@
 !test
 !pyweb
 !config
+!README.md
 
 !start.py
 !package.json

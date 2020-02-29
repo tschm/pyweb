@@ -5,7 +5,7 @@ SHELL := /bin/bash
 PACKAGE := pyweb
 
 
-.PHONY: help build test teamcity jupyter graph doc tag server clean
+.PHONY: help build test teamcity graph doc tag server clean
 
 
 .DEFAULT: help
@@ -17,8 +17,6 @@ help:
 	@echo "       Build the docker image for testing and run them."
 	@echo "make teamcity"
 	@echo "       Run tests, build a dependency graph and construct the documentation."
-	@echo "make jupyter"
-	@echo "       Start the Jupyter server."
 	@echo "make graph"
 	@echo "       Build a dependency graph."
 	@echo "make tag"
@@ -62,3 +60,8 @@ server: build
 clean:
 	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
 	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
+
+pypi: #tag
+	python setup.py sdist
+	twine check dist/*
+#	twine upload dist/*
