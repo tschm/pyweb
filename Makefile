@@ -61,7 +61,8 @@ clean:
 	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
 	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
 
-pypi: #tag
+pypi: tag
+	# todo: Need to think about logos etc.
 	python setup.py sdist
 	twine check dist/*
-#	twine upload dist/*
+	#twine upload dist/*
