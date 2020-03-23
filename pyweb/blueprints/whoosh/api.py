@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from pyutil.web.parser import respond_pandas
-from pyutil.mongo.engine.whoosh import Whoosh
+from pyweb.blueprints.whoosh.whoosh import Whoosh
 
 blueprint = Blueprint('whoosh_api', __name__, template_folder="templates")
 

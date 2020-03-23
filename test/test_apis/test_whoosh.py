@@ -5,7 +5,7 @@ from test.settings import read, client
 
 
 def test_reference(client):
-    response = get(client=client, url="/api/1/whoosh/json")
+    response = get(client=client, url="/api/1/whoosh/json").data.decode()
     frame = read("whoosh.csv", index_col=0, header=0)[["content", "group", "path", "title"]]
     pdt.assert_frame_equal(pd.read_json(response, orient="table")[frame.keys()], frame)
 

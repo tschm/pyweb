@@ -25,26 +25,26 @@ def data(price):
 
 
 def test_drawdown(client, data, price):
-    d = json.loads(post(client=client, data=data, url="/api/1/engine/drawdown"))
+    d = json.loads(post(client=client, data=data, url="/api/1/engine/drawdown").data.decode())
     x = HighchartsSeries.parse(d)
     pdt.assert_series_equal(from_nav(price).drawdown, x, check_names=False)
 
 
 def test_volatility(client, data, price):
-    d = json.loads(post(client=client, data=data, url="/api/1/engine/volatility"))
+    d = json.loads(post(client=client, data=data, url="/api/1/engine/volatility").data.decode())
     x = HighchartsSeries.parse(d)
     pdt.assert_series_equal(from_nav(price).ewm_volatility().dropna(), x, check_names=False)
 
 
 def test_month(client, data, price):
-    d = post(client=client, data=data, url="/api/1/engine/month")
+    d = post(client=client, data=data, url="/api/1/engine/month").data.decode()
     x = pd.read_json(d, orient="table")
     pdt.assert_frame_equal(x, from_nav(price).monthlytable.applymap(
         lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")), check_names=False)
 
 
 def test_performance(client, data):
-    d = post(client=client, data=data, url="/api/1/engine/performance")
+    d = post(client=client, data=data, url="/api/1/engine/performance").data.decode()
     x = pd.read_json(d, typ="series")
 
     assert x.to_dict() == {'Return': '-28.27%', '# Events': '602', '# Events per year': '261',
