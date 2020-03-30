@@ -1,13 +1,6 @@
-.ipynb_checkpoints
-vv
 .idea
-html-coverage
-html-report
 build
 __pycache__
-*.tex
-*.pdf
-data
 
 artifacts
 cache
@@ -16,6 +9,8 @@ index
 
 dist
 *.egg-info
+*.pyc
+
 books/pyweb/*
 
 sandbox
