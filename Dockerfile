@@ -1,5 +1,3 @@
-# Set the base image to beakerx
-#FROM continuumio/miniconda3:4.8.2 as builder
 FROM python:3.7.7-slim-stretch as builder
 
 # File Author / Maintainer
