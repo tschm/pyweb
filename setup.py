@@ -20,6 +20,6 @@ setup(
     author_email='thomas.schmelzer@lobnek.com',
     url='https://github.com/lobnek/pyweb',
     description='',
-    install_requires=['pandas>=1.0.1', 'requests>=2.22.0', 'flask>=1.1.1', 'flask-caching>=1.7.2',
+    install_requires=['pandas>=0.25.3', 'requests>=2.22.0', 'flask>=1.1.1', 'flask-caching>=1.7.2',
                       'waitress>=1.3.0', 'dash>=1.3.0', 'dash-daq>=0.2.1', 'flask-mongoengine']
 )
