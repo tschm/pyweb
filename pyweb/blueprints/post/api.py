@@ -2,8 +2,8 @@ import json
 
 from flask import Blueprint, request
 from pyutil.performance.return_series import from_nav
-from pyutil.web.parser import HighchartsSeries, respond_pandas
-
+from pyutil.web.parser import respond_pandas
+from pyutil.web.highcharts import parse, to_json
 blueprint = Blueprint('post', __name__, static_folder="static")
 
 
@@ -12,7 +12,7 @@ def __percentage(x):
 
 
 def __series():
-    return from_nav(HighchartsSeries.parse(value=json.loads(request.data)))
+    return from_nav(parse(value=json.loads(request.data)))
     # series is an array [[t1,v1],[t2,v2],...]
 
 
@@ -30,9 +30,9 @@ def month():
 
 @blueprint.route('/drawdown', methods=['POST'])
 def drawdown():
-    return respond_pandas(object=HighchartsSeries.to_json(__series().drawdown), format="json")
+    return respond_pandas(object=to_json(__series().drawdown), format="json")
 
 
 @blueprint.route('/volatility', methods=['POST'])
 def volatility():
-    return respond_pandas(object=HighchartsSeries.to_json(__series().ewm_volatility()), format="json")
+    return respond_pandas(object=to_json(__series().ewm_volatility()), format="json")

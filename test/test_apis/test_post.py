@@ -3,8 +3,9 @@ import pytest
 import pandas as pd
 
 from pyutil.performance.return_series import from_nav
-from pyutil.web.parser import HighchartsSeries
 from pyutil.testing.aux import post
+from pyutil.web.highcharts import to_json, parse
+
 from test.settings import client, read
 
 import pandas.util.testing as pdt
@@ -19,20 +20,20 @@ def price():
 
 @pytest.fixture(scope="module")
 def data(price):
-    data = HighchartsSeries.to_json(series=price)
+    data = to_json(series=price)
     assert data[0] == [1356998400000, 1673.78]
     return json.dumps(data)
 
 
 def test_drawdown(client, data, price):
     d = json.loads(post(client=client, data=data, url="/api/1/engine/drawdown").data.decode())
-    x = HighchartsSeries.parse(d)
+    x = parse(d)
     pdt.assert_series_equal(from_nav(price).drawdown, x, check_names=False)
 
 
 def test_volatility(client, data, price):
     d = json.loads(post(client=client, data=data, url="/api/1/engine/volatility").data.decode())
-    x = HighchartsSeries.parse(d)
+    x = parse(d)
     pdt.assert_series_equal(from_nav(price).ewm_volatility().dropna(), x, check_names=False)
 
 

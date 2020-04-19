@@ -10,6 +10,7 @@ from pyweb.blueprints.admin.api import construct_navbar, LinkTuple
 from pyweb import __version__ as version
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
+from pyweb.blueprints.whoosh.whoosh import Whoosh
 from pyweb.exts.exts import engine, cache
 
 
@@ -26,8 +27,6 @@ def create_app():
 
     return server
 
-# this is a function mapping name of a file to its path...
-from pyutil.mongo.engine.whoosh import Whoosh
 
 
 # resource is now a function mapping a name to a file in the resource folder

@@ -1,5 +1,5 @@
 # Set the base image to beakerx
-FROM continuumio/miniconda3 as builder
+FROM continuumio/miniconda3:4.8.2 as builder
 
 # File Author / Maintainer
 MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
@@ -9,7 +9,7 @@ COPY . /tmp/server
 
 ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 
-RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.22.0 scipy mongomock && \
+RUN conda install -y -c conda-forge nomkl pandas=0.25.3 requests=2.22.0 mongomock && \
     conda clean -y --all && \
     pip install -r /tmp/server/requirements.txt && \
     pip install --no-cache-dir /tmp/server && \
