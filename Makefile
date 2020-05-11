@@ -16,9 +16,7 @@ help:
 	@echo "make test"
 	@echo "       Build the docker image for testing and run them."
 	@echo "make teamcity"
-	@echo "       Run tests, build a dependency graph and construct the documentation."
-	@echo "make graph"
-	@echo "       Build a dependency graph."
+	@echo "       Run tests."
 	@echo "make tag"
 	@echo "       Make a tag on Github."
 	@echo "make server"
@@ -32,21 +30,7 @@ test:
 	mkdir -p artifacts
 	docker-compose -f docker-compose.test.yml run sut
 
-teamcity: test graph
-
-graph: test
-	mkdir -p artifacts/graph
-
-	docker run --rm --mount type=bind,source=${PWD}/${PACKAGE},target=/pyan/${PACKAGE},readonly \
-		   tschm/pyan:latest python pyan.py ${PACKAGE}/**/*.py -V --uses --defines --colored --dot --nested-groups > graph.dot
-
-	# remove all the private nodes...
-	grep -vE "____" graph.dot > graph2.dot
-
-	docker run --rm -v ${PWD}/graph2.dot:/pyan/graph.dot:ro \
-		   tschm/pyan:latest dot -Tsvg /pyan/graph.dot > artifacts/graph/graph.svg
-
-	rm graph.dot graph2.dot
+teamcity: test
 
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"

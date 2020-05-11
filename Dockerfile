@@ -8,8 +8,6 @@ COPY . /tmp/server
 
 ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 
-#RUN conda install -y -c conda-forge pandas=0.25.3 requests=2.22.0 && \
-#    conda clean -y --all && \
 RUN buildDeps='gcc g++ git-all' && \
     apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
     pip install -r /tmp/server/requirements.txt && \

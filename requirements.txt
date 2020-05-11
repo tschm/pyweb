@@ -10,3 +10,4 @@ git+https://github.com/lobnek/pyutil.git
 
 dash==1.7.0
 dash-daq==0.3.1
+cufflinks
