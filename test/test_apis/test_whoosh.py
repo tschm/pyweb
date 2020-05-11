@@ -1,6 +1,6 @@
 import pandas as pd
 import pandas.util.testing as pdt
-from pyutil.testing.aux import get
+from pyutil.testing.response import get
 from test.settings import read, client
 
 
