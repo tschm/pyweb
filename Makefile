@@ -5,7 +5,7 @@ SHELL := /bin/bash
 PACKAGE := pyweb
 
 
-.PHONY: help build test teamcity graph doc tag server clean
+.PHONY: help build test tag server
 
 
 .DEFAULT: help
@@ -33,7 +33,3 @@ tag: test
 
 server: build
 	docker-compose run -p "4445:8000" web python start.py
-
-clean:
-	docker-compose -f docker-compose.yml down -v --rmi all --remove-orphans
-	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
