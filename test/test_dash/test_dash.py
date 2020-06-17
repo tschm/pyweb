@@ -16,9 +16,11 @@ class MyApp(App):
     def register_callback(self):
         return 2
 
+
 class MyApp2(App):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
 
 class MyApp3(App):
     def register_callback(self):
@@ -69,10 +71,6 @@ class TestDash(object):
             x = MyApp3(name="wurst")
             x.build_layout()
 
-    #def test_serve(self):
-    #    x = MyApp(name="wurst")
-        #x.serve()
-
 
 def test_tuple():
     server = Flask(__name__)
@@ -85,5 +83,3 @@ def test_create_server():
     server = create_server(template_folder=None, static_folder=None, extensions=[])
     app = MyApp.construct_with_flask(server, url="/test")
     assert app.server.config == server.config
-
-        

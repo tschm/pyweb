@@ -5,11 +5,11 @@ from test.settings import read
 
 
 def test_dropdown():
-    assert str(dropdown(options=["A", "B"], id=1))
+    assert str(dropdown(options=["A", "B"], id="1"))
 
 
 def test_dropdown_multi():
-    assert str(dropdown_multi(options=["A", "B"], id=1))
+    assert str(dropdown_multi(options=["A", "B"], id="1"))
 
 
 def test_year_slider():
