@@ -1,6 +1,7 @@
 flask==1.1.2
 flask-caching==1.9.0
 waitress==1.4.4
+mongomock
 flask-mongoengine==0.9.5
 
 git+https://github.com/lobnek/pyutil.git
