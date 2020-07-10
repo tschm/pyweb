@@ -15,6 +15,7 @@
 !package.json
 !setup.py
 !MANIFEST.in
+!static
 
 **/__pycache__
 **/*.pyc

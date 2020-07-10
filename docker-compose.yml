@@ -9,9 +9,8 @@ services:
     volumes:
        - ./config:/server/config:ro
        - ./pyweb:/server/pyweb:ro
-
-    ports:
-      - 4445:8000
+       - ./static:/static:ro
+       - ./start.py:/server/start.py
 
     command:
       python start.py

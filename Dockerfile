@@ -17,6 +17,7 @@ RUN buildDeps='gcc g++ git-all' && \
 
 WORKDIR /server
 
+COPY ./static /static
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as web
@@ -24,8 +25,9 @@ FROM builder as web
 # Install the webpage
 COPY ./config /server/config
 COPY ./start.py /server/start.py
+
+
 EXPOSE 8000
-EXPOSE 8050
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test

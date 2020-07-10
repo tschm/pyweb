@@ -22,7 +22,7 @@ const lobnekperf = {
 
     performance: function (s) {
         return $.ajax({
-            url: "/api/1/engine/performance",
+            url: "{{ url_for('.', filename='performance') }}",
             type: "POST",
             data: JSON.stringify(lobnekperf.truncate(s)),
             contentType: "application/json; charset=utf-8"
@@ -32,7 +32,7 @@ const lobnekperf = {
 
     monthtable: function (s) {
         return $.ajax({
-            url: "/api/1/engine/month",
+            url: "{{ url_for('.', filename='month') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8"
@@ -41,7 +41,7 @@ const lobnekperf = {
 
     drawdown: function (s) {
         return $.ajax({
-            url: "/api/1/engine/drawdown",
+            url: "{{ url_for('.', filename='drawdown') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",
@@ -50,7 +50,7 @@ const lobnekperf = {
 
     volatility: function (s) {
         return $.ajax({
-            url: "/api/1/engine/volatility",
+            url: "{{ url_for('.', filename='volatility') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",

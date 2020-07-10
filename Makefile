@@ -24,12 +24,11 @@ build:
 	docker-compose build web
 
 test:
-	mkdir -p artifacts
 	docker-compose -f docker-compose.test.yml run sut
 
 tag: test
 	git tag -a ${PROJECT_VERSION} -m "new tag"
 	git push --tags
 
-server: build
-	docker-compose run -p "4445:8000" web python start.py
+server:
+	docker-compose run -p "4445:8000" web
