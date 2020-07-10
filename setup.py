@@ -17,7 +17,7 @@ setup(
     package_data={'pyweb': ['pyweb/blueprints/**/templates/**', 'pyweb/blueprints/**/static/**']},
     include_package_data=True,
     author='Thomas Schmelzer',
-    author_email='thomas.schmelzer@lobnek.com',
+    author_email='thomas.schmelzer@gmail.com',
     url='https://github.com/lobnek/pyweb',
     description='',
     install_requires=['pandas>=0.25.3', 'requests>=2.22.0', 'flask>=1.1.2', 'flask-caching>=1.9.0',
