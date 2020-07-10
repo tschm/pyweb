@@ -1,3 +1,3 @@
 # pyweb
 
-[![Action Status](https://github.com/lobnek/pyweb/workflows/CI/badge.svg)](https://github.com/lobnek/pyweb/actions/)
+[![Action Status](https://github.com/lobnek/pyweb/workflows/Test/badge.svg)](https://github.com/lobnek/pyweb/actions/)
