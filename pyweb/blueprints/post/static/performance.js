@@ -1,4 +1,4 @@
-const lobnekperf = {
+const performance = {
     parse: function (x) {
         rows = [];
         for (var key in x) {
@@ -24,7 +24,7 @@ const lobnekperf = {
         return $.ajax({
             url: "{{ url_for('.', filename='performance') }}",
             type: "POST",
-            data: JSON.stringify(lobnekperf.truncate(s)),
+            data: JSON.stringify(performance.truncate(s)),
             contentType: "application/json; charset=utf-8"
         });
     },
@@ -59,7 +59,7 @@ const lobnekperf = {
 };
 
 
-const lobnekreport = {
+const report = {
     initColumns: function (columns) {
         var cols = [];
 
@@ -76,7 +76,7 @@ const lobnekreport = {
         return $(dom).dataTable({
             scrollX: false,
             paging: false,
-            columns: lobnekreport.initColumns(header),
+            columns: report.initColumns(header),
             bFilter: false,
             info: false,
             bSort: false
@@ -87,7 +87,7 @@ const lobnekreport = {
         const header = ["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "STDev", "YTD"];
 
         return $(dom).dataTable({
-            columns: lobnekreport.initColumns(header),
+            columns: report.initColumns(header),
             scrollX: false,
             bFilter: false,
             paging: false,

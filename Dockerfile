@@ -1,7 +1,7 @@
 FROM python:3.7.7-slim-stretch as builder
 
 # File Author / Maintainer
-MAINTAINER Thomas Schmelzer "thomas.schmelzer@lobnek.com"
+MAINTAINER Thomas Schmelzer "thomas.schmelzer@gmail.com"
 
 # COPY this project into a local folder and install from there
 COPY . /tmp/server
