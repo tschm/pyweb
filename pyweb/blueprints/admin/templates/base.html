@@ -45,20 +45,23 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ url_for("admin.get_index") }}">
-                    <img src="/assets/img/logo.png" width="30" height="30" alt="">
+                    <img src="/assets/ico/favicon.ico" width="30" height="30" alt="">
                 </a>
             </div>
 
             {% block menu %}
             {% endblock %}
 
-            <ul class="nav navbar-nav ml-auto">
-                <span class="navbar-text navbar-right">
+            <ul class="nav navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
                     {% if version %}
-                        Version: {{ version }}
+                        <a href="https://github.com/lobnek/pyweb" class="nav-link" target="_blank">
+                            Version: {{ version }}
+                        </a>
                     {% endif %}
-                </span>
+                </li>
             </ul>
+
         </div>
     </nav>
 
