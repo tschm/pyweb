@@ -1,30 +1,9 @@
 {% extends "menu.html" %}
 {% block content %}
 
-<script type="text/javascript" src="/assets/js/table.js"></script>
+<script type="text/javascript" src="{{ url_for('.static', filename = 'whoosh.js' ) }}"></script>
 
 <script>
-    function renderResults(column) {
-            if (column==="path") {return function(data, type, row, meta) {return '<a href="' + data + '">' + row["title"] + '</a>';}}
-            else {return function(data, type, row, meta) {return data;}}
-    }
-
-    function table(dom, frame, render, columns) {
-        return $(dom).dataTable({
-            data: frame.data,
-            columns: lobnektable.initColumns(columns, render),
-            scrollX: false,
-            pagingType: "full_numbers",
-            columnDefs: [
-            {
-                "targets": [ 2 ],
-                "visible": false,
-                "searchable": true
-            }
-        ]
-        })
-    }
-
     $(function() {
         $.ajax({
             type: 'GET',
@@ -32,9 +11,7 @@
             dataType: "json",
 
             success: function (response) {
-                console.log(response);
-                const columns = ["group", "path", "content"];
-                table("#table", response, renderResults, columns);
+                whoosh.table("#table", response);
             }
         })
     })

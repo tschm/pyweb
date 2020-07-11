@@ -60,10 +60,14 @@ const lobnekperf = {
 
 
 const lobnekreport = {
-    render: function (column) {
-        return function (data, type, row, meta) {
-            return data;
-        }
+    initColumns: function (columns) {
+        var cols = [];
+
+        $.each(columns, function (i, val) {
+            cols.push({"data": val, "render": function(data, type, row, meta) {return data;}, "defaultContent": "", "title": val});
+        });
+
+        return cols;
     },
 
     performanceTable: function (dom) {
@@ -72,7 +76,7 @@ const lobnekreport = {
         return $(dom).dataTable({
             scrollX: false,
             paging: false,
-            columns: lobnektable.initColumns(header, lobnekreport.render),
+            columns: lobnekreport.initColumns(header),
             bFilter: false,
             info: false,
             bSort: false
@@ -83,7 +87,7 @@ const lobnekreport = {
         const header = ["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "STDev", "YTD"];
 
         return $(dom).dataTable({
-            columns: lobnektable.initColumns(header, lobnekreport.render),
+            columns: lobnekreport.initColumns(header),
             scrollX: false,
             bFilter: false,
             paging: false,
@@ -93,4 +97,3 @@ const lobnekreport = {
         })
     },
 };
-

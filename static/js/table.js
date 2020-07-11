@@ -23,9 +23,6 @@ lobnektable = {
         columns = lobnektable.columns(frame.schema.fields);
         datarows = frame.data;
 
-        console.log(columns);
-        console.log(datarows);
-
         return $(dom).dataTable({
             data: frame.data,
             columns: lobnektable.initColumns(columns, render),
