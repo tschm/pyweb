@@ -21,5 +21,5 @@ setup(
     url='https://github.com/lobnek/pyweb',
     description='',
     install_requires=['pandas>=0.25.3', 'requests>=2.22.0', 'flask>=1.1.2', 'flask-caching>=1.9.0',
-                      'waitress>=1.4.4', 'dash>=1.12.0', 'dash-daq>=0.5.0', 'flask-mongoengine>=0.9.5']
+                      'waitress>=1.4.4', 'dash>=1.12.0', 'dash-daq>=0.5.0', 'flask-mongoengine>=0.9.5', 'whitenoise>=5.1.0']
 )
