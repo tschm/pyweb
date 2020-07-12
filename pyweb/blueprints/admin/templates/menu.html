@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block menu %}
+    <ul class="nav navbar-nav mr-auto">
+        {% if links %}
+            {% for link in links %}
+                <a class="nav-item nav-link" href="{{ link.href }}">{{ link.text }}</a>
+            {% endfor %}
+        {% endif %}
+    </ul>
+{% endblock %}
+

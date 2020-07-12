@@ -1,0 +1,16 @@
+.idea
+build
+__pycache__
+
+artifacts
+cache
+index
+.pytest_cache
+
+dist
+*.egg-info
+*.pyc
+
+books/pyweb/*
+
+sandbox

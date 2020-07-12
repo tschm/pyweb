@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Thomas Schmelzer">
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <!-- {# HighCharts #} -->
+    <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script type="text/javascript" src="https://highcharts.github.io/export-csv/export-csv.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <link rel="stylesheet"  type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
+{#    <link rel="stylesheet"  type="text/css"  href="{{ url_for('admin.static', filename = 'css/custom.css' ) }}">#}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+
+    {% block header %}
+    {% endblock %}
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for("admin.get_index") }}">
+                    <img src="/assets/img/logo.png" width="30" height="30" alt="">
+                </a>
+            </div>
+
+            {% block menu %}
+            {% endblock %}
+
+            <ul class="nav navbar-nav ml-auto navbar-right">
+                <li class="nav-item">
+                    {% if version %}
+                        <a class="nav-link" target="_blank">
+                            Version: {{ version }}
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+</head>
+
+<script>
+    var csrftoken = $('meta[name=csrf-token]').attr('content');
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken)
+            }
+        }
+    });
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: true
+        }
+    });
+</script>
+
+<body>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
