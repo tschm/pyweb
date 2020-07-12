@@ -30,6 +30,14 @@ class MyApp3(App):
         super().__init__(**kwargs)
 
 
+class MyApp4(App):
+    def build_layout(self):
+        return html.H1("Hello World")
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class TestDash(object):
     def test_cache(self):
         x = MyApp(name="maffay")
@@ -70,6 +78,11 @@ class TestDash(object):
         with pytest.raises(NotImplementedError):
             x = MyApp3(name="wurst")
             x.build_layout()
+
+    def test_not_implemented_callback(self):
+        with pytest.raises(NotImplementedError):
+            x = MyApp4(name="wurst")
+            x.register_callback()
 
 
 def test_tuple():
