@@ -3,7 +3,6 @@ build
 __pycache__
 
 artifacts
-cache
 index
 .pytest_cache
 
