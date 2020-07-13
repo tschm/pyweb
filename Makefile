@@ -23,7 +23,7 @@ help:
 build:
 	docker-compose build web
 
-test:
+test: clean
 	docker-compose -f docker-compose.test.yml run sut
 
 tag: test
@@ -32,3 +32,6 @@ tag: test
 
 server:
 	docker-compose run -p "4445:8000" web
+
+clean:
+	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
