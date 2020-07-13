@@ -31,29 +31,16 @@ Applications built on this package can reuse the very same blueprints and remain
     def create_app():
         server = create_server(extensions=[engine, cache], static_folder="/static")
     
-        with server.test_request_context():
-            current_app.register_blueprint(blue_whoosh, url_prefix="/whoosh")
-            current_app.register_blueprint(blue_post, url_prefix="/engine")
-            current_app.register_blueprint(construct_navbar(links=links, version=version), url_prefix="/admin")
-        
+        server.register_blueprint(blue_whoosh, url_prefix="/whoosh")
+        server.register_blueprint(blue_post, url_prefix="/engine")
+        server.register_blueprint(blue_admin, url_prefix="/admin")
+    
         # add whitenoise
         server.wsgi_app = WhiteNoise(server.wsgi_app, root='/static', prefix='assets/')
-        
+    
         return server
     ```    
-* We use Jinja2 templates to create a menubar:
-    ```python
-    {% extends "base.html" %}
-    {% block menu %}
-        <ul class="nav navbar-nav mr-auto">
-            {% if links %}
-                {% for link in links %}
-                    <a class="nav-item nav-link" href="{{ link.href }}">{{ link.text }}</a>
-                {% endfor %}
-            {% endif %}
-        </ul>
-    {% endblock %}
-    ```
+
 * We use Flask extensions and a central settings.cfg file to initialize the extensions only once. Within the Dockerfile we set
     ```python
     ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
