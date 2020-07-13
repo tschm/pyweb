@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+
 {% block menu %}
-    <ul class="nav navbar-nav mr-auto">
-        {% if links %}
-            {% for link in links %}
-                <a class="nav-item nav-link" href="{{ link.href }}">{{ link.text }}</a>
-            {% endfor %}
-        {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav mr-auto">
+        <a class="nav-item nav-link" href="{{ url_for('whoosh.search', fmt="html") }}">Search</a>
     </ul>
 {% endblock %}
-

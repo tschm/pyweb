@@ -34,8 +34,6 @@ Applications built on this package can reuse the very same blueprints and remain
         with server.test_request_context():
             current_app.register_blueprint(blue_whoosh, url_prefix="/whoosh")
             current_app.register_blueprint(blue_post, url_prefix="/engine")
-            # links
-            links = [LinkTuple(href=url_for("whoosh.search", fmt="html"), text="Search")]
             current_app.register_blueprint(construct_navbar(links=links, version=version), url_prefix="/admin")
         
         # add whitenoise
