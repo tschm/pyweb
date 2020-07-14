@@ -1,7 +1,7 @@
 import os
-from pyutil.web.application import create_server
+from pyweb.web.application import create_server
 
-os.environ["APPLICATION_SETTINGS"] = "/pyweb/test/resources/settings.cfg"
+os.environ["APPLICATION_SETTINGS"] = "/server/test/resources/settings.cfg"
 
 
 class MockExtension(object):

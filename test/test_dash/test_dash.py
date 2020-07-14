@@ -1,7 +1,7 @@
 import pytest
 from flask import Flask
 
-from pyutil.web.application import create_server
+from pyweb.web.application import create_server
 from pyweb.pydash.common import *
 import dash_html_components as html
 
