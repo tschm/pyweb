@@ -16,6 +16,6 @@ def create_app():
     server.register_blueprint(blue_admin(version), url_prefix="/admin")
 
     # add whitenoise
-    server.wsgi_app = WhiteNoise(server.wsgi_app, root='/static', prefix='assets/')
+    server.wsgi_app = WhiteNoise(server.wsgi_app, root='/static', prefix='/assets')
 
     return server

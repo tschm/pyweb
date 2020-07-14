@@ -21,8 +21,9 @@ const performance = {
     },
 
     performance: function (s) {
+        console.log("{{ url_for('engine', filename='performance') }}");
         return $.ajax({
-            url: "{{ url_for('.', filename='performance') }}",
+            url: "{{ url_for('post.static', filename='performance') }}",
             type: "POST",
             data: JSON.stringify(performance.truncate(s)),
             contentType: "application/json; charset=utf-8"
@@ -31,8 +32,9 @@ const performance = {
 
 
     monthtable: function (s) {
+        console.log("{{ url_for('engine', filename='monthtable') }}");
         return $.ajax({
-            url: "{{ url_for('.', filename='month') }}",
+            url: "{{ url_for('engine', filename='month') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8"
@@ -40,8 +42,9 @@ const performance = {
     },
 
     drawdown: function (s) {
+        console.log("{{ url_for('engine', filename='drawdown') }}");
         return $.ajax({
-            url: "{{ url_for('.', filename='drawdown') }}",
+            url: "{{ url_for('engine', filename='drawdown') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",
@@ -49,51 +52,12 @@ const performance = {
     },
 
     volatility: function (s) {
+        console.log("{{ url_for('engine', filename='volatility') }}");
         return $.ajax({
-            url: "{{ url_for('.', filename='volatility') }}",
+            url: "{{ url_for('engine', filename='volatility') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",
         });
     }
 };
-
-
-// const report = {
-//     initColumns: function (columns) {
-//         var cols = [];
-//
-//         $.each(columns, function (i, val) {
-//             cols.push({"data": val, "render": function(data, type, row, meta) {return data;}, "defaultContent": "", "title": val});
-//         });
-//
-//         return cols;
-//     },
-//
-//     performanceTable: function (dom) {
-//         const header = ["name", "value"];
-//
-//         return $(dom).dataTable({
-//             scrollX: false,
-//             paging: false,
-//             columns: report.initColumns(header),
-//             bFilter: false,
-//             info: false,
-//             bSort: false
-//         });
-//     },
-//
-//     monthTable: function (dom) {
-//         const header = ["Year", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "STDev", "YTD"];
-//
-//         return $(dom).dataTable({
-//             columns: report.initColumns(header),
-//             scrollX: false,
-//             bFilter: false,
-//             paging: false,
-//             info: false,
-//             bSort: false,
-//             order: [[0, "desc"]]
-//         })
-//     },
-// };
