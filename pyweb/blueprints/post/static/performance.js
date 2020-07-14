@@ -21,9 +21,8 @@ const performance = {
     },
 
     performance: function (s) {
-        console.log("{{ url_for('engine', filename='performance') }}");
         return $.ajax({
-            url: "{{ url_for('post.static', filename='performance') }}",
+            url: "{{ url_for('/engine', filename='performance') }}",
             type: "POST",
             data: JSON.stringify(performance.truncate(s)),
             contentType: "application/json; charset=utf-8"
@@ -32,9 +31,8 @@ const performance = {
 
 
     monthtable: function (s) {
-        console.log("{{ url_for('engine', filename='monthtable') }}");
         return $.ajax({
-            url: "{{ url_for('engine', filename='month') }}",
+            url: "{{ url_for('/engine', filename='month') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8"
@@ -42,9 +40,8 @@ const performance = {
     },
 
     drawdown: function (s) {
-        console.log("{{ url_for('engine', filename='drawdown') }}");
         return $.ajax({
-            url: "{{ url_for('engine', filename='drawdown') }}",
+            url: "{{ url_for('/engine', filename='drawdown') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",
@@ -52,9 +49,8 @@ const performance = {
     },
 
     volatility: function (s) {
-        console.log("{{ url_for('engine', filename='volatility') }}");
         return $.ajax({
-            url: "{{ url_for('engine', filename='volatility') }}",
+            url: "{{ url_for('/engine', filename='volatility') }}",
             type: "POST",
             data: JSON.stringify(s),
             contentType: "application/json; charset=utf-8",

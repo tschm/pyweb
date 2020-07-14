@@ -1,10 +1,13 @@
-from pyutil.web.application import create_server
+from pyweb.web.application import create_server
+
 from pyweb.blueprints.whoosh.api import blueprint as blue_whoosh
 from pyweb.blueprints.post.api import blueprint as blue_post
 from pyweb.blueprints.admin.api import blue_admin
+
 from pyweb.exts.exts import engine, cache
 
 from pyweb import __version__ as version
+
 from whitenoise import WhiteNoise
 
 
