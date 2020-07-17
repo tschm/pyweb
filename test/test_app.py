@@ -1,6 +1,6 @@
 import pytest
 
-from pyutil.testing.response import get
+from pyweb.testing.response import get
 # this is weird but this is needed...
 from test.settings import client
 

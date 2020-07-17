@@ -3,8 +3,8 @@ import pytest
 import pandas as pd
 
 from pyutil.performance.return_series import from_nav
-from pyutil.testing.response import post
-from pyutil.web.highcharts import to_json, parse
+from pyweb.testing.response import post
+from pyweb.web.highcharts import to_json, parse
 
 from test.settings import client, read
 
