@@ -1,6 +1,6 @@
 import os
 
-from pyutil.testing.response import get
+from pyweb.testing.response import get
 from test.settings import client
 
 

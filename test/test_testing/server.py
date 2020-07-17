@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Flask, request
-from pyutil.web.parser import respond_pandas
+from pyweb.web.parser import respond_pandas
 
 frame = pd.DataFrame(index=["A"], columns=["B"], data=[[3.0]])
 
