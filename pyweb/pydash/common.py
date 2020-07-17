@@ -71,25 +71,6 @@ class App(Dash):
         raise NotImplementedError()
 
     @classmethod
-    def construct_with_flask(cls, server, url=None):
-        meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
-
-        url = url or '/' + random_string(5)
-        print(server.name)
-
-        x = cls(name=cls.__name__,
-                server=server,
-                url_base_pathname='{name}/'.format(name=url),
-                assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
-                meta_tags=[meta_viewport],
-                external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
-                eager_loading=True)
-
-        # x.logger.setLevel(logging.DEBUG)
-        x.config.suppress_callback_exceptions = True
-        return x
-
-    @classmethod
     def dash_application(cls, url=None):
         # Create a Dash app
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
