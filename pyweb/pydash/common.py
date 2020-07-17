@@ -1,13 +1,12 @@
 # Meta tags for viewport responsiveness
 import logging
 import sys
+import uuid
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
 
 from dash import Dash
 from flask.helpers import get_root_path
-
-from pyutil.config.random import random_string
 
 style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
 
@@ -74,7 +73,7 @@ class App(Dash):
     def dash_application(cls, url=None):
         # Create a Dash app
         meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
-        url = url or '/' + random_string(5)
+        url = url or '/' +  uuid.uuid4()
 
         dash_app = cls(name=cls.__name__,
                        server=False,

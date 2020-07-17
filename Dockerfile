@@ -32,7 +32,7 @@ EXPOSE 8000
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock mongomock
+RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock mongomock requests-mock
 
 ENV APPLICATION_SETTINGS=/server/test/config/settings.cfg
 

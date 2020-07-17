@@ -2,8 +2,8 @@ import json
 
 from flask import Blueprint, request
 from pyutil.performance.return_series import from_nav
-from pyutil.web.parser import respond_pandas
-from pyutil.web.highcharts import parse, to_json
+from pyweb.web.parser import respond_pandas
+from pyweb.web.highcharts import parse, to_json
 
 blueprint = Blueprint('post', __name__, static_folder="static")
 
