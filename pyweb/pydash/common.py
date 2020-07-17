@@ -85,6 +85,23 @@ class App(Dash):
                 external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
                 eager_loading=True)
 
-        #x.logger.setLevel(logging.DEBUG)
+        # x.logger.setLevel(logging.DEBUG)
         x.config.suppress_callback_exceptions = True
         return x
+
+    @classmethod
+    def dash_application(cls, url=None):
+        # Create a Dash app
+        meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
+        url = url or '/' + random_string(5)
+
+        dash_app = cls(name=cls.__name__,
+                       server=False,
+                       url_base_pathname='{name}/'.format(name=url),
+                       assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
+                       meta_tags=[meta_viewport],
+                       external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
+                       eager_loading=True)
+
+        dash_app.config.suppress_callback_exceptions = True
+        return dash_app
