@@ -8,7 +8,7 @@ with open('README.md') as f:
 
 
 setup(
-    name='pyweb',
+    name='lob-pyweb',
     long_description=long_description,
     long_description_content_type='text/markdown',
     version=version,
