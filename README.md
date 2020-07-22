@@ -2,7 +2,7 @@
 
 [![Action Status](https://github.com/lobnek/pyweb/workflows/Test/badge.svg)](https://github.com/lobnek/pyweb/actions/)
 
-This project is the backbone for the web applications of Lobnek Wealth Management. 
+This project is the backbone for the web applications. 
 
 ## Technology
 
