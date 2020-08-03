@@ -5,7 +5,7 @@ def blue_admin(version):
 
     # You can override the templates... with the central templates of the application
     @blueprint.route('', methods=['GET'])
-    def get_index():
+    def index():
         return render_template("index.html", version=version)
 
     return blueprint
