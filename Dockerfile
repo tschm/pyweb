@@ -26,7 +26,7 @@ FROM builder as web
 COPY ./config /server/config
 COPY ./start.py /server/start.py
 
-
+ENV FLASK_APP="pyweb.app:create_app()"
 EXPOSE 8000
 
 # ----------------------------------------------------------------------------------------------------------------------
