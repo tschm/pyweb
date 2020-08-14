@@ -23,7 +23,7 @@ help:
 build:
 	docker-compose build web
 
-test: clean
+test:
 	docker-compose -f docker-compose.test.yml run sut
 
 tag: test

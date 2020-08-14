@@ -5,12 +5,15 @@ services:
       context: .
       dockerfile: Dockerfile
       target: web
+      args:
+        - project=${PROJECT}
+        - package=${PACKAGE}
 
     volumes:
-       - ./config:/server/config:ro
-       - ./pyweb:/server/pyweb:ro
+       - ./config:/${PROJECT}/config:ro
+       - ./${PACKAGE}:/${PROJECT}/${PACKAGE}:ro
        - ./static:/static:ro
-       - ./start.py:/server/start.py
+       - ./start.py:/${PROJECT}/start.py
 
     command:
       python start.py

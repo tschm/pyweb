@@ -5,7 +5,15 @@ services:
       context: .
       dockerfile: Dockerfile
       target: test
+      args:
+        - project=${PROJECT}
+        - package=${PACKAGE}
 
     volumes:
-      - ./test:/server/test:ro
-      - ./artifacts:/server/artifacts
+      - ./$PACKAGE:/${PROJECT}/${PACKAGE}:ro
+      - ./test:/${PROJECT}/test
+      - ./artifacts:/${PROJECT}/artifacts
+      - ./source:/source
+
+    command:
+      py.test --cov=$PACKAGE  -vv --cov-report html:artifacts/html-coverage --cov-report term --html=artifacts/html-report/report.html /$PROJECT/test
