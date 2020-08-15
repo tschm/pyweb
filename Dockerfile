@@ -38,6 +38,5 @@ FROM builder as test
 
 RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock mongomock requests-mock
 
-ENV APPLICATION_SETTINGS=/${project}/test/config/settings.cfg
-
+ENV APPLICATION_SETTINGS="/${project}/test/config/settings.cfg"
 
