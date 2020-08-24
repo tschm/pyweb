@@ -14,6 +14,7 @@ ENV APPLICATION_SETTINGS="/${project}/config/settings.cfg"
 
 RUN buildDeps='gcc g++ git-all' && \
     apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
+    apt-get install -y httpie && \
     pip install -r /tmp/${project}/requirements.txt && \
     pip install --no-cache-dir /tmp/${project} && \
     rm -r /tmp/${project} && \

@@ -59,5 +59,5 @@ Applications built on this package can reuse the very same blueprints and remain
         yield app.test_client()
     ```
 
-
+* We use httpie within the Docker image for simple testing and debugging
 

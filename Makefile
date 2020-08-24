@@ -35,3 +35,9 @@ server:
 
 clean:
 	docker-compose -f docker-compose.test.yml down -v --rmi all --remove-orphans
+
+bash:
+	# you can then try:
+	# python start.py &
+	# http http://localhost:8000/admin   # using the installed httpie
+	docker-compose run web /bin/bash
