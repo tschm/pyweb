@@ -1,26 +1,24 @@
 FROM python:3.7.7-slim-stretch as builder
 
-# File Author / Maintainer
-MAINTAINER Thomas Schmelzer "thomas.schmelzer@gmail.com"
-
 # COPY this project into a local folder and install from there
 COPY . /tmp/server
 
-ARG project=server
-ARG package=pyserver
+#RUN buildDeps='g++ git' && \
+#    apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
+RUN apt-get update && \
+    apt-get install -y \
+            "g++" \
+            "git" \
+            "httpie=0.9.8-1" \
+            --no-install-recommends && \
+    pip install -r /tmp/server/requirements.txt && \
+    pip install --no-cache-dir /tmp/server && \
+    rm -r /tmp/server && \
+    apt-get purge -y --auto-remove "g++" "git" && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-ENV APPLICATION_SETTINGS="/${project}/config/settings.cfg"
-
-
-RUN buildDeps='gcc g++ git-all' && \
-    apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
-    apt-get install -y httpie && \
-    pip install -r /tmp/${project}/requirements.txt && \
-    pip install --no-cache-dir /tmp/${project} && \
-    rm -r /tmp/${project} && \
-    apt-get purge -y --auto-remove $buildDeps
-
-WORKDIR /${project}
+WORKDIR /server
 
 COPY ./static /static
 
@@ -28,16 +26,20 @@ COPY ./static /static
 FROM builder as web
 
 # Install the webpage
-COPY ./config /${project}/config
-COPY ./start.py /${project}/start.py
+COPY ./config /server/config
+COPY ./start.py /server/start.py
 
+ENV APPLICATION_SETTINGS="/server/config/settings.cfg"
 ENV FLASK_APP="pyweb.app:create_app()"
 EXPOSE 8000
+
+ENTRYPOINT ["python"]
+CMD ["/server/start.py"]
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir httpretty pytest pytest-cov pytest-html pytest-mock mongomock requests-mock
+RUN pip install --no-cache-dir pytest pytest-cov pytest-html pytest-mock mongomock requests-mock
 
-ENV APPLICATION_SETTINGS="/${project}/test/config/settings.cfg"
+ENV APPLICATION_SETTINGS="/server/test/config/settings.cfg"
 

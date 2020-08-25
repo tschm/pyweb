@@ -21,7 +21,7 @@ help:
 	@echo "       Start the Flask server."
 
 build:
-	docker-compose build web
+	docker-compose build --no-cache web
 
 test:
 	docker-compose -f docker-compose.test.yml run sut

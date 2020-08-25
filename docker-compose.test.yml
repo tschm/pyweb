@@ -5,9 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
       target: test
-      args:
-        - project=${PROJECT}
-        - package=${PACKAGE}
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
