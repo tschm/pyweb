@@ -7,8 +7,8 @@ COPY . /tmp/server
 #    apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
 RUN apt-get update && \
     apt-get install -y \
-            "g++" \
-            "git" \
+            "g++=4:6.3.0-4" \
+            "git=1:2.11.0-3+deb9u7" \
             "httpie=0.9.8-1" \
             --no-install-recommends && \
     pip install -r /tmp/server/requirements.txt && \
@@ -39,7 +39,10 @@ CMD ["/server/start.py"]
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as test
 
-RUN pip install --no-cache-dir pytest pytest-cov pytest-html pytest-mock mongomock requests-mock
+COPY ./test /server/test
 
 ENV APPLICATION_SETTINGS="/server/test/config/settings.cfg"
+
+RUN pip install --no-cache-dir -r /server/test/requirements.txt
+
 
