@@ -12,6 +12,3 @@ services:
        - ./${PACKAGE}:/${PROJECT}/${PACKAGE}:ro
        - ./static:/static:ro
        - ./start.py:/${PROJECT}/start.py
-
-    command:
-      python start.py

@@ -11,7 +11,6 @@ services:
       - ./$PACKAGE:/${PROJECT}/${PACKAGE}:ro
       - ./test:/${PROJECT}/test
       - ./artifacts:/${PROJECT}/artifacts
-      - ./source:/source
 
     command:
       py.test --cov=/${PROJECT}/${PACKAGE}
