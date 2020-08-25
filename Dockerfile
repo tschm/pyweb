@@ -3,8 +3,6 @@ FROM python:3.7.7-slim-stretch as builder
 # COPY this project into a local folder and install from there
 COPY . /tmp/server
 
-#RUN buildDeps='g++ git' && \
-#    apt-get update && apt-get install -y $buildDeps --no-install-recommends && \
 RUN apt-get update && \
     apt-get install -y \
             "g++=4:6.3.0-4" \
@@ -12,7 +10,6 @@ RUN apt-get update && \
             "httpie=0.9.8-1" \
             --no-install-recommends && \
     pip install -r /tmp/server/requirements.txt && \
-    pip install --no-cache-dir /tmp/server && \
     rm -r /tmp/server && \
     apt-get purge -y --auto-remove "g++" "git" && \
     apt-get clean && \
@@ -21,6 +18,7 @@ RUN apt-get update && \
 WORKDIR /server
 
 COPY ./static /static
+COPY ./pyweb  /server/pyweb
 
 # ----------------------------------------------------------------------------------------------------------------------
 FROM builder as web
