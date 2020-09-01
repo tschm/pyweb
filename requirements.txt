@@ -13,3 +13,4 @@ XlsxWriter
 dnspython==1.16.0
 whitenoise==5.1.0
 
+
