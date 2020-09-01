@@ -5,7 +5,7 @@ COPY . /tmp/server
 
 RUN apt-get update && \
     apt-get install -y \
-            "g++=4:6.3.0-4" \
+            #"g++=4:6.3.0-4" \
             "git=1:2.11.0-3+deb9u7" \
             "httpie=0.9.8-1" \
             --no-install-recommends && \
