@@ -18,8 +18,8 @@ setup(
     include_package_data=True,
     author='Thomas Schmelzer',
     author_email='thomas.schmelzer@gmail.com',
-    url='https://github.com/lobnek/pyweb',
+    url='https://github.com/tschm/pyweb',
     description='',
-    install_requires=['flask>=1.1.2', 'flask-caching>=1.9.0', 'waitress>=1.4.4', 'dash>=1.12.0', 'dash-daq>=0.5.0', 'flask-mongoengine>=0.9.5', 'whitenoise>=5.1.0', 'dnspython>=1.16.0', 'flask-bootstrap>=3.3.7.1'],
+    install_requires=['pandas>=1.2.0', 'flask>=1.1.2', 'flask-caching>=1.9.0', 'waitress>=1.4.4', 'dash>=1.12.0', 'dash-daq>=0.5.0', 'flask-mongoengine>=0.9.5', 'whitenoise>=5.1.0', 'dnspython>=1.16.0', 'flask-bootstrap>=3.3.7.1'],
     license="MIT"
 )

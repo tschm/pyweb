@@ -7,7 +7,6 @@ services:
       target: web
 
     volumes:
-       - /etc/localtime:/etc/localtime:ro
        - ./config:/${PROJECT}/config:ro
        - ./${PACKAGE}:/${PROJECT}/${PACKAGE}:ro
        - ./static:/static:ro
