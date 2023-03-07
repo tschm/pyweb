@@ -77,9 +77,9 @@ class App(Dash):
         dash_app = cls(
             name=cls.__name__,
             server=False,
-            url_base_pathname="{name}/".format(name=url),
+            url_base_pathname="{url}/",
             assets_folder=get_root_path(
-                __name__) + "{name}/assets/".format(name=url),
+                __name__) + "{url}/assets/",
             meta_tags=[meta_viewport],
             external_stylesheets=[
                 "https://codepen.io/chriddyp/pen/bWLwgP.css"],
