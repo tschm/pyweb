@@ -4,14 +4,7 @@ import sys
 import uuid
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
-
-import dash
-import dash_core_components as dcc
-import dash_daq as daq
-import dash_html_components as html
-import dash_table
 from dash import Dash
-from dash.dependencies import Input, Output, State
 from flask.helpers import get_root_path
 
 style = {"width": "96%", "display": "inline-block", "padding": 10}

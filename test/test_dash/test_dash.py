@@ -3,7 +3,6 @@ import pytest
 from flask import Flask
 
 from pyweb.pydash.common import *
-from pyweb.web.application import create_server
 
 
 class MyApp(App):
