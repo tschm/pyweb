@@ -66,6 +66,7 @@ def test_not_implemented():
     with pytest.raises(NotImplementedError):
         MyApp2(name="wurst")
 
+
 def test_not_implemented_layout():
     with pytest.raises(NotImplementedError):
         x = MyApp3(name="wurst")
@@ -109,9 +110,6 @@ def test_logger():
     x.logger.debug("test")
     assert x.logs[0][-4:] == "test"
 
-def test_not_implemented():
-    with pytest.raises(NotImplementedError):
-        MyApp2(name="wurst")
 
 def test_not_implemented_layout():
     with pytest.raises(NotImplementedError):
