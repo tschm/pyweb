@@ -7,7 +7,7 @@ def post(client, data, url):
     response = client.post(url, data=data)
     if response.status_code != 200:
         raise AssertionError(
-            "The return code is {r}".format(r=response.status_code))
+            f"The return code is {response.status_code}")
     return response
 
 
