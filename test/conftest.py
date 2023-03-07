@@ -17,6 +17,5 @@ def application_settings(resource_dir):
 
 @pytest.fixture(scope="module")
 def client(application_settings):
-    #os.environ["APPLICATION_SETTINGS"] = str(resource_dir / "settings.cfg")
     app = create_app()
     yield app.test_client()
