@@ -1,6 +1,7 @@
-import pytest
 import os
+
 import pandas as pd
+import pytest
 
 from pyweb.app import create_app
 from pyweb.blueprints.whoosh.whoosh import Whoosh
@@ -8,7 +9,9 @@ from pyweb.blueprints.whoosh.whoosh import Whoosh
 
 # resource is now a function mapping a name to a file in the resource folder
 def read(name, **kwargs):
-    return pd.read_csv(os.path.join(os.path.dirname(__file__), "resources", name), **kwargs)
+    return pd.read_csv(
+        os.path.join(os.path.dirname(__file__), "resources", name), **kwargs
+    )
 
 
 def __init_session():

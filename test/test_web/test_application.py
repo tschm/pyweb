@@ -1,4 +1,5 @@
 import os
+
 from pyweb.web.application import create_server
 
 os.environ["APPLICATION_SETTINGS"] = "/server/test/resources/settings.cfg"

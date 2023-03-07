@@ -1,6 +1,6 @@
 import datetime
-import pandas as pd
 
+import pandas as pd
 from mongoengine import *
 
 
@@ -13,8 +13,18 @@ class Whoosh(Document):
 
     @staticmethod
     def frame():
-        frame = pd.DataFrame({n: {"group": row.group, "path": row.path, "content": row.content, "title": row.title,
-                                  "created": row.date_modified} for n,row in enumerate(Whoosh.objects, start=1)}).transpose()
+        frame = pd.DataFrame(
+            {
+                n: {
+                    "group": row.group,
+                    "path": row.path,
+                    "content": row.content,
+                    "title": row.title,
+                    "created": row.date_modified,
+                }
+                for n, row in enumerate(Whoosh.objects, start=1)
+            }
+        ).transpose()
         frame.index.name = "Whoosh"
         frame = frame.sort_index()
         return frame

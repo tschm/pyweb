@@ -1,8 +1,9 @@
+# this is weird but this is needed...
+from test.settings import client
+
 import pytest
 
 from pyweb.testing.response import get
-# this is weird but this is needed...
-from test.settings import client
 
 
 def test_index(client):

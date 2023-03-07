@@ -11,7 +11,7 @@ class Maffay(Extension):
     def create(self, config):
         # Validate that the config is a dict
         if config is None or not isinstance(config, dict):
-            raise InvalidSettingsError('Invalid application configuration')
+            raise InvalidSettingsError("Invalid application configuration")
 
         # Otherwise, return a single connection
         return config["PETER"]

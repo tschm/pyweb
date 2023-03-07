@@ -1,11 +1,14 @@
 from flask import Blueprint, render_template
-from pyweb.web.parser import respond_pandas
+
 from pyweb.blueprints.whoosh.whoosh import Whoosh
+from pyweb.web.parser import respond_pandas
 
-blueprint = Blueprint('whoosh', __name__, template_folder="templates", static_folder="static")
+blueprint = Blueprint(
+    "whoosh", __name__, template_folder="templates", static_folder="static"
+)
 
 
-@blueprint.route('/<fmt>', methods=['GET'])
+@blueprint.route("/<fmt>", methods=["GET"])
 def search(fmt):
     if fmt.lower().strip() == "html":
         return render_template("results.html")

@@ -1,9 +1,9 @@
+import dash_html_components as html
 import pytest
 from flask import Flask
 
-from pyweb.web.application import create_server
 from pyweb.pydash.common import *
-import dash_html_components as html
+from pyweb.web.application import create_server
 
 
 class MyApp(App):
@@ -42,7 +42,6 @@ class TestDash(object):
     def test_cache(self):
         x = MyApp(name="maffay")
         assert x.register_callback() == 2
-
 
     def test_logger(self):
         x = MyApp(name="wurst")
@@ -92,7 +91,7 @@ class TestDash2(object):
         dash = MyApp.dash_application(url="/admin")
         dash.init_app(app=app)
 
-        #assert x.server.config["Wurst"] == "Peter Maffay"
+        # assert x.server.config["Wurst"] == "Peter Maffay"
 
     def test_logger(self):
         x = MyApp(name="wurst")
@@ -128,5 +127,3 @@ class TestDash2(object):
         with pytest.raises(NotImplementedError):
             x = MyApp4(name="wurst")
             x.register_callback()
-
-

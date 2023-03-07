@@ -1,7 +1,15 @@
+from test.settings import read
+
 import pandas as pd
 
-from pyweb.pydash.pydash.dash_util import dropdown, dropdown_multi, year_slider, frame2href, frame2lines, frame2table
-from test.settings import read
+from pyweb.pydash.pydash.dash_util import (
+    dropdown,
+    dropdown_multi,
+    frame2href,
+    frame2lines,
+    frame2table,
+    year_slider,
+)
 
 
 def test_dropdown():
