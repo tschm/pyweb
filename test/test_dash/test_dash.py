@@ -43,32 +43,10 @@ def test_logger():
     assert x.logs[0][-4:] == "test"
 
 
-
 def test_flask():
     app = Flask(__name__)
     app.config["Wurst"] = "Peter Maffay"
 
     dash = MyApp.dash_application(url="/admin")
     dash.init_app(app=app)
-
-def test_logger():
-    x = MyApp(name="wurst")
-
-    # there exists an logger
-    assert x.logger
-
-    # set the level for the logger
-    x.logger.setLevel(logging.DEBUG)
-
-    # no log messages
-    assert x.logs == []
-
-    x.logs = ["peter"]
-    assert x.logs == ["peter"]
-
-    x.logs = []
-    assert x.logs == []
-
-    x.logger.debug("test")
-    assert x.logs[0][-4:] == "test"
 
