@@ -4,7 +4,7 @@ from pyweb.web.application import create_server
 
 class MockExtension:
     def init_app(self, server):
-        pass
+        pass  # Extension needs an init_app method
 
 
 def test_application_extensions(application_settings):

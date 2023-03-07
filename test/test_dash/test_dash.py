@@ -23,7 +23,7 @@ class MyApp2(App):
 
 class MyApp3(App):
     def register_callback(self):
-        pass
+        pass   # need to implement the register_callback fct
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
