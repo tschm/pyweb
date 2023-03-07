@@ -21,6 +21,7 @@ def test_cache():
     x = MyApp(name="maffay")
     assert x.register_callback() == 2
 
+
 def test_logger():
     x = MyApp(name="wurst")
 
@@ -41,7 +42,6 @@ def test_logger():
 
     x.logger.debug("test")
     assert x.logs[0][-4:] == "test"
-
 
 
 def test_flask():
@@ -51,6 +51,7 @@ def test_flask():
     dash = MyApp.dash_application(url="/admin")
     dash.init_app(app=app)
 
+
 def test_logger():
     x = MyApp(name="wurst")
 
@@ -71,4 +72,3 @@ def test_logger():
 
     x.logger.debug("test")
     assert x.logs[0][-4:] == "test"
-
