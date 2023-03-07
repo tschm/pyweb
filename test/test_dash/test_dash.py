@@ -1,5 +1,5 @@
-from dash import html
 import pytest
+from dash import html
 from flask import Flask
 
 from pyweb.pydash.common import *
@@ -89,7 +89,6 @@ class TestDash2:
 
         dash = MyApp.dash_application(url="/admin")
         dash.init_app(app=app)
-
 
     def test_logger(self):
         x = MyApp(name="wurst")
