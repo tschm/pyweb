@@ -1,8 +1,9 @@
-import pytest
+import logging
+
 from dash import html
 from flask import Flask
 
-from pyweb.pydash.common import *
+from pyweb.pydash.common import App
 
 
 class MyApp(App):
