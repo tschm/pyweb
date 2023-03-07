@@ -14,3 +14,5 @@ def respond_pandas(object, format="json"):
 
     if format.lower().strip() == "json":
         return Response(json.dumps(object), mimetype="application/json")
+
+    return None
