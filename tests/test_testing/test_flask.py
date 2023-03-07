@@ -1,4 +1,4 @@
-from test.test_testing.server import app, frame
+from tests.test_testing.server import app, frame
 
 import pandas.testing as pt
 import pytest

@@ -11,5 +11,5 @@ def test_dashlogger():
     logger.setLevel(logging.DEBUG)
     logger.addHandler(handler)
     # this should call the emit
-    logger.info("test")
-    assert handler.logs == ["test"]
+    logger.info("tests")
+    assert handler.logs == ["tests"]

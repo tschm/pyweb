@@ -39,8 +39,8 @@ def test_logger():
     x.logs = []
     assert x.logs == []
 
-    x.logger.debug("test")
-    assert x.logs[0][-4:] == "test"
+    x.logger.debug("tests")
+    assert x.logs[0][-4:] == "tests"
 
 
 def test_flask():
