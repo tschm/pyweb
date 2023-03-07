@@ -4,6 +4,7 @@ import sys
 import uuid
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
+
 from dash import Dash
 from flask.helpers import get_root_path
 
