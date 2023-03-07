@@ -1,6 +1,6 @@
 from urllib.parse import quote
 
-import dash_core_components as dcc
+from dash import dcc
 import plotly.graph_objs as go
 
 
