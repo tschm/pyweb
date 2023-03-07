@@ -39,11 +39,13 @@ class MyApp4(App):
 
 
 class TestDash(object):
-    def test_cache(self):
+    @staticmethod
+    def test_cache():
         x = MyApp(name="maffay")
         assert x.register_callback() == 2
 
-    def test_logger(self):
+    @staticmethod
+    def test_logger():
         x = MyApp(name="wurst")
 
         # there exists an logger
@@ -64,27 +66,32 @@ class TestDash(object):
         x.logger.debug("test")
         assert x.logs[0][-4:] == "test"
 
-    def test_not_implemented(self):
+    @staticmethod
+    def test_not_implemented():
         with pytest.raises(NotImplementedError):
             MyApp2(name="wurst")
 
-    def test_not_implemented_layout(self):
+    @staticmethod
+    def test_not_implemented_layout():
         with pytest.raises(NotImplementedError):
             x = MyApp3(name="wurst")
             x.build_layout()
 
-    def test_not_implemented_callback(self):
+    @staticmethod
+    def test_not_implemented_callback():
         with pytest.raises(NotImplementedError):
             x = MyApp4(name="wurst")
             x.register_callback()
 
 
 class TestDash2(object):
-    def test_cache(self):
+    @staticmethod
+    def test_cache():
         x = MyApp(name="maffay")
         assert x.register_callback() == 2
 
-    def test_flask(self):
+    @staticmethod
+    def test_flask():
         app = Flask(__name__)
         app.config["Wurst"] = "Peter Maffay"
 
@@ -93,7 +100,8 @@ class TestDash2(object):
 
         # assert x.server.config["Wurst"] == "Peter Maffay"
 
-    def test_logger(self):
+    @staticmethod
+    def test_logger():
         x = MyApp(name="wurst")
 
         # there exists an logger
@@ -114,16 +122,19 @@ class TestDash2(object):
         x.logger.debug("test")
         assert x.logs[0][-4:] == "test"
 
-    def test_not_implemented(self):
+    @staticmethod
+    def test_not_implemented():
         with pytest.raises(NotImplementedError):
             MyApp2(name="wurst")
 
-    def test_not_implemented_layout(self):
+    @staticmethod
+    def test_not_implemented_layout():
         with pytest.raises(NotImplementedError):
             x = MyApp3(name="wurst")
             x.build_layout()
 
-    def test_not_implemented_callback(self):
+    @staticmethod
+    def test_not_implemented_callback():
         with pytest.raises(NotImplementedError):
             x = MyApp4(name="wurst")
             x.register_callback()
