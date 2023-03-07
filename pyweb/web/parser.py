@@ -1,4 +1,5 @@
 import json
+
 import pandas as pd
 from flask import Response
 
@@ -13,4 +14,3 @@ def respond_pandas(object, format="json"):
 
     if format.lower().strip() == "json":
         return Response(json.dumps(object), mimetype="application/json")
-

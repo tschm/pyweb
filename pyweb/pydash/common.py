@@ -5,20 +5,20 @@ import uuid
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
 
-from dash import Dash
-from flask.helpers import get_root_path
-
-style = {'width': '96%', 'display': 'inline-block', 'padding': 10}
-
-AppTuple = namedtuple('App', ['dash', 'href', 'text'])
-
-# don't delete; every app can use this functionality
 import dash
 import dash_core_components as dcc
-import dash_html_components as html
 import dash_daq as daq
-from dash.dependencies import Output, Input, State
+import dash_html_components as html
 import dash_table
+from dash import Dash
+from dash.dependencies import Input, Output, State
+from flask.helpers import get_root_path
+
+style = {"width": "96%", "display": "inline-block", "padding": 10}
+
+AppTuple = namedtuple("App", ["dash", "href", "text"])
+
+# don't delete; every app can use this functionality
 
 
 class DashLogger(logging.Handler):
@@ -42,7 +42,8 @@ class App(Dash):
         self.register_callback()
 
         # create the handler here...
-        self.__handler = DashLogger(fmt='[%(asctime)s] %(levelname)s: %(message)s')
+        self.__handler = DashLogger(
+            fmt="[%(asctime)s] %(levelname)s: %(message)s")
         self.__handler.setLevel(logging.DEBUG)
 
         self.logger.handlers = []
@@ -51,7 +52,8 @@ class App(Dash):
 
         self.logger.setLevel(logging.DEBUG)
 
-        assert len(self.logger.handlers) == 2, "Two handlers are defined at this stage."
+        assert len(
+            self.logger.handlers) == 2, "Two handlers are defined at this stage."
 
     @property
     def logs(self):
@@ -72,16 +74,23 @@ class App(Dash):
     @classmethod
     def dash_application(cls, url=None):
         # Create a Dash app
-        meta_viewport = {"name": "viewport", "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
-        url = url or '/' +  uuid.uuid4()
+        meta_viewport = {
+            "name": "viewport",
+            "content": "width=device-width, initial-scale=1, shrink-to-fit=no",
+        }
+        url = url or "/" + uuid.uuid4()
 
-        dash_app = cls(name=cls.__name__,
-                       server=False,
-                       url_base_pathname='{name}/'.format(name=url),
-                       assets_folder=get_root_path(__name__) + '{name}/assets/'.format(name=url),
-                       meta_tags=[meta_viewport],
-                       external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
-                       eager_loading=True)
+        dash_app = cls(
+            name=cls.__name__,
+            server=False,
+            url_base_pathname="{name}/".format(name=url),
+            assets_folder=get_root_path(
+                __name__) + "{name}/assets/".format(name=url),
+            meta_tags=[meta_viewport],
+            external_stylesheets=[
+                "https://codepen.io/chriddyp/pen/bWLwgP.css"],
+            eager_loading=True,
+        )
 
         dash_app.config.suppress_callback_exceptions = True
         return dash_app

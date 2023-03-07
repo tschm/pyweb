@@ -1,7 +1,7 @@
 import os
+from test.settings import client
 
 from pyweb.testing.response import get
-from test.settings import client
 
 
 def test_files():

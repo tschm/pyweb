@@ -1,4 +1,5 @@
 from abc import abstractmethod
+
 from flask import Flask, current_app
 
 
@@ -19,11 +20,11 @@ class Extension(object):
 
     def init_app(self, app, config=None):
         if not app or not isinstance(app, Flask):
-            raise Exception('Invalid Flask application instance')
+            raise Exception("Invalid Flask application instance")
 
         self.app = app
 
-        app.extensions = getattr(app, 'extensions', {})
+        app.extensions = getattr(app, "extensions", {})
 
         if self.name not in app.extensions:
             app.extensions[self.name] = {}
@@ -31,7 +32,7 @@ class Extension(object):
         if self in app.extensions[self.name]:
             # Raise an exception if extension already initialized as
             # potentially new configuration would not be loaded.
-            raise Exception('Extension already initialized')
+            raise Exception("Extension already initialized")
 
         if not config:
             # If not passed a config then we read the connection settings
@@ -40,7 +41,7 @@ class Extension(object):
 
         # Store objects in application instance so that multiple apps do not
         # end up accessing the same objects.
-        s = {'app': app, self.name: self.create(config)}
+        s = {"app": app, self.name: self.create(config)}
         app.extensions[self.name][self] = s
 
     @abstractmethod

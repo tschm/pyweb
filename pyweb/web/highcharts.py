@@ -2,7 +2,10 @@ import pandas as pd
 
 
 def to_json(series):
-    return [[int(pd.Timestamp(t).value * 1e-6), float(value)] for t, value in series.dropna().items()]
+    return [
+        [int(pd.Timestamp(t).value * 1e-6), float(value)]
+        for t, value in series.dropna().items()
+    ]
 
 
 def parse(value):
