@@ -1,8 +1,4 @@
-import os
-
 from pyweb.web.application import create_server
-
-os.environ["APPLICATION_SETTINGS"] = "/server/test/resources/settings.cfg"
 
 
 class MockExtension:
@@ -10,9 +6,9 @@ class MockExtension:
         pass
 
 
-def test_application_extensions():
+def test_application_extensions(application_settings):
     assert create_server(extensions=[MockExtension()])
 
 
-def test_application():
+def test_application(application_settings):
     assert create_server(extensions=[])
