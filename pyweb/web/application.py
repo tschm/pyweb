@@ -11,7 +11,8 @@ def create_server(
         extensions = []
 
     success = server.config.from_envvar("APPLICATION_SETTINGS", silent=False)
-    assert success
+    if not success:
+        raise AssertionError
 
     for extension in extensions:
         extension.init_app(server)

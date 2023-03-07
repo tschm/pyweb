@@ -26,5 +26,6 @@ def json():
 
 @app.route("/post", methods=("POST",))
 def post_hello():
-    assert request.method == "POST"
+    if request.method != "POST":
+        raise AssertionError
     return "Hello Thomas!"
