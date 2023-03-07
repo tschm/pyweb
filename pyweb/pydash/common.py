@@ -52,8 +52,9 @@ class App(Dash):
 
         self.logger.setLevel(logging.DEBUG)
 
-        assert len(
-            self.logger.handlers) == 2, "Two handlers are defined at this stage."
+        if len(
+            self.logger.handlers) != 2:
+            raise AssertionError("Two handlers are defined at this stage.")
 
     @property
     def logs(self):
