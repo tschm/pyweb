@@ -38,7 +38,7 @@ class MyApp4(App):
         super().__init__(**kwargs)
 
 
-class TestDash(object):
+class TestDash:
     def test_cache(self):
         x = MyApp(name="maffay")
         assert x.register_callback() == 2
@@ -79,7 +79,7 @@ class TestDash(object):
             x.register_callback()
 
 
-class TestDash2(object):
+class TestDash2:
     def test_cache(self):
         x = MyApp(name="maffay")
         assert x.register_callback() == 2

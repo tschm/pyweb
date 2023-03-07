@@ -7,7 +7,7 @@ class InvalidSettingsError(Exception):
     pass
 
 
-class Extension(object):
+class Extension:
     def __init__(self, name, app=None, config=None):
         self.__name = name
         self.app = None
