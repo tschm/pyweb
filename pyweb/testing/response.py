@@ -13,7 +13,6 @@ def post(client, data, url):
 
 def get(client, url):
     response = client.get(url)
-    print(response)
     if response.status_code != 200:
         raise AssertionError(
             "The return code is {r}".format(r=response.status_code))
