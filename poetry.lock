@@ -280,20 +280,6 @@ files = [
 ]
 
 [[package]]
-name = "dash-daq"
-version = "0.5.0"
-description = "DAQ components for Dash"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "dash_daq-0.5.0.tar.gz", hash = "sha256:a1d85b6799f7b885652fbc44aebdb58c41254616a8d350b943beeb42ade4256a"},
-]
-
-[package.dependencies]
-dash = ">=1.6.1"
-
-[[package]]
 name = "dash-html-components"
 version = "2.0.0"
 description = "Vanilla HTML components for Dash"
@@ -1265,18 +1251,6 @@ files = [
 dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 
 [[package]]
-name = "xlsxwriter"
-version = "3.0.8"
-description = "A Python module for creating Excel XLSX files."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "XlsxWriter-3.0.8-py3-none-any.whl", hash = "sha256:f5c7491b8450cf49968428f062355de16c9140aa24eafc466c9dfe107610bd44"},
-    {file = "XlsxWriter-3.0.8.tar.gz", hash = "sha256:ec77335fb118c36bc5ed1c89e33904d649e4989df2d7980f7d6a9dd95ee5874e"},
-]
-
-[[package]]
 name = "zipp"
 version = "3.15.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -1295,4 +1269,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9.0"
-content-hash = "cff2815398985dcf3f42d172412a889163e0a03888aab375a98d1f2beb96ca4c"
+content-hash = "4cc281f2bd78a4a19946cdf5624ebf6f19bbe64e58f1954ffed14fcb3181cf3c"
