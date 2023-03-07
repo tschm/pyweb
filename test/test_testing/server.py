@@ -16,12 +16,12 @@ def hello():
 
 @app.route("/csv")
 def csv():
-    return respond_pandas(object=frame, format="csv")
+    return respond_pandas(frame=frame, fmt="csv")
 
 
 @app.route("/json")
 def json():
-    return respond_pandas(object=frame, format="json")
+    return respond_pandas(frame=frame, fmt="json")
 
 
 @app.route("/post", methods=("POST",))
