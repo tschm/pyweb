@@ -59,5 +59,4 @@ def frame2table(frame):
     df = frame.reset_index()
     if df.empty:
         return [], []
-    else:
-        return [{"name": i, "id": i} for i in df.columns], df.to_dict("records")
+    return [{"name": i, "id": i} for i in df.columns], df.to_dict("records")
