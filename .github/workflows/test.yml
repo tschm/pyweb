@@ -21,7 +21,7 @@ jobs:
       - name: install docstr
         run: |
           pip install docstr-coverage
-          docstr-coverage antarctic
+          docstr-coverage pyweb
 
   coverage:
     # The type of runner that the job will run on
