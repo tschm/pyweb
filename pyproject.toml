@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pyweb"
+version = "0.0.0"
+description = "..."
+authors = ["Thomas Schmelzer"]
+readme = "readme.md"
+repository = "https://github.com/tschm/pyweb"
+packages = [{include = "pyweb"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9.0"
+pandas = ">=1.2.0"
+loguru = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "7.2.0"
+pytest-cov = "*"
+
+[build-system]
+requires = ["poetry>=1.0.2"]
+build-backend = "poetry.masonry.api"
