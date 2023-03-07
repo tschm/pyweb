@@ -1,5 +1,5 @@
-from dash import html
 import pytest
+from dash import html
 from flask import Flask
 
 from pyweb.pydash.common import *
