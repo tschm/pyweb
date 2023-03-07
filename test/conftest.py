@@ -11,9 +11,11 @@ def resource_fixture():
     """resource fixture"""
     return Path(__file__).parent / "resources"
 
+
 @pytest.fixture(scope="module")
 def application_settings(resource_dir):
     os.environ["APPLICATION_SETTINGS"] = str(resource_dir / "settings.cfg")
+
 
 @pytest.fixture(scope="module")
 def client(application_settings):
