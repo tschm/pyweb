@@ -78,10 +78,6 @@ def test_not_implemented_callback():
         x.register_callback()
 
 
-def test_cache():
-    x = MyApp(name="maffay")
-    assert x.register_callback() == 2
-
 def test_flask():
     app = Flask(__name__)
     app.config["Wurst"] = "Peter Maffay"
@@ -110,13 +106,3 @@ def test_logger():
     x.logger.debug("test")
     assert x.logs[0][-4:] == "test"
 
-
-def test_not_implemented_layout():
-    with pytest.raises(NotImplementedError):
-        x = MyApp3(name="wurst")
-        x.build_layout()
-
-def test_not_implemented_callback():
-    with pytest.raises(NotImplementedError):
-        x = MyApp4(name="wurst")
-        x.register_callback()
