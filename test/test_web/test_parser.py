@@ -23,7 +23,7 @@ def test_respond_frame_json(nav):
     x = nav.to_frame(name="Maffay")
     response = respond_pandas(x, "json")
     pt.assert_frame_equal(pd.read_json(
-        response.data, typ="frame", orient="table"), x)
+        response.data.decode(), typ="frame", orient="table"), x)
 
 
 def test_respond_json():
