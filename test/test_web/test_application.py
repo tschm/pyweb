@@ -5,7 +5,7 @@ from pyweb.web.application import create_server
 os.environ["APPLICATION_SETTINGS"] = "/server/test/resources/settings.cfg"
 
 
-class MockExtension(object):
+class MockExtension:
     def init_app(self, server):
         pass
 
