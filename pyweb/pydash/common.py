@@ -18,7 +18,7 @@ AppTuple = namedtuple("App", ["dash", "href", "text"])
 class DashLogger(logging.Handler):
     def __init__(self, fmt=None):
         super().__init__()
-        self.logs = list()
+        self.logs = []
         self.setFormatter(logging.Formatter(fmt=fmt))
 
     def emit(self, record):
