@@ -10,7 +10,7 @@ blueprint = Blueprint("post", __name__, static_folder="static")
 
 
 def __percentage(x):
-    return "{0:.2f}%".format(100 * float(x)).replace("nan%", "")
+    return f"{100 * float(x):.2f}%".replace("nan%", "")
 
 
 def __series():

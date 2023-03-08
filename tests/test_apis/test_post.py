@@ -46,7 +46,7 @@ def test_month(client, data, price):
     pt.assert_frame_equal(
         x,
         from_nav(price).monthlytable.applymap(
-            lambda x: "{0:.2f}%".format(float(100.0 * x)).replace("nan%", "")
+            lambda x: f"{float(100.0 * x):.2f}%".replace("nan%", "")
         ),
         check_names=False,
     )
