@@ -1,9 +1,8 @@
-from tests.test_testing.server import app, frame
-
 import pandas.testing as pt
 import pytest
 
 from pyweb.testing.response import get, post, response2csv, response2json
+from tests.test_testing.server import app, frame
 
 
 @pytest.fixture(scope="module")

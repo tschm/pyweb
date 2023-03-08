@@ -11,7 +11,9 @@ from pyweb.web.highcharts import parse, to_json
 
 @pytest.fixture(scope="module")
 def price(resource_dir):
-    ts = pd.read_csv(resource_dir / "price.csv", index_col=0, header=0, parse_dates=True)["A"]
+    ts = pd.read_csv(
+        resource_dir / "price.csv", index_col=0, header=0, parse_dates=True
+    )["A"]
     assert isinstance(ts, pd.Series)
     return ts
 
