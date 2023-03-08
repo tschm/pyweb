@@ -15,14 +15,14 @@ AppTuple = namedtuple("App", ["dash", "href", "text"])
 # don't delete; every app can use this functionality
 
 
-class DashLogger(logging.Handler):
-    def __init__(self, fmt=None):
-        super().__init__()
-        self.logs = []
-        self.setFormatter(logging.Formatter(fmt=fmt))
-
-    def emit(self, record):
-        self.logs.insert(0, self.format(record))
+# class DashLogger(logging.Handler):
+#     def __init__(self, fmt=None):
+#         super().__init__()
+#         self.logs = []
+#         self.setFormatter(logging.Formatter(fmt=fmt))
+#
+#     def emit(self, record):
+#         self.logs.insert(0, self.format(record))
 
 
 class App(Dash):
@@ -36,26 +36,26 @@ class App(Dash):
         self.register_callback()
 
         # create the handler here...
-        self.__handler = DashLogger(
-            fmt="[%(asctime)s] %(levelname)s: %(message)s")
-        self.__handler.setLevel(logging.DEBUG)
+        #self.__handler = DashLogger(
+        #    fmt="[%(asctime)s] %(levelname)s: %(message)s")
+        #self.__handler.setLevel(logging.DEBUG)
 
-        self.logger.handlers = []
-        self.logger.addHandler(self.__handler)
-        self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
+        #self.logger.handlers = []
+        #self.logger.addHandler(self.__handler)
+        #self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
 
-        self.logger.setLevel(logging.DEBUG)
+        #self.logger.setLevel(logging.DEBUG)
 
-        if len(self.logger.handlers) != 2:
-            raise AssertionError("Two handlers are defined at this stage.")
+        #if len(self.logger.handlers) != 2:
+        #    raise AssertionError("Two handlers are defined at this stage.")
 
-    @property
-    def logs(self):
-        return self.__handler.logs
+    #@property
+    #def logs(self):
+    #    return self.__handler.logs
 
-    @logs.setter
-    def logs(self, value):
-        self.__handler.logs = value
+    #@logs.setter
+    #def logs(self, value):
+    #    self.__handler.logs = value
 
     @abstractmethod
     def build_layout(self):
@@ -77,9 +77,9 @@ class App(Dash):
         dash_app = cls(
             name=cls.__name__,
             server=False,
-            url_base_pathname="{url}/",
+            url_base_pathname=f"{url}/",
             assets_folder=get_root_path(
-                __name__) + "{url}/assets/",
+                __name__) + f"{url}/assets/",
             meta_tags=[meta_viewport],
             external_stylesheets=[
                 "https://codepen.io/chriddyp/pen/bWLwgP.css"],
