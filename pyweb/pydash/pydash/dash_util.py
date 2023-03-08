@@ -1,7 +1,7 @@
 from urllib.parse import quote
 
-from dash import dcc
 import plotly.graph_objs as go
+from dash import dcc
 
 
 def dropdown(options, id):
