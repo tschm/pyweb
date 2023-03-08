@@ -15,8 +15,6 @@ AppTuple = namedtuple("App", ["dash", "href", "text"])
 # don't delete; every app can use this functionality
 
 
-
-
 class App(Dash):
     __metaclass__ = ABCMeta
 
@@ -28,14 +26,9 @@ class App(Dash):
         self.register_callback()
 
         # create the handler here...
-        #self.__handler = DashLogger(
+        # self.__handler = DashLogger(
         #    fmt="[%(asctime)s] %(levelname)s: %(message)s")
-        #self.__handler.setLevel(logging.DEBUG)
-
-
-
-
-
+        # self.__handler.setLevel(logging.DEBUG)
 
     @abstractmethod
     def build_layout(self):
@@ -58,8 +51,7 @@ class App(Dash):
             name=cls.__name__,
             server=False,
             url_base_pathname=f"{url}/",
-            assets_folder=get_root_path(
-                __name__) + f"{url}/assets/",
+            assets_folder=get_root_path(__name__) + f"{url}/assets/",
             meta_tags=[meta_viewport],
             external_stylesheets=[
                 "https://codepen.io/chriddyp/pen/bWLwgP.css"],
