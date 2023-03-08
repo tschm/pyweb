@@ -15,14 +15,6 @@ AppTuple = namedtuple("App", ["dash", "href", "text"])
 # don't delete; every app can use this functionality
 
 
-# class DashLogger(logging.Handler):
-#     def __init__(self, fmt=None):
-#         super().__init__()
-#         self.logs = []
-#         self.setFormatter(logging.Formatter(fmt=fmt))
-#
-#     def emit(self, record):
-#         self.logs.insert(0, self.format(record))
 
 
 class App(Dash):
@@ -40,22 +32,10 @@ class App(Dash):
         #    fmt="[%(asctime)s] %(levelname)s: %(message)s")
         #self.__handler.setLevel(logging.DEBUG)
 
-        #self.logger.handlers = []
-        #self.logger.addHandler(self.__handler)
-        #self.logger.addHandler(logging.StreamHandler(stream=sys.stdout))
 
-        #self.logger.setLevel(logging.DEBUG)
 
-        #if len(self.logger.handlers) != 2:
-        #    raise AssertionError("Two handlers are defined at this stage.")
 
-    #@property
-    #def logs(self):
-    #    return self.__handler.logs
 
-    #@logs.setter
-    #def logs(self, value):
-    #    self.__handler.logs = value
 
     @abstractmethod
     def build_layout(self):

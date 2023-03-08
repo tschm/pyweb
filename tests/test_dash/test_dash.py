@@ -33,14 +33,8 @@ def test_logger():
     # no log messages
     #assert x.logs == []
 
-    #x.logs = ["peter"]
-    #assert x.logs == ["peter"]
 
-    #x.logs = []
-    #assert x.logs == []
 
-    #x.logger.debug("tests")
-    #assert x.logs[0][-4:] == "tests"
 
 
 def test_flask():
