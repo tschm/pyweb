@@ -1,6 +1,4 @@
 # Meta tags for viewport responsiveness
-import logging
-import sys
 import uuid
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
