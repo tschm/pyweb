@@ -11,16 +11,14 @@ packages = [{include = "pyweb"}]
 python = ">=3.9.0"
 pandas = ">=1.5.0"
 flask = "*"
-loguru = "*"
 whitenoise = "*"
-lob-pyutil = ">=5.2.1"
 flask-caching = "*"
 waitress = "*"
 Flask-Bootstrap = "*"
 dash = "*"
 
 [tool.poetry.dev-dependencies]
-pytest = "7.2.0"
+pytest = "*"
 pytest-cov = "*"
 requests_mock = "*"
 
