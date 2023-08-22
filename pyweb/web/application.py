@@ -4,7 +4,8 @@ from flask import Flask
 def create_server(
     name=__name__, static_folder=None, template_folder=None, extensions=None
 ):
-    server = Flask(name, static_folder=static_folder, template_folder=template_folder)
+    server = Flask(name, static_folder=static_folder,
+                   template_folder=template_folder)
 
     if not extensions:
         extensions = []

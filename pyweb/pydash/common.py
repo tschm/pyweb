@@ -51,7 +51,8 @@ class App(Dash):
             url_base_pathname=f"{url}/",
             assets_folder=get_root_path(__name__) + f"{url}/assets/",
             meta_tags=[meta_viewport],
-            external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"],
+            external_stylesheets=[
+                "https://codepen.io/chriddyp/pen/bWLwgP.css"],
             eager_loading=True,
         )
 
