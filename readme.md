@@ -1,7 +1,6 @@
 # pyweb
 
 [![Action Status](https://github.com/lobnek/pyweb/workflows/Test/badge.svg)](https://github.com/lobnek/pyweb/actions/)
-[![DeepSource](https://deepsource.io/gh/tschm/pyweb.svg/?label=active+issues&show_trend=true&token=AvAAg_RyKRUck11KQH1hLVPP)](https://deepsource.io/gh/tschm/pyweb/?ref=repository-badge)
 
 This project is the backbone for the web applications.
 
