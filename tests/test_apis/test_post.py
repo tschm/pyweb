@@ -26,8 +26,7 @@ def data(price):
 
 
 def test_drawdown(client, data, price):
-    d = json.loads(post(client=client, data=data,
-                   url="/engine/drawdown").data.decode())
+    d = json.loads(post(client=client, data=data, url="/engine/drawdown").data.decode())
     x = parse(d)
     pt.assert_series_equal(from_nav(price).drawdown, x, check_names=False)
 
