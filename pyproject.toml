@@ -23,5 +23,5 @@ pytest-cov = "*"
 requests_mock = "*"
 
 [build-system]
-requires = ["poetry>=1.0.2"]
+requires = ["poetry>=1.6.0"]
 build-backend = "poetry.masonry.api"
