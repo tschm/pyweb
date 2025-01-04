@@ -16,6 +16,7 @@ flask-caching = "*"
 waitress = "*"
 Flask-Bootstrap = "*"
 dash = "*"
+setuptools = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
