@@ -16,6 +16,4 @@ def test_fetch_csv():
 def test_fetch_json():
     with requests_mock.Mocker() as m:
         m.get("https://maffay.com", json=frame.to_json(orient="table"))
-        pt.assert_frame_equal(
-            fetch_json(url="https://maffay.com", orient="table"), frame
-        )
+        pt.assert_frame_equal(fetch_json(url="https://maffay.com", orient="table"), frame)

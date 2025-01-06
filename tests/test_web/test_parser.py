@@ -22,9 +22,7 @@ def nav():
 def test_respond_frame_json(nav):
     x = nav.to_frame(name="Maffay")
     response = respond_pandas(x, "json")
-    pt.assert_frame_equal(
-        pd.read_json(response.data.decode(), typ="frame", orient="table"), x
-    )
+    pt.assert_frame_equal(pd.read_json(response.data.decode(), typ="frame", orient="table"), x)
 
 
 def test_respond_json():
@@ -35,7 +33,5 @@ def test_respond_json():
 def test_respond_frame_csv(nav):
     x = nav.to_frame(name="Maffay")
     response = respond_pandas(x, "csv")
-    f = pd.read_csv(
-        StringIO(response.data.decode("utf-8")), index_col=0, header=0, parse_dates=True
-    )
+    f = pd.read_csv(StringIO(response.data.decode("utf-8")), index_col=0, header=0, parse_dates=True)
     pt.assert_frame_equal(f, x, check_names=False)
