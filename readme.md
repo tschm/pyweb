@@ -1,6 +1,6 @@
 # pyweb
 
-[![Action Status](https://github.com/lobnek/pyweb/workflows/Test/badge.svg)](https://github.com/lobnek/pyweb/actions/)
+[![Action Status](https://github.com/tschm/pyweb/workflows/Test/badge.svg)](https://github.com/tschm/pyweb/actions/)
 
 This project is the backbone for the web applications.
 
