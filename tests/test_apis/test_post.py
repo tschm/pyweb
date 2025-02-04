@@ -1,4 +1,5 @@
 import json
+from io import StringIO
 
 import pandas as pd
 import pytest
@@ -23,7 +24,7 @@ def data(price):
 
 def test_performance(client, data):
     d = post(client=client, data=data, url="/engine/performance").data.decode()
-    x = pd.read_json(d, typ="series")
+    x = pd.read_json(StringIO(d), typ="series")
     print(x)
     assert x.to_dict() == {
         "count": "602",

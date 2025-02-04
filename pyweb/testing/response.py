@@ -26,4 +26,4 @@ def response2csv(response, **kwargs):
 def response2json(response, **kwargs):
     if response.status_code != 200:
         raise AssertionError(f"The return code is {response.status_code}")
-    return pd.read_json(response.data.decode(), **kwargs)
+    return pd.read_json(StringIO(response.data.decode()), **kwargs)
