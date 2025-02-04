@@ -2,8 +2,8 @@ import json
 
 from flask import Blueprint, request
 
-from pyweb.web.highcharts import parse
-from pyweb.web.parser import respond_pandas
+from .utils.highcharts import parse
+from .utils.parser import respond_pandas
 
 blueprint = Blueprint("post", __name__, static_folder="static")
 
