@@ -16,7 +16,7 @@ jobs:
 
       - uses: cvxgrp/.github/actions/deptry@v2.1.1
         with:
-          source-folder: 'src/proximal'
+          source-folder: 'pyweb'
 
   pre-commit:
     runs-on: ubuntu-latest
