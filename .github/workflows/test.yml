@@ -19,7 +19,7 @@ jobs:
         uses: cvxgrp/.github/actions/uv/environment@v2.1.1
         with:
           python-version: ${{ matrix.python-version }}
-          
+
       - uses: cvxgrp/.github/actions/test@v2.2.1
         with:
           python-version: ${{ matrix.python-version }}
