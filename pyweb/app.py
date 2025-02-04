@@ -1,9 +1,9 @@
 from whitenoise import WhiteNoise
 
-from pyweb.blueprints.admin.api import blueprint as blue_admin
-from pyweb.blueprints.post.api import blueprint as blue_post
-from pyweb.exts.exts import bootstrap, cache
-from pyweb.web.application import create_server
+from .blueprints.admin.api import blueprint as blue_admin
+from .blueprints.post.api import blueprint as blue_post
+from .exts.exts import bootstrap, cache
+from .web.application import create_server
 
 
 def create_app():

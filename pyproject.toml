@@ -11,7 +11,8 @@ dependencies = [
     "flask-bootstrap>=3.3.7.1",
     "flask-caching>=2.3.0",
     "pandas>=2.2.3",
-    "setuptools>=75.7.0",
+    "plotly>=5.24.1",
+    "requests>=2.32.3",
     "waitress>=3.0.2",
     "whitenoise>=6.8.2",
 ]
@@ -45,3 +46,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["pyweb"]
+
+# remove this
+[tool.deptry.per_rule_ignores]
+DEP002 = ["waitress"]
