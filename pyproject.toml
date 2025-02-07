@@ -13,6 +13,7 @@ dependencies = [
     "pandas>=2.2.3",
     "plotly>=5.24.1",
     "requests>=2.32.3",
+    "setuptools>=75.8.0",
     "waitress>=3.0.2",
     "whitenoise>=6.8.2",
 ]
@@ -49,4 +50,4 @@ packages = ["pyweb"]
 
 # remove this
 [tool.deptry.per_rule_ignores]
-DEP002 = ["waitress"]
+DEP002 = ["waitress","setuptools"]
