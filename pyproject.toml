@@ -50,4 +50,4 @@ packages = ["pyweb"]
 
 # remove this
 [tool.deptry.per_rule_ignores]
-DEP002 = ["waitress"]
+DEP002 = ["waitress", "setuptools"]
