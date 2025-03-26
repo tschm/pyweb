@@ -20,6 +20,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: tschm/cradle/test@v0.1.56
+      - uses: tschm/cradle/actions/test@v0.1.56
         with:
           python-version: ${{ matrix.python-version }}
