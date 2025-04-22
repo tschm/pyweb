@@ -1,6 +1,6 @@
 # pyweb
 
-[![Action Status](https://github.com/tschm/pyweb/workflows/Test/badge.svg)](https://github.com/tschm/pyweb/actions/)
+[![CodeFactor](https://www.codefactor.io/repository/github/tschm/pyweb/badge)](https://www.codefactor.io/repository/github/tschm/pyweb)
 
 This project is the backbone for the web applications.
 
