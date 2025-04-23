@@ -1,6 +1,8 @@
 # pyweb
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CodeFactor](https://www.codefactor.io/repository/github/tschm/pyweb/badge)](https://www.codefactor.io/repository/github/tschm/pyweb)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/renovatebot/renovate)
 
 This project is the backbone for the web applications.
 
